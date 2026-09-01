@@ -1,10 +1,28 @@
 import { motion } from 'framer-motion';
 import { FiDownload, FiEye, FiBookOpen } from 'react-icons/fi';
-import handloomBlanketsImg from '../../assets/handloom_blankets.webp';
-import garmentsShirtsImg from '../../assets/garments_shirts.webp';
+import handloomBlanketsImg from '../../assets/products/handloom/handloom_blankets.webp';
+import garmentsShirtsImg from '../../assets/products/garments/garments_shirts.webp';
+import caspianBedsheet1 from '../../assets/products/bedsheets/caspian_fitted_bedsheet_1.webp';
+import mulCottonSuit1 from '../../assets/products/suits/mul_cotton_applique_suit_1.webp';
 
 export default function Catalogue() {
   const catalogues = [
+    {
+      title: 'Caspian Fitted Bedsheet & Bedding Collection',
+      type: 'PDF Catalog',
+      size: '9.2 MB',
+      pages: 32,
+      img: caspianBedsheet1,
+      desc: 'Complete specification sheet for 72x78+9" Caspian fitted double bedsheets with zig zag pillow finish and printed bedsheets.'
+    },
+    {
+      title: 'Designer Ladies Suits & Ethnic Couture Catalog',
+      type: 'PDF Catalog',
+      size: '14.5 MB',
+      pages: 44,
+      img: mulCottonSuit1,
+      desc: 'Featuring Mul cotton applique embroidered suits, silky cotton restocked suits (Size 38 to 46), and boutique festive collections.'
+    },
     {
       title: 'Premium Handloom Blanket Collection 2026',
       type: 'PDF Catalog',
@@ -14,28 +32,12 @@ export default function Catalogue() {
       desc: 'Complete listing of double-ply embossed fleece blankets, mink blankets, and traditional heavy wool blankets.'
     },
     {
-      title: 'Men & Women Garments Apparel Catalog',
+      title: 'Garments & Denim Jeans Apparel Catalog',
       type: 'PDF Catalog',
       size: '12.1 MB',
       pages: 48,
       img: garmentsShirtsImg,
-      desc: 'Showcasing our seasonal shirts, casual denim pants, t-shirts, kurtis, and ethnic bridal gowns specs.'
-    },
-    {
-      title: 'Home Linen & Towels Wholesale Guide',
-      type: 'PDF Catalog',
-      size: '6.2 MB',
-      pages: 24,
-      img: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=400&q=80',
-      desc: 'Product sheets for Turkish bath towels, premium linen curtains, bedsheets, and decorative pillow shams.'
-    },
-    {
-      title: 'Luxury Knitted Kashmiri Carpets Brochure',
-      type: 'PDF Brochure',
-      size: '4.8 MB',
-      pages: 12,
-      img: 'https://images.unsplash.com/photo-1576016770956-debb63d900ad?auto=format&fit=crop&w=400&q=80',
-      desc: 'Displaying design grids, knot specs, and thread quality details of our export carpets.'
+      desc: 'Showcasing our 15 export-grade denim jeans fits, casual linen shirts, and corporate wear collections.'
     }
   ];
 

@@ -1,21 +1,21 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import handloomImg from '../assets/handloom_blankets.webp';
-import garmentsImg from '../assets/garments_shirts.webp';
+import handloomImg from '../assets/products/handloom/handloom_blankets.webp';
+import garmentsImg from '../assets/products/garments/garments_shirts.webp';
 
 export default function Hero() {
   return (
-    <section className="relative w-full bg-[#FAF9F6] overflow-hidden flex items-center py-6 sm:py-8 lg:py-10">
+    <section className="relative w-full bg-[#FAF9F6] overflow-hidden flex items-center py-8 sm:py-10 lg:py-14">
       
       {/* Background Radial Light */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,168,92,0.06),transparent)] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,168,92,0.08),transparent)] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 w-full z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
           
           {/* Left Column: Handloom Blanket image (Slides in from Left & Floats) */}
           <motion.div
-            initial={{ opacity: 0, x: -100 }}
+            initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ type: 'spring', damping: 20, stiffness: 80, delay: 0.2 }}
             className="hidden lg:block lg:col-span-3 text-center"
@@ -25,7 +25,7 @@ export default function Hero() {
                 animate={{ y: [0, -8, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
                 whileHover={{ scale: 1.05, rotate: 0, transition: { duration: 0.3 } }}
-                className="relative group p-1 bg-white border border-gray-150 rounded-sm shadow-md hover:shadow-xl transition-shadow duration-300 transform -rotate-2 cursor-pointer"
+                className="relative group p-1.5 bg-white border border-gray-200 rounded-sm shadow-xl hover:shadow-2xl transition-shadow duration-300 transform -rotate-2 cursor-pointer"
               >
                 <img 
                   src={handloomImg} 
@@ -45,41 +45,41 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          {/* Center Column: Text Content (Slides down from Top) */}
+          {/* Center Column: Text Content */}
           <div className="col-span-1 lg:col-span-6 flex flex-col items-center text-center px-2">
             
             {/* Welcome Tag */}
             <motion.div
-              initial={{ opacity: 0, y: -40 }}
+              initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center gap-2 mb-4"
+              className="flex items-center gap-2 mb-3"
             >
-              <span className="h-[1px] w-6 bg-accent"></span>
-              <span className="text-accent text-[10px] md:text-xs font-extrabold tracking-[0.3em] uppercase">
+              <span className="h-[1.5px] w-6 bg-accent"></span>
+              <span className="text-accent text-[11px] md:text-xs font-extrabold tracking-[0.3em] uppercase">
                 WELCOME TO
               </span>
-              <span className="h-[1px] w-6 bg-accent"></span>
+              <span className="h-[1.5px] w-6 bg-accent"></span>
             </motion.div>
 
             {/* Title */}
             <motion.h1
-              initial={{ opacity: 0, y: -30 }}
+              initial={{ opacity: 0, y: -25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="text-4xl sm:text-5xl md:text-6.5xl font-serif font-black text-primary leading-tight mb-2 tracking-wide uppercase"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black text-primary leading-tight mb-2 tracking-wide uppercase"
             >
               Z K BROTHER
             </motion.h1>
 
             {/* Subtitle */}
             <motion.h2
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
               className="text-xs sm:text-sm md:text-base font-bold text-accent tracking-widest uppercase mb-6"
             >
-              PREMIUM GARMENTS & HANDLOOM PRODUCTS
+              PREMIUM GARMENTS &amp; HANDLOOM PRODUCTS
             </motion.h2>
 
             {/* Description */}
@@ -87,14 +87,14 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.45 }}
-              className="text-xs sm:text-sm text-gray-550 max-w-md mb-8 leading-relaxed font-semibold"
+              className="text-xs sm:text-sm text-gray-600 max-w-md mb-8 leading-relaxed font-medium"
             >
-              Manufacturer, Exporter & Supplier of a wide range of premium quality Garments & Handloom Products crafted with tradition and modern excellence.
+              Manufacturer, Exporter &amp; Supplier of a wide range of premium quality Garments &amp; Handloom Products crafted with tradition and modern excellence.
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: 'spring', damping: 15, stiffness: 100, delay: 0.6 }}
               className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
@@ -117,7 +117,7 @@ export default function Hero() {
 
           {/* Right Column: Garments image (Slides in from Right & Floats) */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
+            initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ type: 'spring', damping: 20, stiffness: 80, delay: 0.2 }}
             className="hidden lg:block lg:col-span-3 text-center"
@@ -127,7 +127,7 @@ export default function Hero() {
                 animate={{ y: [0, 8, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
                 whileHover={{ scale: 1.05, rotate: 0, transition: { duration: 0.3 } }}
-                className="relative group p-1 bg-white border border-gray-150 rounded-sm shadow-md hover:shadow-xl transition-shadow duration-300 transform rotate-2 cursor-pointer"
+                className="relative group p-1.5 bg-white border border-gray-200 rounded-sm shadow-xl hover:shadow-2xl transition-shadow duration-300 transform rotate-2 cursor-pointer"
               >
                 <img 
                   src={garmentsImg} 
@@ -156,9 +156,12 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.7 }}
-              className="relative p-0.5 bg-white border border-gray-150 rounded-sm shadow-xs cursor-pointer"
+              className="relative p-1 bg-white border border-gray-200 rounded-sm shadow-md cursor-pointer"
             >
-              <img src={handloomImg} alt="Handloom" className="w-full h-40 object-cover rounded-xs" />
+              <img src={handloomImg} alt="Handloom" className="w-full h-44 object-cover rounded-xs" />
+              <span className="absolute bottom-2 left-2 bg-primary text-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-xs">
+                Handloom
+              </span>
             </motion.div>
           </Link>
           <Link to="/garments" className="block">
@@ -166,9 +169,12 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="relative p-0.5 bg-white border border-gray-150 rounded-sm shadow-xs cursor-pointer"
+              className="relative p-1 bg-white border border-gray-200 rounded-sm shadow-md cursor-pointer"
             >
-              <img src={garmentsImg} alt="Garments" className="w-full h-40 object-cover rounded-xs" />
+              <img src={garmentsImg} alt="Garments" className="w-full h-44 object-cover rounded-xs" />
+              <span className="absolute bottom-2 right-2 bg-accent text-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-xs">
+                Apparel
+              </span>
             </motion.div>
           </Link>
         </div>

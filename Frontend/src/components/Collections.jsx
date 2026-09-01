@@ -1,77 +1,87 @@
 import { motion } from 'framer-motion';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
-import handloomBlanketsImg from '../assets/handloom_blankets.webp';
-import garmentsShirtsImg from '../assets/garments_shirts.webp';
+import handloomBlanketsImg from '../assets/products/handloom/handloom_blankets.webp';
+import garmentsShirtsImg from '../assets/products/garments/garments_shirts.webp';
+
+// Bedsheets Assets
+import caspianBedsheet1 from '../assets/products/bedsheets/caspian_fitted_bedsheet_1.webp';
+import caspianBedsheet3 from '../assets/products/bedsheets/caspian_fitted_bedsheet_3.webp';
+import printedBedsheet1 from '../assets/products/bedsheets/printed_bedsheet_1.webp';
+
+// Suits & Jeans Assets
+import mulCottonSuit1 from '../assets/products/suits/mul_cotton_applique_suit_1.webp';
+import embroideredCottonSuit1 from '../assets/products/suits/embroidered_cotton_suit_1.webp';
+import classicSuit1 from '../assets/products/suits/classic_suit_1.webp';
+import jeans1 from '../assets/products/jeans/jeans_1.webp';
+import jeans3 from '../assets/products/jeans/jeans_3.webp';
 
 export default function Collections() {
   const navigate = useNavigate();
 
   const handloomItems = [
     {
-      name: 'Blankets',
+      name: 'Caspian Fitted Bedsheets',
+      sub: 'Bedsheets',
+      img: caspianBedsheet1,
+      count: '72x78+9" Zig Zag Finish',
+    },
+    {
+      name: 'Embossed Blankets',
+      sub: 'Blankets',
       img: handloomBlanketsImg,
-      count: '45+ Items',
+      count: 'Heavy Double Bed',
     },
     {
-      name: 'Towels',
-      img: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=400&q=80',
-      count: '30+ Items',
+      name: 'Printed Cotton Bedsheets',
+      sub: 'Bedsheets',
+      img: printedBedsheet1,
+      count: '100% Pure Cotton',
     },
     {
-      name: 'Bedsheets',
-      img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=400&q=80',
-      count: '60+ Items',
-    },
-    {
-      name: 'Carpets',
-      img: 'https://images.unsplash.com/photo-1576016770956-debb63d900ad?auto=format&fit=crop&w=400&q=80',
-      count: '25+ Items',
-    },
-    {
-      name: 'Curtains',
-      img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80',
-      count: '40+ Items',
-    },
-    {
-      name: 'Pillow Covers',
-      img: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80',
-      count: '50+ Items',
+      name: 'Botanical Fitted Bedsheets',
+      sub: 'Bedsheets',
+      img: caspianBedsheet3,
+      count: 'Elastic Mattress Grip',
     },
   ];
 
   const garmentItems = [
     {
-      name: 'Jeans',
-      img: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80',
+      name: 'Mul Cotton Applique Suits',
+      sub: 'Ladies Suits',
+      img: mulCottonSuit1,
+      note: 'Size 38-46 | ₹2499',
     },
     {
-      name: 'T-Shirts',
-      img: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80',
+      name: 'Silky Cotton Embroidered Suits',
+      sub: 'Ladies Suits',
+      img: embroideredCottonSuit1,
+      note: 'Size 38-46 | ₹1246',
     },
     {
-      name: 'Shirts',
+      name: 'Festive Chanderi Suits',
+      sub: 'Ladies Suits',
+      img: classicSuit1,
+      note: 'Designer Boutique Wear',
+    },
+    {
+      name: 'Slim Fit Denim Jeans',
+      sub: 'Jeans',
+      img: jeans1,
+      note: 'Heavyweight Stretch Denim',
+    },
+    {
+      name: 'Casual Linen Shirts',
+      sub: 'Shirts',
       img: garmentsShirtsImg,
+      note: '100% Breathable Cotton-Linen',
     },
     {
-      name: 'Formal Pants',
-      img: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=400&q=80',
-    },
-    {
-      name: 'Ladies Suits',
-      img: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=400&q=80',
-    },
-    {
-      name: 'Kurtis',
-      img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80',
-    },
-    {
-      name: 'Gowns',
-      img: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=400&q=80',
-    },
-    {
-      name: 'Fancy Dresses',
-      img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=400&q=80',
+      name: 'Vintage Stonewash Jeans',
+      sub: 'Jeans',
+      img: jeans3,
+      note: 'Premium Rugged Wash',
     },
   ];
 
@@ -90,12 +100,12 @@ export default function Collections() {
             <span className="h-[1px] w-12 bg-accent"></span>
           </div>
           <p className="text-gray-500 text-xs md:text-sm mt-3 max-w-md mx-auto">
-            Explore our heritage handloom fabrics, woven by master artisans with precision and premium threads.
+            Explore our heritage handloom fabrics, Caspian fitted double bedsheets, and embossed blankets.
           </p>
         </div>
 
         {/* Handloom Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {handloomItems.map((item, idx) => (
             <motion.div
               key={idx}
@@ -104,7 +114,7 @@ export default function Collections() {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               whileHover={{ y: -6 }}
-              onClick={() => navigate(`/handloom?sub=${item.name}`)}
+              onClick={() => navigate(`/handloom?sub=${item.sub}`)}
               className="group relative bg-white border border-gray-100 rounded-sm overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col cursor-pointer"
             >
               {/* Image Container */}
@@ -120,7 +130,7 @@ export default function Collections() {
 
               {/* Title & Info */}
               <div className="p-5 text-center flex flex-col items-center justify-center border-t border-gray-50">
-                <h3 className="font-serif text-lg font-bold text-primary group-hover:text-accent transition-colors duration-300 uppercase tracking-wider">
+                <h3 className="font-serif text-base font-bold text-primary group-hover:text-accent transition-colors duration-300 uppercase tracking-wider">
                   {item.name}
                 </h3>
                 <span className="text-[10px] uppercase font-bold tracking-widest text-accent mt-1">
@@ -155,12 +165,12 @@ export default function Collections() {
             <span className="h-[1px] w-12 bg-accent"></span>
           </div>
           <p className="text-gray-500 text-xs md:text-sm mt-3 max-w-md mx-auto">
-            Discover contemporary fits, everyday styles, and formal couture tailored for absolute comfort and luxury.
+            Discover designer Mul &amp; Silky cotton suits, export-grade denim jeans, and fine casual shirts.
           </p>
         </div>
 
         {/* Garments Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
           {garmentItems.map((item, idx) => (
             <motion.div
               key={idx}
@@ -168,7 +178,7 @@ export default function Collections() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
-              onClick={() => navigate(`/garments?sub=${item.name}`)}
+              onClick={() => navigate(`/garments?sub=${item.sub}`)}
               className="group relative bg-white border border-gray-100 rounded-sm overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col"
             >
               <div className="relative h-72 sm:h-80 overflow-hidden bg-gray-50">
@@ -179,12 +189,15 @@ export default function Collections() {
                   loading="lazy"
                 />
                 {/* Overlay Text */}
-                <div className="absolute inset-0 bg-primary/20 group-hover:bg-primary/45 transition-colors duration-300 flex flex-col justify-end p-4">
-                  <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="font-serif text-base md:text-lg font-bold text-white tracking-wide uppercase mb-1 drop-shadow-xs">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex flex-col justify-end p-4">
+                  <div>
+                    <h3 className="font-serif text-sm sm:text-base font-bold text-white tracking-wide uppercase mb-1 drop-shadow-xs">
                       {item.name}
                     </h3>
-                    <p className="text-[9px] text-accent font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-[10px] text-accent font-bold tracking-wider uppercase mb-1">
+                      {item.note}
+                    </p>
+                    <p className="text-[9px] text-white/80 font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       Explore Collection &rarr;
                     </p>
                   </div>

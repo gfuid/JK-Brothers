@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import aboutFactoryImg from '../assets/about_factory.webp';
+import aboutFactoryImg from '../assets/about/about_factory.webp';
 
 export default function AboutUs() {
   return (

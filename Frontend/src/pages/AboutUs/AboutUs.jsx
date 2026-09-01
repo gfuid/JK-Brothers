@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import aboutFactoryImg from '../../assets/about_factory.webp';
+import aboutFactoryImg from '../../assets/about/about_factory.webp';
 import Stats from '../../components/Stats';
 
 export default function AboutUs() {

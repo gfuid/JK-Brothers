@@ -8,22 +8,24 @@ import {
   FiMenu, 
   FiX, 
   FiChevronDown,
-  FiSliders
+  FiSliders,
+  FiArrowRight
 } from 'react-icons/fi';
-import logoImg from '../assets/logo.webp';
+import logoImg from '../assets/branding/logo.webp';
 import { ShopContext } from '../context/ShopContext';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showSearchInput, setShowSearchInput] = useState(false);
   
   const { wishlist, getCartCount, compare, setCartDrawerOpen } = useContext(ShopContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 80) {
+      if (window.scrollY > 40) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -36,281 +38,312 @@ export default function Navbar() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
-    // Redirect to search results page with q parameter
     navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
     setSearchQuery('');
+    setShowSearchInput(false);
   };
 
   const handloomCategories = [
-    { name: 'Blankets', filter: 'Blankets' },
-    { name: 'Towels', filter: 'Towels' },
     { name: 'Bedsheets', filter: 'Bedsheets' },
-    { name: 'Carpets', filter: 'Carpets' },
-    { name: 'Curtains', filter: 'Curtains' },
-    { name: 'Pillow Covers', filter: 'Pillow Covers' },
+    { name: 'Blankets', filter: 'Blankets' },
   ];
 
   const garmentCategories = [
-    { name: 'Jeans', filter: 'Jeans' },
-    { name: 'T-Shirts', filter: 'T-Shirts' },
-    { name: 'Shirts', filter: 'Shirts' },
-    { name: 'Formal Pants', filter: 'Formal Pants' },
     { name: 'Ladies Suits', filter: 'Ladies Suits' },
-    { name: 'Kurtis', filter: 'Kurtis' },
-    { name: 'Gowns', filter: 'Gowns' },
+    { name: 'Jeans', filter: 'Jeans' },
+    { name: 'Shirts', filter: 'Shirts' },
   ];
 
   const navLinkClass = ({ isActive }) => 
-    `hover:text-accent transition-colors py-1 relative ${
-      isActive ? 'text-accent border-b-2 border-accent' : 'text-white'
+    `text-white/85 hover:text-white transition-all font-medium text-sm relative py-1 ${
+      isActive ? 'text-white font-semibold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-white after:rounded-full' : ''
     }`;
 
   return (
-    <header className="w-full flex flex-col z-50">
-      
-      {/* Main Bar (Sticks on scroll) - Top Contact Bar is Removed */}
-      <div className={`w-full bg-white transition-all duration-350 ${
-        scrolled ? 'fixed top-0 shadow-lg border-b border-gray-100 py-1' : 'relative py-3 border-b border-gray-100'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center gap-4">
+    <header className="w-full sticky top-0 z-50 transition-all duration-300">
+      {/* Top Banner Gradient Navbar (Matching image design) */}
+      <div 
+        className={`w-full text-white transition-all duration-300 ${
+          scrolled ? 'shadow-xl backdrop-blur-md py-2.5' : 'py-3.5'
+        }`}
+        style={{
+          background: 'linear-gradient(90deg, #FF4E20 0%, #E02B20 35%, #8E1119 70%, #300508 100%)'
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           
-          {/* Logo - Enlarged */}
-          <Link to="/" className="flex items-center cursor-pointer">
+          {/* Logo / Brand Name */}
+          <Link to="/" className="flex items-center gap-3 cursor-pointer group">
             <img 
               src={logoImg} 
-              alt="ZK Brother Logo" 
-              className={`${
-                scrolled ? 'h-14 sm:h-18 lg:h-20' : 'h-24 sm:h-28 lg:h-32'
-              } w-auto object-contain transition-all duration-300`} 
+              alt="JK Brothers" 
+              className="h-9 sm:h-10 w-auto object-contain brightness-0 invert transition-transform duration-300 group-hover:scale-105" 
             />
+            <span className="font-sans font-extrabold text-xl sm:text-2xl tracking-tight text-white drop-shadow-xs">
+              JK Brothers
+            </span>
           </Link>
 
-          {/* Search Bar - Desktop */}
-          <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-md mx-6 relative">
-            <input 
-              type="text" 
-              placeholder="Search for products, subcategories..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-4 pr-10 py-2.5 border border-gray-205 focus:border-accent focus:outline-hidden text-sm rounded-sm transition-colors bg-gray-50/50 focus:bg-white text-gray-800"
-            />
-            <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors cursor-pointer">
-              <FiSearch className="text-lg" />
-            </button>
-          </form>
-
-          {/* User Actions */}
-          <div className="flex items-center gap-5 md:gap-7 text-gray-700">
-            <Link to="/wishlist" className="hover:text-accent transition-colors relative cursor-pointer" title="Wishlist">
-              <FiHeart className="text-2xl" />
-              {wishlist.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-accent text-white text-[9px] font-bold rounded-full w-4.5 h-4.5 flex items-center justify-center animate-pulse">
-                  {wishlist.length}
-                </span>
-              )}
-            </Link>
-            <Link to="/compare" className="hover:text-accent transition-colors relative cursor-pointer" title="Product Comparison">
-              <FiSliders className="text-2xl" />
-              {compare.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-accent text-white text-[9px] font-bold rounded-full w-4.5 h-4.5 flex items-center justify-center">
-                  {compare.length}
-                </span>
-              )}
-            </Link>
-            <button 
-              onClick={() => setCartDrawerOpen(true)} 
-              className="hover:text-accent transition-colors relative cursor-pointer focus:outline-hidden" 
-              title="Shopping Cart"
-            >
-              <FiShoppingBag className="text-2xl" />
-              {getCartCount() > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary text-white text-[9px] font-bold rounded-full w-4.5 h-4.5 flex items-center justify-center">
-                  {getCartCount()}
-                </span>
-              )}
-            </button>
-            <Link to="/orders" className="hover:text-accent transition-colors cursor-pointer" title="My Orders">
-              <FiUser className="text-2xl" />
-            </Link>
-            
-            {/* Mobile Menu Button */}
-            <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden text-primary focus:outline-hidden p-1 cursor-pointer"
-            >
-              {isOpen ? <FiX className="text-2.5xl" /> : <FiMenu className="text-2.5xl" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Navigation Links Bar - Desktop Only */}
-      <nav className="hidden lg:flex w-full bg-primary text-white py-3 px-8 justify-center border-t border-blue-950/20 shadow-md">
-        <ul className="flex items-center gap-8 text-[11px] font-bold tracking-widest uppercase">
-          <li>
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-7">
             <NavLink to="/" className={navLinkClass} end>
-              HOME
+              Home
             </NavLink>
-          </li>
-          
-          {/* Handloom Dropdown */}
-          <li className="relative group py-1">
-            <NavLink 
-              to="/handloom"
-              className={({ isActive }) => `hover:text-accent flex items-center gap-1 transition-colors ${isActive ? 'text-accent' : ''}`}
-            >
-              HANDLOOM <FiChevronDown className="text-sm transition-transform group-hover:rotate-180" />
-            </NavLink>
-            <div className="absolute top-full left-0 mt-2 w-48 bg-white text-gray-800 rounded-sm shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border border-gray-100 z-50">
-              <div className="py-2">
+
+            {/* Handloom Dropdown */}
+            <div className="relative group py-1">
+              <NavLink 
+                to="/handloom"
+                className={({ isActive }) => 
+                  `flex items-center gap-1.5 text-white/85 hover:text-white font-medium text-sm transition-colors py-1 ${
+                    isActive ? 'text-white font-semibold' : ''
+                  }`
+                }
+              >
+                <span>Handloom</span>
+                <FiChevronDown className="text-xs opacity-75 group-hover:opacity-100 transition-transform duration-300 group-hover:rotate-180" />
+              </NavLink>
+              <div className="absolute top-full left-0 mt-2 w-52 bg-[#2D0609]/95 text-white rounded-xl shadow-2xl backdrop-blur-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-white/10 z-50 p-2">
                 {handloomCategories.map((cat, idx) => (
                   <Link 
                     key={idx} 
                     to={`/handloom?sub=${cat.filter}`}
-                    className="block w-full text-left px-4 py-2 hover:bg-gray-50 hover:text-accent text-[11px] font-semibold tracking-wide uppercase transition-colors"
+                    className="block w-full text-left px-3.5 py-2 hover:bg-white/15 rounded-lg text-xs font-medium text-white/90 hover:text-white transition-colors"
                   >
                     {cat.name}
                   </Link>
                 ))}
               </div>
             </div>
-          </li>
 
-          {/* Garments Dropdown */}
-          <li className="relative group py-1">
-            <NavLink 
-              to="/garments"
-              className={({ isActive }) => `hover:text-accent flex items-center gap-1 transition-colors ${isActive ? 'text-accent' : ''}`}
-            >
-              GARMENTS <FiChevronDown className="text-sm transition-transform group-hover:rotate-180" />
-            </NavLink>
-            <div className="absolute top-full left-0 mt-2 w-48 bg-white text-gray-800 rounded-sm shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border border-gray-100 z-50">
-              <div className="py-2">
+            {/* Garments Dropdown */}
+            <div className="relative group py-1">
+              <NavLink 
+                to="/garments"
+                className={({ isActive }) => 
+                  `flex items-center gap-1.5 text-white/85 hover:text-white font-medium text-sm transition-colors py-1 ${
+                    isActive ? 'text-white font-semibold' : ''
+                  }`
+                }
+              >
+                <span>Garments</span>
+                <FiChevronDown className="text-xs opacity-75 group-hover:opacity-100 transition-transform duration-300 group-hover:rotate-180" />
+              </NavLink>
+              <div className="absolute top-full left-0 mt-2 w-52 bg-[#2D0609]/95 text-white rounded-xl shadow-2xl backdrop-blur-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-white/10 z-50 p-2">
                 {garmentCategories.map((cat, idx) => (
                   <Link 
                     key={idx} 
                     to={`/garments?sub=${cat.filter}`}
-                    className="block w-full text-left px-4 py-2 hover:bg-gray-50 hover:text-accent text-[11px] font-semibold tracking-wide uppercase transition-colors"
+                    className="block w-full text-left px-3.5 py-2 hover:bg-white/15 rounded-lg text-xs font-medium text-white/90 hover:text-white transition-colors"
                   >
                     {cat.name}
                   </Link>
                 ))}
               </div>
             </div>
-          </li>
 
-          <li>
             <NavLink to="/new-arrivals" className={navLinkClass}>
-              NEW ARRIVALS
+              New Arrivals
             </NavLink>
-          </li>
-          <li>
             <NavLink to="/catalogue" className={navLinkClass}>
-              CATALOGUE
+              Catalogue
             </NavLink>
-          </li>
-          <li>
             <NavLink to="/bulk-orders" className={navLinkClass}>
-              BULK ORDERS
+              Bulk Orders
             </NavLink>
-          </li>
-          <li>
             <NavLink to="/about-us" className={navLinkClass}>
-              ABOUT US
+              About
             </NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact-us" className={navLinkClass}>
-              CONTACT US
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+          </nav>
 
-      {/* Mobile Drawer (Collapsible) */}
+          {/* Right Actions & Get In Touch CTA */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            
+            {/* Search Input toggle */}
+            <div className="relative">
+              {showSearchInput ? (
+                <form onSubmit={handleSearchSubmit} className="flex items-center animate-fadeIn">
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    autoFocus
+                    className="w-36 sm:w-48 bg-white/20 text-white placeholder-white/60 text-xs rounded-full py-1.5 pl-3 pr-8 focus:outline-none focus:ring-2 focus:ring-white/40"
+                  />
+                  <button type="submit" className="absolute right-2 text-white/80 hover:text-white cursor-pointer">
+                    <FiSearch className="text-sm" />
+                  </button>
+                </form>
+              ) : (
+                <button
+                  onClick={() => setShowSearchInput(true)}
+                  className="p-2 rounded-full hover:bg-white/10 text-white/90 hover:text-white transition-colors cursor-pointer"
+                  title="Search"
+                >
+                  <FiSearch className="text-lg" />
+                </button>
+              )}
+            </div>
+
+            {/* Wishlist */}
+            <Link 
+              to="/wishlist" 
+              className="p-2 rounded-full hover:bg-white/10 text-white/90 hover:text-white transition-colors relative cursor-pointer"
+              title="Wishlist"
+            >
+              <FiHeart className="text-lg" />
+              {wishlist.length > 0 && (
+                <span className="absolute top-0 right-0 bg-white text-[#D32F2F] text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                  {wishlist.length}
+                </span>
+              )}
+            </Link>
+
+            {/* Compare */}
+            <Link 
+              to="/compare" 
+              className="hidden sm:flex p-2 rounded-full hover:bg-white/10 text-white/90 hover:text-white transition-colors relative cursor-pointer"
+              title="Compare"
+            >
+              <FiSliders className="text-lg" />
+              {compare.length > 0 && (
+                <span className="absolute top-0 right-0 bg-white text-[#D32F2F] text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                  {compare.length}
+                </span>
+              )}
+            </Link>
+
+            {/* Cart */}
+            <button 
+              onClick={() => setCartDrawerOpen(true)}
+              className="p-2 rounded-full hover:bg-white/10 text-white/90 hover:text-white transition-colors relative cursor-pointer"
+              title="Cart"
+            >
+              <FiShoppingBag className="text-lg" />
+              {getCartCount() > 0 && (
+                <span className="absolute top-0 right-0 bg-white text-[#FF4E20] text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                  {getCartCount()}
+                </span>
+              )}
+            </button>
+
+            {/* Account */}
+            <Link 
+              to="/orders" 
+              className="hidden sm:flex p-2 rounded-full hover:bg-white/10 text-white/90 hover:text-white transition-colors cursor-pointer"
+              title="My Account"
+            >
+              <FiUser className="text-lg" />
+            </Link>
+
+            {/* "Get in touch" CTA Pill Button matching reference image exactly */}
+            <Link 
+              to="/contact-us" 
+              className="inline-flex items-center gap-2.5 bg-white text-gray-900 hover:bg-white/95 font-semibold text-xs sm:text-sm pl-4 sm:pl-5 pr-1.5 py-1.5 rounded-full shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group ml-1 cursor-pointer"
+            >
+              <span className="whitespace-nowrap">Get in touch</span>
+              <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#FF4E20] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform duration-300">
+                <FiArrowRight className="text-xs sm:text-sm stroke-[2.5]" />
+              </span>
+            </Link>
+
+            {/* Mobile Menu Toggle Button */}
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-2 text-white hover:bg-white/10 rounded-full focus:outline-none ml-1 cursor-pointer"
+            >
+              {isOpen ? <FiX className="text-2xl" /> : <FiMenu className="text-2xl" />}
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Menu */}
       {isOpen && (
-        <div className="lg:hidden w-full bg-white border-b border-gray-200 py-4 px-6 flex flex-col gap-4 shadow-inner z-40 transition-all duration-300">
-          {/* Mobile Search */}
-          <form onSubmit={handleSearchSubmit} className="relative">
+        <div className="lg:hidden w-full text-white shadow-2xl border-t border-white/10 px-5 py-6 flex flex-col gap-4 animate-fadeIn"
+             style={{
+               background: 'linear-gradient(180deg, #500A0F 0%, #1A0305 100%)'
+             }}
+        >
+          {/* Search bar inside drawer */}
+          <form onSubmit={handleSearchSubmit} className="relative w-full">
             <input 
               type="text" 
               placeholder="Search products..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-3 pr-10 py-2 border border-gray-200 text-sm rounded-sm text-gray-800"
+              className="w-full bg-white/10 text-white placeholder-white/60 text-sm rounded-full py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-white/40"
             />
-            <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+            <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-white/80 cursor-pointer">
               <FiSearch className="text-lg" />
             </button>
           </form>
 
-          <ul className="flex flex-col gap-3.5 text-xs font-bold tracking-wider text-gray-700 uppercase">
+          {/* Links */}
+          <ul className="flex flex-col gap-3 font-medium text-sm text-white/90">
             <li>
-              <Link to="/" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                HOME
+              <Link to="/" onClick={() => setIsOpen(false)} className="block py-1 hover:text-white">
+                Home
               </Link>
             </li>
-            <hr className="border-gray-100" />
-            
-            {/* Handloom for Mobile */}
-            <li>
-              <div className="font-extrabold text-[#0B2144] mb-1.5 text-[10px] tracking-widest text-accent">HANDLOOM</div>
-              <div className="pl-3 grid grid-cols-2 gap-2 text-[11px] text-gray-600 font-semibold">
+
+            <li className="pt-2 border-t border-white/10">
+              <span className="text-xs font-semibold text-white/50 tracking-wider uppercase">Handloom</span>
+              <div className="grid grid-cols-2 gap-2 mt-2 pl-2">
                 {handloomCategories.map((cat, idx) => (
                   <Link 
                     key={idx} 
                     to={`/handloom?sub=${cat.filter}`}
                     onClick={() => setIsOpen(false)}
-                    className="text-left py-0.5 hover:text-accent"
+                    className="text-xs text-white/80 hover:text-white py-1"
                   >
                     {cat.name}
                   </Link>
                 ))}
               </div>
             </li>
-            <hr className="border-gray-100" />
 
-            {/* Garments for Mobile */}
-            <li>
-              <div className="font-extrabold text-[#0B2144] mb-1.5 text-[10px] tracking-widest text-accent">GARMENTS</div>
-              <div className="pl-3 grid grid-cols-2 gap-2 text-[11px] text-gray-600 font-semibold">
+            <li className="pt-2 border-t border-white/10">
+              <span className="text-xs font-semibold text-white/50 tracking-wider uppercase">Garments</span>
+              <div className="grid grid-cols-2 gap-2 mt-2 pl-2">
                 {garmentCategories.map((cat, idx) => (
                   <Link 
                     key={idx} 
                     to={`/garments?sub=${cat.filter}`}
                     onClick={() => setIsOpen(false)}
-                    className="text-left py-0.5 hover:text-accent"
+                    className="text-xs text-white/80 hover:text-white py-1"
                   >
                     {cat.name}
                   </Link>
                 ))}
               </div>
             </li>
-            <hr className="border-gray-100" />
 
-            <li>
-              <Link to="/new-arrivals" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                NEW ARRIVALS
+            <li className="pt-2 border-t border-white/10">
+              <Link to="/new-arrivals" onClick={() => setIsOpen(false)} className="block py-1 hover:text-white">
+                New Arrivals
               </Link>
             </li>
             <li>
-              <Link to="/catalogue" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                CATALOGUE
+              <Link to="/catalogue" onClick={() => setIsOpen(false)} className="block py-1 hover:text-white">
+                Catalogue
               </Link>
             </li>
             <li>
-              <Link to="/bulk-orders" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                BULK ORDERS
+              <Link to="/bulk-orders" onClick={() => setIsOpen(false)} className="block py-1 hover:text-white">
+                Bulk Orders
               </Link>
             </li>
             <li>
-              <Link to="/about-us" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                ABOUT US
+              <Link to="/about-us" onClick={() => setIsOpen(false)} className="block py-1 hover:text-white">
+                About Us
               </Link>
             </li>
             <li>
-              <Link to="/contact-us" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                CONTACT US
+              <Link to="/contact-us" onClick={() => setIsOpen(false)} className="block py-1 hover:text-white">
+                Contact Us
               </Link>
             </li>
           </ul>
@@ -319,3 +352,4 @@ export default function Navbar() {
     </header>
   );
 }
+

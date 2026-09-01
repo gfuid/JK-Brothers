@@ -30,7 +30,7 @@ export default function Garments() {
     return matchesSub && matchesSearch;
   });
 
-  const categories = ['ALL', 'Jeans', 'T-Shirts', 'Shirts', 'Formal Pants', 'Ladies Suits', 'Kurtis', 'Gowns'];
+  const categories = ['ALL', 'Ladies Suits', 'Jeans', 'Shirts'];
 
   const handleTabClick = (cat) => {
     setSearchParams(prev => {

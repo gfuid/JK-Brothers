@@ -1,34 +1,407 @@
-import handloomBlanketsImg from '../assets/handloom_blankets.webp';
-import garmentsShirtsImg from '../assets/garments_shirts.webp';
+import handloomBlanketsImg from '../assets/products/handloom/handloom_blankets.webp';
+import garmentsShirtsImg from '../assets/products/garments/garments_shirts.webp';
 
-// Import all 15 Jeans WebP assets
-import jeans1 from '../assets/jeans_1.webp';
-import jeans2 from '../assets/jeans_2.webp';
-import jeans3 from '../assets/jeans_3.webp';
-import jeans4 from '../assets/jeans_4.webp';
-import jeans5 from '../assets/jeans_5.webp';
-import jeans6 from '../assets/jeans_6.webp';
-import jeans7 from '../assets/jeans_7.webp';
-import jeans8 from '../assets/jeans_8.webp';
-import jeans9 from '../assets/jeans_9.webp';
-import jeans10 from '../assets/jeans_10.webp';
-import jeans11 from '../assets/jeans_11.webp';
-import jeans12 from '../assets/jeans_12.webp';
-import jeans13 from '../assets/jeans_13.webp';
-import jeans14 from '../assets/jeans_14.webp';
-import jeans15 from '../assets/jeans_15.webp';
+// Bedsheets WebP Assets
+import caspianBedsheet1 from '../assets/products/bedsheets/caspian_fitted_bedsheet_1.webp';
+import caspianBedsheet2 from '../assets/products/bedsheets/caspian_fitted_bedsheet_2.webp';
+import caspianBedsheet3 from '../assets/products/bedsheets/caspian_fitted_bedsheet_3.webp';
+import caspianBedsheet4 from '../assets/products/bedsheets/caspian_fitted_bedsheet_4.webp';
+import caspianBedsheet5 from '../assets/products/bedsheets/caspian_fitted_bedsheet_5.webp';
+import printedBedsheet1 from '../assets/products/bedsheets/printed_bedsheet_1.webp';
+import printedBedsheet2 from '../assets/products/bedsheets/printed_bedsheet_2.webp';
+
+// Ladies Suits WebP Assets
+import mulCottonSuit1 from '../assets/products/suits/mul_cotton_applique_suit_1.webp';
+import mulCottonSuit2 from '../assets/products/suits/mul_cotton_applique_suit_2.webp';
+import embroideredCottonSuit1 from '../assets/products/suits/embroidered_cotton_suit_1.webp';
+import embroideredCottonSuit2 from '../assets/products/suits/embroidered_cotton_suit_2.webp';
+import embroideredCottonSuit3 from '../assets/products/suits/embroidered_cotton_suit_3.webp';
+import embroideredCottonSuit4 from '../assets/products/suits/embroidered_cotton_suit_4.webp';
+import classicSuit1 from '../assets/products/suits/classic_suit_1.webp';
+import classicSuit2 from '../assets/products/suits/classic_suit_2.webp';
+import classicSuit3 from '../assets/products/suits/classic_suit_3.webp';
+import classicSuit4 from '../assets/products/suits/classic_suit_4.webp';
+
+// Jeans WebP Assets (1-15)
+import jeans1 from '../assets/products/jeans/jeans_1.webp';
+import jeans2 from '../assets/products/jeans/jeans_2.webp';
+import jeans3 from '../assets/products/jeans/jeans_3.webp';
+import jeans4 from '../assets/products/jeans/jeans_4.webp';
+import jeans5 from '../assets/products/jeans/jeans_5.webp';
+import jeans6 from '../assets/products/jeans/jeans_6.webp';
+import jeans7 from '../assets/products/jeans/jeans_7.webp';
+import jeans8 from '../assets/products/jeans/jeans_8.webp';
+import jeans9 from '../assets/products/jeans/jeans_9.webp';
+import jeans10 from '../assets/products/jeans/jeans_10.webp';
+import jeans11 from '../assets/products/jeans/jeans_11.webp';
+import jeans12 from '../assets/products/jeans/jeans_12.webp';
+import jeans13 from '../assets/products/jeans/jeans_13.webp';
+import jeans14 from '../assets/products/jeans/jeans_14.webp';
+import jeans15 from '../assets/products/jeans/jeans_15.webp';
 
 export const products = [
+  // ==========================================
+  // 1. CASPIAN FITTED BEDSHEETS (Direct Client Spec)
+  // ==========================================
   {
     id: 1,
-    name: 'Premium Embossed Fleece Blanket',
+    name: 'Caspian Fitted Double Bed Bedsheet (Navy Floral)',
+    category: 'HANDLOOM',
+    subCategory: 'Bedsheets',
+    img: caspianBedsheet1,
+    price: 649,
+    moq: 30,
+    rating: 5,
+    description: 'Caspian Fitted Double Bed Bedsheet featuring exquisite zig zag pillow stitch finishing. Engineered for perfect mattress fitting with all-around 360-degree elastic corners that prevent slipping and stay wrinkle-free all night. Includes 2 matching pillow covers.',
+    specs: {
+      material: 'High-Density Glace Cotton Blend',
+      bedsheetSize: '72 × 78 + 9 Inches (Fitted Double Bed)',
+      pillowCoverSize: '20 × 30 Inches',
+      stitching: 'Elegant Zig Zag Stitch Finish',
+      mattressFitting: 'Perfect Mattress Fitting up to 9" depth',
+      packaging: 'PVC Zipper Book Packaging'
+    },
+    colors: ['Royal Navy Floral', 'Indigo Blue'],
+    isNewArrival: true
+  },
+  {
+    id: 2,
+    name: 'Caspian Fitted Double Bed Bedsheet (Pastel Geometric)',
+    category: 'HANDLOOM',
+    subCategory: 'Bedsheets',
+    img: caspianBedsheet2,
+    price: 649,
+    moq: 30,
+    rating: 5,
+    description: 'Caspian Fitted Double Bed Bedsheet in a subtle geometric pastel print with signature zig zag pillow stitch finish. Snug mattress grip and fade-resistant dye.',
+    specs: {
+      material: 'High-Density Glace Cotton Blend',
+      bedsheetSize: '72 × 78 + 9 Inches (Fitted Double Bed)',
+      pillowCoverSize: '20 × 30 Inches',
+      stitching: 'Elegant Zig Zag Stitch Finish',
+      mattressFitting: 'Perfect Mattress Fitting up to 9" depth',
+      packaging: 'PVC Zipper Book Packaging'
+    },
+    colors: ['Pastel Sage', 'Geometric Beige'],
+    isNewArrival: true
+  },
+  {
+    id: 3,
+    name: 'Caspian Fitted Double Bed Bedsheet (Botanical Leaf)',
+    category: 'HANDLOOM',
+    subCategory: 'Bedsheets',
+    img: caspianBedsheet3,
+    price: 649,
+    moq: 30,
+    rating: 5,
+    description: 'Caspian Fitted Double Bed Bedsheet with fresh botanical prints. Features deep 9-inch skirt with heavy-duty elastic band for effortless tucking and zig zag stitched pillow covers.',
+    specs: {
+      material: 'Ultra-Soft Breathable Cotton Rich',
+      bedsheetSize: '72 × 78 + 9 Inches (Fitted Double Bed)',
+      pillowCoverSize: '20 × 30 Inches',
+      stitching: 'Elegant Zig Zag Stitch Finish',
+      mattressFitting: 'Perfect Mattress Fitting up to 9" depth',
+      packaging: 'PVC Zipper Book Packaging'
+    },
+    colors: ['Olive Botanical', 'Cream Forest'],
+    isNewArrival: true
+  },
+  {
+    id: 4,
+    name: 'Caspian Fitted Double Bed Bedsheet (Classic Paisley)',
+    category: 'HANDLOOM',
+    subCategory: 'Bedsheets',
+    img: caspianBedsheet4,
+    price: 649,
+    moq: 30,
+    rating: 5,
+    description: 'Traditional royal motifs with Caspian modern fitted architecture. High GSM fabric with skin-friendly soft texture and zig zag border stitch.',
+    specs: {
+      material: 'High-Density Glace Cotton Blend',
+      bedsheetSize: '72 × 78 + 9 Inches (Fitted Double Bed)',
+      pillowCoverSize: '20 × 30 Inches',
+      stitching: 'Elegant Zig Zag Stitch Finish',
+      mattressFitting: 'Perfect Mattress Fitting up to 9" depth',
+      packaging: 'PVC Zipper Book Packaging'
+    },
+    colors: ['Royal Gold Paisley', 'Vintage Amber'],
+    isNewArrival: false
+  },
+  {
+    id: 5,
+    name: 'Caspian Fitted Double Bed Bedsheet (Contemporary Bloom)',
+    category: 'HANDLOOM',
+    subCategory: 'Bedsheets',
+    img: caspianBedsheet5,
+    price: 649,
+    moq: 30,
+    rating: 5,
+    description: 'Designer bloom printed Caspian fitted bedsheet with 2 matching pillow covers. Color fastness guaranteed through industrial pre-wash cycles.',
+    specs: {
+      material: 'High-Density Glace Cotton Blend',
+      bedsheetSize: '72 × 78 + 9 Inches (Fitted Double Bed)',
+      pillowCoverSize: '20 × 30 Inches',
+      stitching: 'Elegant Zig Zag Stitch Finish',
+      mattressFitting: 'Perfect Mattress Fitting up to 9" depth',
+      packaging: 'PVC Zipper Book Packaging'
+    },
+    colors: ['Dusty Rose', 'Modern Charcoal Bloom'],
+    isNewArrival: false
+  },
+  {
+    id: 6,
+    name: 'Premium All-Season Printed Cotton Bedsheet Set',
+    category: 'HANDLOOM',
+    subCategory: 'Bedsheets',
+    img: printedBedsheet1,
+    price: 549,
+    moq: 40,
+    rating: 5,
+    description: 'Generously sized king flat bedsheet with 2 pillow covers. Woven with 100% fine cotton yarn for year-round breathability and lasting softness.',
+    specs: {
+      material: '100% Pure Cotton (250 TC)',
+      bedsheetSize: '90 × 100 Inches (King Size Flat)',
+      pillowCoverSize: '18 × 28 Inches',
+      weight: '1.1 kg',
+      packaging: 'Polybag with Inset Card'
+    },
+    colors: ['Earthy Floral', 'Navy Crimson'],
+    isNewArrival: true
+  },
+  {
+    id: 7,
+    name: 'Luxury Floral Glace Cotton Bedsheet Set',
+    category: 'HANDLOOM',
+    subCategory: 'Bedsheets',
+    img: printedBedsheet2,
+    price: 580,
+    moq: 40,
+    rating: 5,
+    description: 'Smooth glace cotton bedsheet offering a silky drape and rich sheen. Features intricate traditional border layouts and 2 matching pillow shams.',
+    specs: {
+      material: 'Premium Glace Cotton',
+      bedsheetSize: '90 × 108 Inches (Super King Flat)',
+      pillowCoverSize: '20 × 30 Inches',
+      weight: '1.2 kg',
+      packaging: 'Luxury Box Packaging'
+    },
+    colors: ['Blush Peach', 'Aqua Blue Floral'],
+    isNewArrival: false
+  },
+
+  // ==========================================
+  // 2. LADIES SUITS (Direct Client Spec)
+  // ==========================================
+  {
+    id: 8,
+    name: 'Mul Cotton Suit with Lining & Applique Embroidery (Mustard)',
+    category: 'GARMENTS',
+    subCategory: 'Ladies Suits',
+    img: mulCottonSuit1,
+    price: 2499,
+    moq: 10,
+    rating: 5,
+    description: 'Premium Mul cotton 3-piece ladies suit set with breathable attached inner lining and fine handcrafted Applique embroidery. Lightweight, luxurious drape designed for festive and boutique collections.',
+    specs: {
+      material: '100% Pure Mul Cotton with Attached Inner Lining',
+      embroidery: 'Handcrafted Applique Embroidery & Detailed Neckline',
+      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
+      setIncludes: 'Embroidered Kurti, Attached Lining, Pants / Bottom, Pure Dupatta',
+      care: 'Dry Clean or Gentle Hand Wash'
+    },
+    colors: ['Golden Mustard', 'Warm Ochre'],
+    isNewArrival: true
+  },
+  {
+    id: 9,
+    name: 'Mul Cotton Suit with Lining & Applique Embroidery (Rose Pink)',
+    category: 'GARMENTS',
+    subCategory: 'Ladies Suits',
+    img: mulCottonSuit2,
+    price: 2499,
+    moq: 10,
+    rating: 5,
+    description: 'Exquisite Mul cotton suit set featuring delicate floral applique needlework with soft cotton lining. Comes with tailored pants and a printed mul dupatta.',
+    specs: {
+      material: '100% Pure Mul Cotton with Attached Inner Lining',
+      embroidery: 'Handcrafted Applique Embroidery & Border Work',
+      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
+      setIncludes: 'Embroidered Kurti, Attached Lining, Trousers, Dupatta',
+      care: 'Dry Clean or Gentle Hand Wash'
+    },
+    colors: ['Dusty Rose Pink', 'Coral Peach'],
+    isNewArrival: true
+  },
+  {
+    id: 10,
+    name: 'Silky Cotton Suit with Lining & Embroidery (Navy Blue)',
+    category: 'GARMENTS',
+    subCategory: 'Ladies Suits',
+    img: embroideredCottonSuit1,
+    price: 1246,
+    moq: 15,
+    rating: 5,
+    description: 'Restocked client favorite! Silky cotton 3-piece suit set with attached inner lining and detailed resham thread embroidery. High quality finish at factory-direct wholesale pricing.',
+    specs: {
+      material: 'Silky Soft Cotton Fabric with Cotton Lining',
+      embroidery: 'Intricate Resham Thread & Zari Needlework',
+      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
+      status: 'Restocked Best-Seller',
+      setIncludes: 'Embroidered Kurti with Lining, Bottom, Dupatta'
+    },
+    colors: ['Royal Navy Blue', 'Deep Indigo'],
+    isNewArrival: true
+  },
+  {
+    id: 11,
+    name: 'Silky Cotton Suit with Lining & Embroidery (Maroon Wine)',
+    category: 'GARMENTS',
+    subCategory: 'Ladies Suits',
+    img: embroideredCottonSuit2,
+    price: 1246,
+    moq: 15,
+    rating: 5,
+    description: 'Restocked silky cotton suit with lining and fine embroidery on yoke and hemline. Rich maroon tone suitable for wedding guests and formal events.',
+    specs: {
+      material: 'Silky Soft Cotton Fabric with Cotton Lining',
+      embroidery: 'Intricate Resham Thread & Zari Needlework',
+      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
+      status: 'Restocked Best-Seller',
+      setIncludes: 'Embroidered Kurti with Lining, Bottom, Dupatta'
+    },
+    colors: ['Maroon Wine', 'Burgundy'],
+    isNewArrival: true
+  },
+  {
+    id: 12,
+    name: 'Silky Cotton Suit with Lining & Embroidery (Emerald Green)',
+    category: 'GARMENTS',
+    subCategory: 'Ladies Suits',
+    img: embroideredCottonSuit3,
+    price: 1246,
+    moq: 15,
+    rating: 5,
+    description: 'Vibrant emerald green silky cotton suit with attached inner lining and floral embroidery. Clean tailored silhouette in sizes 38 through 46.',
+    specs: {
+      material: 'Silky Soft Cotton Fabric with Cotton Lining',
+      embroidery: 'Intricate Thread Work & Fine Neckline Detailing',
+      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
+      status: 'Restocked Best-Seller',
+      setIncludes: 'Embroidered Kurti with Lining, Bottom, Dupatta'
+    },
+    colors: ['Emerald Green', 'Forest Teal'],
+    isNewArrival: false
+  },
+  {
+    id: 13,
+    name: 'Silky Cotton Suit with Lining & Embroidery (Golden Olive)',
+    category: 'GARMENTS',
+    subCategory: 'Ladies Suits',
+    img: embroideredCottonSuit4,
+    price: 1246,
+    moq: 15,
+    rating: 5,
+    description: 'Classic earthy olive tone with premium thread work. Includes silky cotton kurti with lining, matching cigarette pants, and lightweight dupatta.',
+    specs: {
+      material: 'Silky Soft Cotton Fabric with Cotton Lining',
+      embroidery: 'Intricate Resham Thread Work',
+      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
+      status: 'Restocked Best-Seller',
+      setIncludes: 'Embroidered Kurti with Lining, Bottom, Dupatta'
+    },
+    colors: ['Golden Olive', 'Antique Beige'],
+    isNewArrival: false
+  },
+  {
+    id: 14,
+    name: 'Classic Chanderi Silk Embroidered Suit Set',
+    category: 'GARMENTS',
+    subCategory: 'Ladies Suits',
+    img: classicSuit1,
+    price: 1450,
+    moq: 20,
+    rating: 5,
+    description: 'Festive Chanderi silk ladies suit set featuring traditional zari work, premium inner lining, and a glossy woven border dupatta.',
+    specs: {
+      material: 'Chanderi Silk Blend with Soft Cotton Lining',
+      embroidery: 'Traditional Zari & Thread Work',
+      size: '38, 40, 42, 44, 46',
+      setIncludes: 'Kurti, Pant, Dupatta'
+    },
+    colors: ['Teal Blue', 'Royal Wine'],
+    isNewArrival: false
+  },
+  {
+    id: 15,
+    name: 'Boutique Festive Embroidered Salwar Suit',
+    category: 'GARMENTS',
+    subCategory: 'Ladies Suits',
+    img: classicSuit2,
+    price: 1550,
+    moq: 20,
+    rating: 5,
+    description: 'Boutique-ready ladies suit with heavy neckline ornamentation and soft inner lining. Tailored for wedding celebrations and premium retail stores.',
+    specs: {
+      material: 'Premium Cotton Silk with Lining',
+      embroidery: 'Heavy Zari Embroidery & Stone Accents',
+      size: '38, 40, 42, 44, 46',
+      setIncludes: 'Kurti, Salwar, Dupatta'
+    },
+    colors: ['Crimson Red', 'Mustard Gold'],
+    isNewArrival: true
+  },
+  {
+    id: 16,
+    name: 'Handloom Cotton Silk Designer Suit',
+    category: 'GARMENTS',
+    subCategory: 'Ladies Suits',
+    img: classicSuit3,
+    price: 1380,
+    moq: 20,
+    rating: 4,
+    description: 'Panipat woven cotton silk suit with subtle thread embroidery on neckline and hem. Breathable comfort for daily office and family gatherings.',
+    specs: {
+      material: 'Handloom Cotton Silk with Breathable Lining',
+      embroidery: 'Subtle Thread Work & Motif Details',
+      size: '38, 40, 42, 44, 46',
+      setIncludes: 'Kurti, Bottom, Dupatta'
+    },
+    colors: ['Sky Blue', 'Pastel Peach'],
+    isNewArrival: false
+  },
+  {
+    id: 17,
+    name: 'Royal Traditional Zari Work Ladies Suit',
+    category: 'GARMENTS',
+    subCategory: 'Ladies Suits',
+    img: classicSuit4,
+    price: 1650,
+    moq: 20,
+    rating: 5,
+    description: 'Luxurious evening suit crafted with rich zari borders, comfortable inner lining, and an embroidered organza dupatta.',
+    specs: {
+      material: 'Silk Blend with Attached Inner Lining',
+      embroidery: 'Intricate Zari Floral Jaal',
+      size: '38, 40, 42, 44, 46',
+      setIncludes: 'Kurti with Lining, Pants, Organza Dupatta'
+    },
+    colors: ['Plum Purple', 'Midnight Blue'],
+    isNewArrival: true
+  },
+
+  // ==========================================
+  // 3. HANDLOOM BLANKETS & GARMENTS SHIRTS
+  // ==========================================
+  {
+    id: 18,
+    name: 'Premium Embossed Fleece Blanket (Double Bed)',
     category: 'HANDLOOM',
     subCategory: 'Blankets',
     img: handloomBlanketsImg,
     price: 350,
     moq: 50,
     rating: 5,
-    description: 'Our signature double-ply embossed fleece blanket offers exceptional warmth and durability. Crafted with high-grade micro-polyester fibers, it features a luxurious floral embossed pattern that maintains its texture and color even after multiple washings. Perfect for distributor chains and wholesale retail.',
+    description: 'Our signature double-ply embossed fleece blanket offers exceptional warmth and durability. Crafted with high-grade micro-polyester fibers, it features a luxurious floral embossed pattern that maintains its texture and color even after multiple washings.',
     specs: {
       material: '100% Micro-polyester Fleece',
       size: '220 x 240 cm (Double Bed)',
@@ -39,64 +412,7 @@ export const products = [
     isNewArrival: true
   },
   {
-    id: 2,
-    name: 'Luxury Cotton Towel Set (6-Piece)',
-    category: 'HANDLOOM',
-    subCategory: 'Towels',
-    img: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=600&q=80',
-    price: 480,
-    moq: 100,
-    rating: 5,
-    description: 'Add spa-like elegance to retail catalogs with our Turkish ring-spun cotton towels. Highly absorbent, ultra-plush, and quick-drying, this set includes 2 bath towels, 2 hand towels, and 2 washcloths. Woven with double-stitched borders for long-lasting structural integrity in hotels and homes.',
-    specs: {
-      material: '100% Turkish Ring-Spun Cotton',
-      size: '70 x 140 cm (Bath), 50 x 90 cm (Hand)',
-      weight: '600 GSM',
-      packaging: 'Eco-friendly PP Wrap'
-    },
-    colors: ['Soft Ivory', 'Slate Gray', 'Navy Blue', 'Sage Green', 'Blush Pink'],
-    isNewArrival: false
-  },
-  {
-    id: 3,
-    name: 'Royal Heritage Jacquard Bedsheet Set',
-    category: 'HANDLOOM',
-    subCategory: 'Bedsheets',
-    img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80',
-    price: 650,
-    moq: 40,
-    rating: 4,
-    description: 'An exquisite collection of premium high-thread-count jacquard bedsheets. Features intricate traditional motifs woven directly into the fabric, providing a subtle shimmer and soft finish. Each pack contains one super-king bedsheet and two matching pillow shams with gold border details.',
-    specs: {
-      material: '70% Cotton / 30% Silk Blend',
-      size: '275 x 275 cm (Super King)',
-      weight: '1.2 kg',
-      packaging: 'Luxury Box Packaging'
-    },
-    colors: ['Royal Gold', 'Imperial Ivory', 'Crimson Red', 'Silver Blue'],
-    isNewArrival: true
-  },
-  {
-    id: 4,
-    name: 'Kashmiri Hand-Woven Floral Carpet',
-    category: 'HANDLOOM',
-    subCategory: 'Carpets',
-    img: 'https://images.unsplash.com/photo-1576016770956-debb63d900ad?auto=format&fit=crop&w=600&q=80',
-    price: 3200,
-    moq: 10,
-    rating: 5,
-    description: 'Meticulously crafted hand-knotted wool carpet displaying vintage Persian floral medallions. The high knot density delivers absolute comfort, floor protection, and aesthetic heritage. Ideal for premium boutiques and high-end exporters.',
-    specs: {
-      material: '80% Fine New Zealand Wool / 20% Art Silk',
-      size: '5 x 7 Feet',
-      weight: '8.4 kg',
-      packaging: 'Waterproof Canvas Roll'
-    },
-    colors: ['Ruby Red-Gold', 'Navy-Ivory', 'Emerald-Beige'],
-    isNewArrival: false
-  },
-  {
-    id: 5,
+    id: 19,
     name: 'Linen Casual Men Slim Fit Shirt',
     category: 'GARMENTS',
     subCategory: 'Shirts',
@@ -104,7 +420,7 @@ export const products = [
     price: 280,
     moq: 80,
     rating: 5,
-    description: 'A summer-friendly, highly breathable casual button-down shirt for men. Crafted with premium linen-cotton blends, it has pre-washed softness, a neat spread collar, and double-stitched buttons. Perfect casual couture for brands seeking premium private label imports.',
+    description: 'A summer-friendly, highly breathable casual button-down shirt for men. Crafted with premium linen-cotton blends, it has pre-washed softness, a neat spread collar, and double-stitched buttons.',
     specs: {
       material: '55% Organic Linen / 45% Cotton',
       size: 'S, M, L, XL, XXL (Standard Fit)',
@@ -114,142 +430,31 @@ export const products = [
     colors: ['Crisp White', 'Sky Blue', 'Olive Green', 'Peach', 'Khaki'],
     isNewArrival: true
   },
+
+  // ==========================================
+  // 4. DENIM JEANS (All 15 WebP Assets)
+  // ==========================================
   {
-    id: 6,
-    name: 'Traditional Jaipuri Cotton Kurti',
-    category: 'GARMENTS',
-    subCategory: 'Kurtis',
-    img: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80',
-    price: 220,
-    moq: 120,
-    rating: 4,
-    description: 'Stunning everyday ethnic kurti featuring hand-block prints of classic Rajasthani flowers. Stitched with breathable cotton, it is tailored with a three-quarter sleeve, keyhole neck detail, and side slits. Offers absolute retail comfort and vibrant styling.',
-    specs: {
-      material: '100% Cambric Cotton',
-      size: 'XS, S, M, L, XL, 2XL',
-      weight: '140 gsm',
-      packaging: 'Flat Carton Packs'
-    },
-    colors: ['Indigo Indigo', 'Ruby Crimson', 'Mango Yellow'],
-    isNewArrival: false
-  },
-  {
-    id: 7,
-    name: 'Designer Silk Evening Gown',
-    category: 'GARMENTS',
-    subCategory: 'Gowns',
-    img: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80',
-    price: 1100,
-    moq: 30,
-    rating: 5,
-    description: 'An elegant floor-length evening gown made of premium silk taffeta. Crafted with an embellished mesh overlay bodice, flowy pleated skirt, and an invisible back zipper. Exquisite formal fashion catalog addition.',
-    specs: {
-      material: 'Premium Taffeta Silk & Embroidered Net',
-      size: 'S, M, L, XL',
-      weight: '650g',
-      packaging: 'Zipper Gown Hanger Bag'
-    },
-    colors: ['Burgundy Wine', 'Navy Midnight', 'Champagne Gold', 'Emerald Green'],
-    isNewArrival: true
-  },
-  {
-    id: 8,
-    name: 'Premium Slim Fit Denim Jeans',
+    id: 20,
+    name: 'Premium Slim Fit Denim Jeans (Indigo)',
     category: 'GARMENTS',
     subCategory: 'Jeans',
     img: jeans1,
     price: 390,
     moq: 100,
     rating: 5,
-    description: 'High-stretch, breathable denim jeans designed for everyday rugged comfort. Styled with a classic five-pocket layout, metal rivets, and YKK zipper fly. Durable washes ensure color fastness and zero shrinkage.',
+    description: 'High-stretch, breathable denim jeans designed for everyday rugged comfort. Styled with a classic five-pocket layout, metal rivets, and YKK zipper fly.',
     specs: {
       material: '98% Cotton Denim / 2% Spandex Lycra',
       size: '28, 30, 32, 34, 36, 38, 40 (Waist)',
       weight: '12 Oz Heavy Denim',
       packaging: 'Corrugated Box Carton packs'
     },
-    colors: ['Dark Indigo', 'Classic Blue Wash', 'Charcoal Black', 'Light Wash Blue'],
+    colors: ['Dark Indigo', 'Classic Blue Wash', 'Charcoal Black'],
     isNewArrival: true
   },
   {
-    id: 9,
-    name: 'Premium Semi-Sheer Linen Curtains',
-    category: 'HANDLOOM',
-    subCategory: 'Curtains',
-    img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80',
-    price: 290,
-    moq: 60,
-    rating: 4,
-    description: 'Elegant linen panel curtains designed to filter light gently while maintaining indoor privacy. Heavy-duty nickel grommets ensure easy sliding. Machine washable, wrinkle-resistant.',
-    specs: {
-      material: '40% Linen / 60% Polyester',
-      size: '54 x 84 Inches per panel',
-      weight: '400g per panel',
-      packaging: 'PVC Poly Pack'
-    },
-    colors: ['Natural Beige', 'Pure White', 'Taupe Gray', 'Soft Teal'],
-    isNewArrival: true
-  },
-  {
-    id: 10,
-    name: 'Artisan Embroidered Cushion Covers',
-    category: 'HANDLOOM',
-    subCategory: 'Pillow Covers',
-    img: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80',
-    price: 90,
-    moq: 150,
-    rating: 5,
-    description: 'Vibrant hand-embroidered pillow and cushion covers in geometric layouts. Features a heavy back canvas with a concealed matching zipper. Excellent decorative home textile merchandise.',
-    specs: {
-      material: '100% Khadi Cotton Base, Wool Thread Embroidered',
-      size: '45 x 45 cm (18 x 18 Inches)',
-      weight: '150g',
-      packaging: 'Bulk Polybag'
-    },
-    colors: ['Multicolor Warm', 'Multicolor Cool', 'Monochrome Gray'],
-    isNewArrival: false
-  },
-  {
-    id: 11,
-    name: 'Classic Casual Crewneck T-Shirt',
-    category: 'GARMENTS',
-    subCategory: 'T-Shirts',
-    img: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80',
-    price: 130,
-    moq: 200,
-    rating: 4,
-    description: 'Lightweight combed-cotton everyday plain crewnecks. Styled with ribbed neckline and double-needle sleeves. Fully customizable for branding print / embroidery.',
-    specs: {
-      material: '100% Combed Cotton',
-      size: 'S, M, L, XL, XXL, XXXL',
-      weight: '160 gsm',
-      packaging: '10-piece Bundle Packs'
-    },
-    colors: ['Pitch Black', 'Sport Gray', 'Navy Blue', 'Red Wine', 'Forest Green'],
-    isNewArrival: true
-  },
-  {
-    id: 12,
-    name: 'Slim Fit Flat Front Formal Trousers',
-    category: 'GARMENTS',
-    subCategory: 'Formal Pants',
-    img: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80',
-    price: 360,
-    moq: 80,
-    rating: 5,
-    description: 'Perfect corporate and formal pants for men. Engineered with moisture-wicking stretch cotton-poly blend, flat front, hook-bar closures, and slash pockets. Retains crisp creases.',
-    specs: {
-      material: '65% Polyester / 33% Viscose / 2% Lycra',
-      size: '30, 32, 34, 36, 38, 40',
-      weight: '240 gsm',
-      packaging: 'Hanger Carton Packing'
-    },
-    colors: ['Charcoal Gray', 'Jet Black', 'Navy Blue', 'Beige Khaki'],
-    isNewArrival: false
-  },
-  // Added remaining 14 Jeans items using WebP assets
-  {
-    id: 13,
+    id: 21,
     name: 'Classic Regular Fit Denim Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -268,7 +473,7 @@ export const products = [
     isNewArrival: false
   },
   {
-    id: 14,
+    id: 22,
     name: 'Relaxed Fit Stonewash Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -287,7 +492,7 @@ export const products = [
     isNewArrival: true
   },
   {
-    id: 15,
+    id: 23,
     name: 'Bootcut Indigo Stretch Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -295,7 +500,7 @@ export const products = [
     price: 430,
     moq: 100,
     rating: 5,
-    description: 'Bootcut opening profile crafted with stretch denim. Classic design with modern flexibility. Ideal B2B supply for casual wear catalogs.',
+    description: 'Bootcut opening profile crafted with stretch denim. Classic design with modern flexibility.',
     specs: {
       material: '97% Cotton / 3% Lycra Spandex',
       size: '28, 30, 32, 34, 36',
@@ -306,7 +511,7 @@ export const products = [
     isNewArrival: false
   },
   {
-    id: 16,
+    id: 24,
     name: 'Super-Skinny Charcoal Black Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -325,7 +530,7 @@ export const products = [
     isNewArrival: true
   },
   {
-    id: 17,
+    id: 25,
     name: 'Distressed Biker Denim Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -344,7 +549,7 @@ export const products = [
     isNewArrival: false
   },
   {
-    id: 18,
+    id: 26,
     name: 'Comfort Jogger Fit Denim Pants',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -363,7 +568,7 @@ export const products = [
     isNewArrival: true
   },
   {
-    id: 19,
+    id: 27,
     name: 'Heavyweight Raw Selvage Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -382,7 +587,7 @@ export const products = [
     isNewArrival: false
   },
   {
-    id: 20,
+    id: 28,
     name: 'Athletic Tapered Denim Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -401,7 +606,7 @@ export const products = [
     isNewArrival: false
   },
   {
-    id: 21,
+    id: 29,
     name: 'Vintage Light Wash Denim Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -420,7 +625,7 @@ export const products = [
     isNewArrival: true
   },
   {
-    id: 22,
+    id: 30,
     name: 'Carpenter Utility Work Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -439,7 +644,7 @@ export const products = [
     isNewArrival: false
   },
   {
-    id: 23,
+    id: 31,
     name: 'Premium Corduroy Texture Denim',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -447,7 +652,7 @@ export const products = [
     price: 450,
     moq: 80,
     rating: 5,
-    description: 'Unique corduroy-denim blended weave for winter catalog warm collections. Soft touch with fine cord vertical stripes.',
+    description: 'Unique corduroy-denim blended weave for winter catalog collections. Soft touch with fine cord vertical stripes.',
     specs: {
       material: '60% Cotton / 38% Polyester / 2% Elastane',
       size: '30, 32, 34, 36, 38',
@@ -458,7 +663,7 @@ export const products = [
     isNewArrival: true
   },
   {
-    id: 24,
+    id: 32,
     name: 'Fleece-Lined Winter Denim Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -477,7 +682,7 @@ export const products = [
     isNewArrival: false
   },
   {
-    id: 25,
+    id: 33,
     name: 'Modern Straight Fit Dark Blue Jeans',
     category: 'GARMENTS',
     subCategory: 'Jeans',
@@ -496,7 +701,7 @@ export const products = [
     isNewArrival: false
   },
   {
-    id: 26,
+    id: 34,
     name: 'Urban Hip-Hop Loose Fit Denim',
     category: 'GARMENTS',
     subCategory: 'Jeans',
