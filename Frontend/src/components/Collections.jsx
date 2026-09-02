@@ -10,6 +10,7 @@ import {
 } from '../data/imageUrls';
 
 const handloomBlanketsImg = APPAREL_IMAGES.blankets;
+const garmentsShirtsImg = APPAREL_IMAGES.shirts;
 const caspianBedsheet1 = BEDSHEET_IMAGES.caspian1;
 const caspianBedsheet3 = BEDSHEET_IMAGES.caspian3;
 const printedBedsheet1 = BEDSHEET_IMAGES.printed1;
