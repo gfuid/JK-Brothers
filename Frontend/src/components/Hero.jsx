@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import handloomImg from '../assets/products/handloom/handloom_blankets.webp';
-import garmentsImg from '../assets/products/garments/garments_shirts.webp';
+import { APPAREL_IMAGES, handleImageError } from '../data/imageUrls';
+
+const handloomImg = APPAREL_IMAGES.blankets;
+const garmentsImg = APPAREL_IMAGES.shirts;
 
 export default function Hero() {
   return (
@@ -31,6 +33,8 @@ export default function Hero() {
                   src={handloomImg} 
                   alt="Handloom Blankets Collection" 
                   className="w-full max-h-[360px] object-cover rounded-xs"
+                  loading="lazy"
+                  onError={handleImageError}
                 />
                 {/* Frosted Glass Overlay on Hover */}
                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xs flex items-center justify-center p-4">
@@ -133,6 +137,8 @@ export default function Hero() {
                   src={garmentsImg} 
                   alt="Garments Collection" 
                   className="w-full max-h-[360px] object-cover rounded-xs"
+                  loading="lazy"
+                  onError={handleImageError}
                 />
                 {/* Frosted Glass Overlay on Hover */}
                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xs flex items-center justify-center p-4">
@@ -158,7 +164,13 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.7 }}
               className="relative p-1 bg-white border border-gray-200 rounded-sm shadow-md cursor-pointer"
             >
-              <img src={handloomImg} alt="Handloom" className="w-full h-44 object-cover rounded-xs" />
+              <img 
+                src={handloomImg} 
+                alt="Handloom" 
+                className="w-full h-44 object-cover rounded-xs" 
+                loading="lazy"
+                onError={handleImageError}
+              />
               <span className="absolute bottom-2 left-2 bg-primary text-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-xs">
                 Handloom
               </span>
@@ -171,7 +183,13 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.8 }}
               className="relative p-1 bg-white border border-gray-200 rounded-sm shadow-md cursor-pointer"
             >
-              <img src={garmentsImg} alt="Garments" className="w-full h-44 object-cover rounded-xs" />
+              <img 
+                src={garmentsImg} 
+                alt="Garments" 
+                className="w-full h-44 object-cover rounded-xs" 
+                loading="lazy"
+                onError={handleImageError}
+              />
               <span className="absolute bottom-2 right-2 bg-accent text-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-xs">
                 Apparel
               </span>

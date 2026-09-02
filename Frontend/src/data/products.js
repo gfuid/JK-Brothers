@@ -1,43 +1,51 @@
-import handloomBlanketsImg from '../assets/products/handloom/handloom_blankets.webp';
-import garmentsShirtsImg from '../assets/products/garments/garments_shirts.webp';
+import { 
+  BEDSHEET_IMAGES, 
+  SUIT_IMAGES, 
+  APPAREL_IMAGES, 
+  JEANS_IMAGES 
+} from './imageUrls';
 
-// Bedsheets WebP Assets
-import caspianBedsheet1 from '../assets/products/bedsheets/caspian_fitted_bedsheet_1.webp';
-import caspianBedsheet2 from '../assets/products/bedsheets/caspian_fitted_bedsheet_2.webp';
-import caspianBedsheet3 from '../assets/products/bedsheets/caspian_fitted_bedsheet_3.webp';
-import caspianBedsheet4 from '../assets/products/bedsheets/caspian_fitted_bedsheet_4.webp';
-import caspianBedsheet5 from '../assets/products/bedsheets/caspian_fitted_bedsheet_5.webp';
-import printedBedsheet1 from '../assets/products/bedsheets/printed_bedsheet_1.webp';
-import printedBedsheet2 from '../assets/products/bedsheets/printed_bedsheet_2.webp';
+// Bedsheets CDN Assets
+const caspianBedsheet1 = BEDSHEET_IMAGES.caspian1;
+const caspianBedsheet2 = BEDSHEET_IMAGES.caspian2;
+const caspianBedsheet3 = BEDSHEET_IMAGES.caspian3;
+const caspianBedsheet4 = BEDSHEET_IMAGES.caspian4;
+const caspianBedsheet5 = BEDSHEET_IMAGES.caspian5;
+const printedBedsheet1 = BEDSHEET_IMAGES.printed1;
+const printedBedsheet2 = BEDSHEET_IMAGES.printed2;
 
-// Ladies Suits WebP Assets
-import mulCottonSuit1 from '../assets/products/suits/mul_cotton_applique_suit_1.webp';
-import mulCottonSuit2 from '../assets/products/suits/mul_cotton_applique_suit_2.webp';
-import embroideredCottonSuit1 from '../assets/products/suits/embroidered_cotton_suit_1.webp';
-import embroideredCottonSuit2 from '../assets/products/suits/embroidered_cotton_suit_2.webp';
-import embroideredCottonSuit3 from '../assets/products/suits/embroidered_cotton_suit_3.webp';
-import embroideredCottonSuit4 from '../assets/products/suits/embroidered_cotton_suit_4.webp';
-import classicSuit1 from '../assets/products/suits/classic_suit_1.webp';
-import classicSuit2 from '../assets/products/suits/classic_suit_2.webp';
-import classicSuit3 from '../assets/products/suits/classic_suit_3.webp';
-import classicSuit4 from '../assets/products/suits/classic_suit_4.webp';
+// Ladies Suits CDN Assets
+const mulCottonSuit1 = SUIT_IMAGES.mulCotton1;
+const mulCottonSuit2 = SUIT_IMAGES.mulCotton2;
+const embroideredCottonSuit1 = SUIT_IMAGES.embroidered1;
+const embroideredCottonSuit2 = SUIT_IMAGES.embroidered2;
+const embroideredCottonSuit3 = SUIT_IMAGES.embroidered3;
+const embroideredCottonSuit4 = SUIT_IMAGES.embroidered4;
+const classicSuit1 = SUIT_IMAGES.classic1;
+const classicSuit2 = SUIT_IMAGES.classic2;
+const classicSuit3 = SUIT_IMAGES.classic3;
+const classicSuit4 = SUIT_IMAGES.classic4;
 
-// Jeans WebP Assets (1-15)
-import jeans1 from '../assets/products/jeans/jeans_1.webp';
-import jeans2 from '../assets/products/jeans/jeans_2.webp';
-import jeans3 from '../assets/products/jeans/jeans_3.webp';
-import jeans4 from '../assets/products/jeans/jeans_4.webp';
-import jeans5 from '../assets/products/jeans/jeans_5.webp';
-import jeans6 from '../assets/products/jeans/jeans_6.webp';
-import jeans7 from '../assets/products/jeans/jeans_7.webp';
-import jeans8 from '../assets/products/jeans/jeans_8.webp';
-import jeans9 from '../assets/products/jeans/jeans_9.webp';
-import jeans10 from '../assets/products/jeans/jeans_10.webp';
-import jeans11 from '../assets/products/jeans/jeans_11.webp';
-import jeans12 from '../assets/products/jeans/jeans_12.webp';
-import jeans13 from '../assets/products/jeans/jeans_13.webp';
-import jeans14 from '../assets/products/jeans/jeans_14.webp';
-import jeans15 from '../assets/products/jeans/jeans_15.webp';
+// Handloom Blankets & Shirts CDN Assets
+const handloomBlanketsImg = APPAREL_IMAGES.blankets;
+const garmentsShirtsImg = APPAREL_IMAGES.shirts;
+
+// Denim Jeans CDN Assets (1-15)
+const jeans1 = JEANS_IMAGES.jeans1;
+const jeans2 = JEANS_IMAGES.jeans2;
+const jeans3 = JEANS_IMAGES.jeans3;
+const jeans4 = JEANS_IMAGES.jeans4;
+const jeans5 = JEANS_IMAGES.jeans5;
+const jeans6 = JEANS_IMAGES.jeans6;
+const jeans7 = JEANS_IMAGES.jeans7;
+const jeans8 = JEANS_IMAGES.jeans8;
+const jeans9 = JEANS_IMAGES.jeans9;
+const jeans10 = JEANS_IMAGES.jeans10;
+const jeans11 = JEANS_IMAGES.jeans11;
+const jeans12 = JEANS_IMAGES.jeans12;
+const jeans13 = JEANS_IMAGES.jeans13;
+const jeans14 = JEANS_IMAGES.jeans14;
+const jeans15 = JEANS_IMAGES.jeans15;
 
 export const products = [
   // ==========================================

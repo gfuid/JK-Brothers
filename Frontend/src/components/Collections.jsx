@@ -1,20 +1,23 @@
 import { motion } from 'framer-motion';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
-import handloomBlanketsImg from '../assets/products/handloom/handloom_blankets.webp';
-import garmentsShirtsImg from '../assets/products/garments/garments_shirts.webp';
+import { 
+  BEDSHEET_IMAGES, 
+  SUIT_IMAGES, 
+  APPAREL_IMAGES, 
+  JEANS_IMAGES,
+  handleImageError 
+} from '../data/imageUrls';
 
-// Bedsheets Assets
-import caspianBedsheet1 from '../assets/products/bedsheets/caspian_fitted_bedsheet_1.webp';
-import caspianBedsheet3 from '../assets/products/bedsheets/caspian_fitted_bedsheet_3.webp';
-import printedBedsheet1 from '../assets/products/bedsheets/printed_bedsheet_1.webp';
-
-// Suits & Jeans Assets
-import mulCottonSuit1 from '../assets/products/suits/mul_cotton_applique_suit_1.webp';
-import embroideredCottonSuit1 from '../assets/products/suits/embroidered_cotton_suit_1.webp';
-import classicSuit1 from '../assets/products/suits/classic_suit_1.webp';
-import jeans1 from '../assets/products/jeans/jeans_1.webp';
-import jeans3 from '../assets/products/jeans/jeans_3.webp';
+const handloomBlanketsImg = APPAREL_IMAGES.blankets;
+const caspianBedsheet1 = BEDSHEET_IMAGES.caspian1;
+const caspianBedsheet3 = BEDSHEET_IMAGES.caspian3;
+const printedBedsheet1 = BEDSHEET_IMAGES.printed1;
+const mulCottonSuit1 = SUIT_IMAGES.mulCotton1;
+const embroideredCottonSuit1 = SUIT_IMAGES.embroidered1;
+const classicSuit1 = SUIT_IMAGES.classic1;
+const jeans1 = JEANS_IMAGES.jeans1;
+const jeans3 = JEANS_IMAGES.jeans3;
 
 export default function Collections() {
   const navigate = useNavigate();
@@ -124,6 +127,7 @@ export default function Collections() {
                   alt={item.name}
                   className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                   loading="lazy"
+                  onError={handleImageError}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
@@ -187,6 +191,7 @@ export default function Collections() {
                   alt={item.name}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  onError={handleImageError}
                 />
                 {/* Overlay Text */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex flex-col justify-end p-4">

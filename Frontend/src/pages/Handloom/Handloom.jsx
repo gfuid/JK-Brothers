@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiHeart, FiStar, FiShoppingCart, FiSearch } from 'react-icons/fi';
 import { ShopContext } from '../../context/ShopContext';
+import { handleImageError } from '../../data/imageUrls';
 
 export default function Handloom() {
   const { products, toggleWishlist, isWishlisted, addToCart } = useContext(ShopContext);
@@ -162,6 +163,7 @@ export default function Handloom() {
                             alt={product.name}
                             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
+                            onError={handleImageError}
                           />
                         </Link>
                         {/* Wishlist Button */}

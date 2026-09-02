@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiStar, FiArrowRight, FiMessageSquare } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
+import { handleImageError } from '../data/imageUrls';
 
 export default function FeaturedProducts() {
   const [filter, setFilter] = useState('ALL');
@@ -81,6 +82,7 @@ export default function FeaturedProducts() {
                     alt={product.name}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    onError={handleImageError}
                   />
                   {/* Category Tag */}
                   <span className="absolute top-4 left-4 bg-accent text-white text-[9px] font-bold tracking-widest uppercase py-1 px-2.5 rounded-sm">

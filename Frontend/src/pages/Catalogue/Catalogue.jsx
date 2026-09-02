@@ -1,9 +1,16 @@
 import { motion } from 'framer-motion';
 import { FiDownload, FiEye, FiBookOpen } from 'react-icons/fi';
-import handloomBlanketsImg from '../../assets/products/handloom/handloom_blankets.webp';
-import garmentsShirtsImg from '../../assets/products/garments/garments_shirts.webp';
-import caspianBedsheet1 from '../../assets/products/bedsheets/caspian_fitted_bedsheet_1.webp';
-import mulCottonSuit1 from '../../assets/products/suits/mul_cotton_applique_suit_1.webp';
+import { 
+  APPAREL_IMAGES, 
+  BEDSHEET_IMAGES, 
+  SUIT_IMAGES, 
+  handleImageError 
+} from '../../data/imageUrls';
+
+const handloomBlanketsImg = APPAREL_IMAGES.blankets;
+const garmentsShirtsImg = APPAREL_IMAGES.shirts;
+const caspianBedsheet1 = BEDSHEET_IMAGES.caspian1;
+const mulCottonSuit1 = SUIT_IMAGES.mulCotton1;
 
 export default function Catalogue() {
   const catalogues = [
@@ -83,6 +90,8 @@ export default function Catalogue() {
                   src={cat.img} 
                   alt={cat.title} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  onError={handleImageError}
                 />
                 <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
                   <FiBookOpen className="text-3xl text-white drop-shadow-xs" />

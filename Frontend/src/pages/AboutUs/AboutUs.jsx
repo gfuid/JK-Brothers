@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
-import aboutFactoryImg from '../../assets/about/about_factory.webp';
+import { BRAND_IMAGES, handleImageError } from '../../data/imageUrls';
 import Stats from '../../components/Stats';
+
+const aboutFactoryImg = BRAND_IMAGES.aboutFactory;
 
 export default function AboutUs() {
   return (
@@ -37,6 +39,8 @@ export default function AboutUs() {
                 src={aboutFactoryImg} 
                 alt="ZK Brother Manufacturing Plant" 
                 className="w-full h-full object-cover"
+                loading="lazy"
+                onError={handleImageError}
               />
               <div className="absolute inset-0 bg-primary/5"></div>
             </div>

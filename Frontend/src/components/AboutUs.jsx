@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import aboutFactoryImg from '../assets/about/about_factory.webp';
+import { BRAND_IMAGES, handleImageError } from '../data/imageUrls';
+
+const aboutFactoryImg = BRAND_IMAGES.aboutFactory;
 
 export default function AboutUs() {
   return (
@@ -26,6 +28,8 @@ export default function AboutUs() {
                 src={aboutFactoryImg} 
                 alt="ZK Brother Factory Production" 
                 className="w-full h-full object-cover object-center"
+                loading="lazy"
+                onError={handleImageError}
               />
               
               {/* Overlay styling for extra polish */}

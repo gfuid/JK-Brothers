@@ -2,6 +2,8 @@ import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiShield, FiFileText } from 'react-icons/fi';
 import { ShopContext } from '../../context/ShopContext';
+import { sendOrderConfirmationEmail } from '../../services/emailService';
+import { recordOrderInGoogleSheet } from '../../services/googleSheetService';
 
 export default function Checkout() {
   const { cart, getCartTotal, getCartCount, placeOrder } = useContext(ShopContext);
@@ -32,7 +34,7 @@ export default function Checkout() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.contactName || !formData.email || !formData.phone || !formData.address || !formData.city || !formData.postalCode) {
       alert('Please fill out all required fields.');
@@ -40,12 +42,35 @@ export default function Checkout() {
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      const orderId = placeOrder(formData);
-      setIsSubmitting(false);
-      alert(`Order Placed Successfully! Your Order ID is ${orderId}`);
-      navigate('/orders');
-    }, 1500);
+
+    // Save cart state and total before clearing cart in placeOrder
+    const currentCart = [...cart];
+    const totalAmount = getCartTotal();
+    const orderId = placeOrder(formData);
+
+    // Dispatch EmailJS Order notification (customer + store admin) & Google Sheet record
+    try {
+      await Promise.allSettled([
+        sendOrderConfirmationEmail({
+          orderId,
+          customerDetails: formData,
+          cartItems: currentCart,
+          totalAmount
+        }),
+        recordOrderInGoogleSheet({
+          orderId,
+          customerDetails: formData,
+          cartItems: currentCart,
+          totalAmount
+        })
+      ]);
+    } catch (err) {
+      console.warn('Dispatch note:', err);
+    }
+
+    setIsSubmitting(false);
+    alert(`Order Placed Successfully! Your Order ID is ${orderId}. Confirmation details sent to ${formData.email}.`);
+    navigate('/orders');
   };
 
   if (cart.length === 0) return null;

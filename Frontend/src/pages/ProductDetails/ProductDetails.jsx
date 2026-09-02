@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FiHeart, FiShoppingCart, FiStar, FiArrowLeft, FiShield, FiTruck, FiRefreshCw } from 'react-icons/fi';
 import { ShopContext } from '../../context/ShopContext';
+import { handleImageError } from '../../data/imageUrls';
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -79,6 +80,8 @@ export default function ProductDetails() {
               src={product.img} 
               alt={product.name} 
               className="w-full h-full object-cover object-center"
+              loading="lazy"
+              onError={handleImageError}
             />
             {/* Wishlist Icon */}
             <button
@@ -250,7 +253,13 @@ export default function ProductDetails() {
                 <div key={p.id} className="group bg-white border border-gray-100 rounded-sm overflow-hidden shadow-2xs hover:shadow-md transition-shadow duration-300 flex flex-col justify-between h-full">
                   <div className="relative h-56 bg-gray-50 overflow-hidden">
                     <Link to={`/product/${p.id}`}>
-                      <img src={p.img} alt={p.name} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+                      <img 
+                        src={p.img} 
+                        alt={p.name} 
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
+                        loading="lazy"
+                        onError={handleImageError}
+                      />
                     </Link>
                     <span className="absolute bottom-3 left-3 bg-primary text-white text-[8px] font-bold uppercase tracking-widest py-0.5 px-2 rounded-sm">
                       {p.subCategory}

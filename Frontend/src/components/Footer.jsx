@@ -8,7 +8,7 @@ import {
   FaYoutube 
 } from 'react-icons/fa';
 import { FiPhone, FiMail, FiMapPin, FiCheckCircle } from 'react-icons/fi';
-import logoImg from '../assets/branding/logo.webp';
+const logoImg = '/logo.webp';
 
 export default function Footer() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });

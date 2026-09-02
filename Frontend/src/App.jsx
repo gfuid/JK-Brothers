@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
@@ -6,25 +6,35 @@ import { FiArrowUp } from 'react-icons/fi';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home/Home';
-import Handloom from './pages/Handloom/Handloom';
-import Garments from './pages/Garments/Garments';
-import NewArrivals from './pages/NewArrivals/NewArrivals';
-import Catalogue from './pages/Catalogue/Catalogue';
-import BulkOrders from './pages/BulkOrders/BulkOrders';
-import AboutUs from './pages/AboutUs/AboutUs';
-import ContactUs from './pages/ContactUs/ContactUs';
-import ProductDetails from './pages/ProductDetails/ProductDetails';
-import Cart from './pages/Cart/Cart';
-import Wishlist from './pages/Wishlist/Wishlist';
-import Checkout from './pages/Checkout/Checkout';
-import Orders from './pages/Orders/Orders';
-import Compare from './pages/Compare/Compare';
-import SearchResults from './pages/SearchResults/SearchResults';
-import NotFound from './pages/NotFound/NotFound';
 import Loader from './components/Loader';
 import CartDrawer from './components/CartDrawer';
 import Lenis from 'lenis';
+
+// Lazy-loaded route components for production performance & code splitting
+const Home = lazy(() => import('./pages/Home/Home'));
+const Handloom = lazy(() => import('./pages/Handloom/Handloom'));
+const Garments = lazy(() => import('./pages/Garments/Garments'));
+const NewArrivals = lazy(() => import('./pages/NewArrivals/NewArrivals'));
+const Catalogue = lazy(() => import('./pages/Catalogue/Catalogue'));
+const BulkOrders = lazy(() => import('./pages/BulkOrders/BulkOrders'));
+const AboutUs = lazy(() => import('./pages/AboutUs/AboutUs'));
+const ContactUs = lazy(() => import('./pages/ContactUs/ContactUs'));
+const ProductDetails = lazy(() => import('./pages/ProductDetails/ProductDetails'));
+const Cart = lazy(() => import('./pages/Cart/Cart'));
+const Wishlist = lazy(() => import('./pages/Wishlist/Wishlist'));
+const Checkout = lazy(() => import('./pages/Checkout/Checkout'));
+const Orders = lazy(() => import('./pages/Orders/Orders'));
+const Compare = lazy(() => import('./pages/Compare/Compare'));
+const SearchResults = lazy(() => import('./pages/SearchResults/SearchResults'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
+
+function RouteLoading() {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center py-24">
+      <div className="w-10 h-10 border-2 border-accent/20 border-t-accent rounded-full animate-spin"></div>
+    </div>
+  );
+}
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -96,24 +106,26 @@ export default function App() {
 
         {/* Main Routed Area */}
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/handloom" element={<Handloom />} />
-          <Route path="/garments" element={<Garments />} />
-          <Route path="/new-arrivals" element={<NewArrivals />} />
-          <Route path="/catalogue" element={<Catalogue />} />
-          <Route path="/bulk-orders" element={<BulkOrders />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/compare" element={<Compare />} />
-          <Route path="/search" element={<SearchResults />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<RouteLoading />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/handloom" element={<Handloom />} />
+            <Route path="/garments" element={<Garments />} />
+            <Route path="/new-arrivals" element={<NewArrivals />} />
+            <Route path="/catalogue" element={<Catalogue />} />
+            <Route path="/bulk-orders" element={<BulkOrders />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/compare" element={<Compare />} />
+            <Route path="/search" element={<SearchResults />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
 
       {/* Footer Section */}

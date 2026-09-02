@@ -10,7 +10,7 @@ import {
   FiChevronDown,
   FiSliders
 } from 'react-icons/fi';
-import logoImg from '../assets/branding/logo.webp';
+const logoImg = '/logo.webp';
 import { ShopContext } from '../context/ShopContext';
 
 export default function Navbar() {
