@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FiHeart, FiTrash2, FiShoppingCart, FiStar } from 'react-icons/fi';
 import { ShopContext } from '../../context/ShopContext';
+import { handleImageError } from '../../data/imageUrls';
 
 export default function Wishlist() {
   const { wishlist, products, toggleWishlist, addToCart } = useContext(ShopContext);
@@ -58,6 +59,7 @@ export default function Wishlist() {
                   <img
                     src={product.img}
                     alt={product.name}
+                    onError={handleImageError}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiHeart, FiStar, FiShoppingCart } from 'react-icons/fi';
 import { ShopContext } from '../../context/ShopContext';
+import { handleImageError } from '../../data/imageUrls';
 
 export default function NewArrivals() {
   const { products, toggleWishlist, isWishlisted, addToCart } = useContext(ShopContext);
@@ -48,6 +49,7 @@ export default function NewArrivals() {
                   <img
                     src={product.img}
                     alt={product.name}
+                    onError={handleImageError}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />

@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FiInbox, FiClock, FiMapPin, FiCreditCard, FiPackage } from 'react-icons/fi';
 import { ShopContext } from '../../context/ShopContext';
+import { handleImageError } from '../../data/imageUrls';
 
 export default function Orders() {
   const { orders } = useContext(ShopContext);
@@ -76,7 +77,7 @@ export default function Orders() {
                     {order.items.map((item, idx) => (
                       <div key={idx} className="flex justify-between items-center text-xs border-b border-gray-50 pb-3 last:border-b-0 last:pb-0">
                         <div className="flex items-center gap-3">
-                          <img src={item.product.img} alt={item.product.name} className="w-12 h-12 object-cover rounded-xs border border-gray-100 shrink-0" />
+                          <img src={item.product.img} alt={item.product.name} onError={handleImageError} className="w-12 h-12 object-cover rounded-xs border border-gray-100 shrink-0" />
                           <div>
                             <Link to={`/product/${item.product.id}`} className="font-bold text-primary hover:text-accent transition-colors leading-snug line-clamp-1">
                               {item.product.name}

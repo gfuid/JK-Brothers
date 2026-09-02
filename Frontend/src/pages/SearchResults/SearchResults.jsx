@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiHeart, FiStar, FiShoppingCart, FiSearch, FiSliders } from 'react-icons/fi';
 import { ShopContext } from '../../context/ShopContext';
+import { handleImageError } from '../../data/imageUrls';
 
 export default function SearchResults() {
   const { products, toggleWishlist, isWishlisted, addToCart, toggleCompare, isCompared } = useContext(ShopContext);
@@ -110,7 +111,7 @@ export default function SearchResults() {
                   {/* Image Container */}
                   <div className="relative h-64 overflow-hidden bg-gray-50">
                     <Link to={`/product/${product.id}`}>
-                      <img src={product.img} alt={product.name} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+                      <img src={product.img} alt={product.name} onError={handleImageError} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
                     </Link>
                     {/* Wishlist Button */}
                     <button

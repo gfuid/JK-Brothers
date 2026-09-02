@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FiTrash2, FiSliders, FiShoppingCart } from 'react-icons/fi';
 import { ShopContext } from '../../context/ShopContext';
+import { handleImageError } from '../../data/imageUrls';
 
 export default function Compare() {
   const { compare, products, removeFromCompare, addToCart } = useContext(ShopContext);
@@ -54,7 +55,7 @@ export default function Compare() {
                 {comparedProducts.map((p) => (
                   <th key={p.id} className="p-4 w-1/4 border-l border-gray-100 text-center">
                     <div className="flex flex-col items-center gap-2">
-                      <img src={p.img} alt={p.name} className="w-24 h-24 object-cover rounded-xs border border-gray-100 shadow-2xs" />
+                      <img src={p.img} alt={p.name} onError={handleImageError} className="w-24 h-24 object-cover rounded-xs border border-gray-100 shadow-2xs" />
                       <Link to={`/product/${p.id}`} className="font-serif font-bold text-primary hover:text-accent transition-colors leading-tight line-clamp-2 px-2">
                         {p.name}
                       </Link>

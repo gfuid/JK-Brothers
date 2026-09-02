@@ -3,7 +3,7 @@ import {
   SUIT_IMAGES, 
   APPAREL_IMAGES, 
   JEANS_IMAGES 
-} from './imageUrls';
+} from './imageUrls.js';
 
 // Bedsheets CDN Assets
 const caspianBedsheet1 = BEDSHEET_IMAGES.caspian1;
