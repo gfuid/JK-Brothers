@@ -72,9 +72,30 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Scroll to top on route change
+  // Scroll to top & set dynamic SEO title on route change
   useEffect(() => {
     window.scrollTo({ top: 0 });
+
+    const titles = {
+      '/': 'JK Brothers | Premium Garments & Handloom Textiles Manufacturer & Exporter Panipat',
+      '/handloom': 'Wholesale Handloom, Bedsheets & Blankets | JK Brothers Panipat',
+      '/garments': 'Wholesale Garments, Denim Jeans & Designer Suits | JK Brothers',
+      '/new-arrivals': 'New Arrivals 2026 | Fresh Textiles & Apparel Releases | JK Brothers',
+      '/catalogue': 'Product Catalogues & Spec Sheets | JK Brothers Panipat',
+      '/bulk-orders': 'Wholesale Bulk Orders & Export Enquiries | JK Brothers Panipat',
+      '/about-us': 'About JK Brothers | Textile Manufacturing Facility Panipat Haryana',
+      '/contact-us': 'Contact JK Brothers | Panipat Wholesale Textile Suppliers',
+      '/cart': 'Wholesale Cart | JK Brothers',
+      '/wishlist': 'My Wishlist / Favorites | JK Brothers',
+      '/checkout': 'Secure Checkout & Wholesale Order Portal | JK Brothers',
+      '/orders': 'Order History & Status | JK Brothers',
+      '/compare': 'Product Comparison Tool | JK Brothers',
+      '/search': 'Search Catalogues & Products | JK Brothers',
+    };
+
+    if (titles[location.pathname]) {
+      document.title = titles[location.pathname];
+    }
   }, [location.pathname]);
 
   useEffect(() => {

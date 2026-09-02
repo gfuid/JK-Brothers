@@ -18,6 +18,7 @@ export default function ProductDetails() {
   // Handle product changes or loading
   useEffect(() => {
     if (product) {
+      document.title = `${product.name} Wholesale | JK Brothers Panipat`;
       setQuantity(product.moq || 50); // Default quantity is set to the product's MOQ
       if (product.colors && product.colors.length > 0) {
         setSelectedColor(product.colors[0]);
