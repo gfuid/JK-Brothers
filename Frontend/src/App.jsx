@@ -120,7 +120,7 @@ export default function App() {
         {isLoading && <Loader />}
       </AnimatePresence>
       <CartDrawer />
-      <div className="flex flex-col min-h-screen bg-[#fcfbf9] text-[#2c3e50] relative selection:bg-accent selection:text-white">
+      <div className="flex flex-col min-h-screen w-full bg-[#fcfbf9] text-[#2c3e50] relative selection:bg-accent selection:text-white">
         
         {/* Persistent Navbar */}
         <Navbar />
@@ -153,7 +153,7 @@ export default function App() {
       <Footer />
 
       {/* Floating Action Buttons */}
-      <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-45">
+      <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
         {/* WhatsApp Floating Button */}
         <a 
           href="https://wa.me/919896507049?text=Hi!%20I%20am%20interested%20in%20your%20garments%20and%20handloom%20products." 

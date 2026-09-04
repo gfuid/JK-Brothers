@@ -1,15 +1,16 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { 
-  FiSearch, 
-  FiHeart, 
-  FiUser, 
-  FiShoppingBag, 
-  FiMenu, 
-  FiX, 
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
+import {
+  FiSearch,
+  FiHeart,
+  FiUser,
+  FiShoppingBag,
+  FiMenu,
+  FiX,
   FiChevronDown,
   FiSliders,
-  FiPhoneCall
+  FiPhoneCall,
+  FiArrowRight
 } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { ShopContext } from '../context/ShopContext';
@@ -20,163 +21,220 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [mobileHandloomOpen, setMobileHandloomOpen] = useState(false);
+  const [mobileGarmentsOpen, setMobileGarmentsOpen] = useState(false);
+
   const { wishlist, getCartCount, compare, setCartDrawerOpen } = useContext(ShopContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
+  // Close mobile drawer on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  // Handle scroll state for navbar elevation
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 25);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
-    navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
     setSearchQuery('');
-    setIsSearchOpen(false);
+    setIsOpen(false);
   };
 
   const handloomCategories = [
-    { name: 'Fitted Bedsheets', filter: 'Bedsheets' },
-    { name: 'Fleece & Mink Blankets', filter: 'Blankets' },
+    { name: 'Caspian Fitted Bedsheets', filter: 'Bedsheets', desc: '100% pure combed cotton with elastic perimeter' },
+    { name: 'Fleece & Mink Blankets', filter: 'Blankets', desc: 'Heavy double bed warm embossed blankets' },
+    { name: 'Printed Cotton Sets', filter: 'Bedsheets', desc: 'Vibrant colorfast heritage double bedsheets' },
   ];
 
   const garmentCategories = [
-    { name: 'Ladies Designer Suits', filter: 'Ladies Suits' },
-    { name: 'Export Denim Jeans', filter: 'Jeans' },
-    { name: 'Casual & Formal Shirts', filter: 'Shirts' },
+    { name: 'Designer Ladies Suits', filter: 'Ladies Suits', desc: 'Mul Cotton & Silk hand-embroidered boutique sets' },
+    { name: 'Export Denim Jeans', filter: 'Jeans', desc: 'Stretch heavyweight cotton-spandex denim' },
+    { name: 'Casual Linen Shirts', filter: 'Shirts', desc: 'Breathable 100% cotton-linen woven shirts' },
   ];
 
-  const navLinkClass = ({ isActive }) => 
-    `hover:text-accent transition-colors py-1 relative text-[11px] xl:text-xs font-bold tracking-widest uppercase whitespace-nowrap transition-all duration-200 ${
-      isActive ? 'text-accent border-b-2 border-accent pb-0.5' : 'text-gray-800'
+  const navLinkClass = ({ isActive }) =>
+    `relative py-1 text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors duration-200 border-b-2 ${
+      isActive 
+        ? 'text-accent border-accent' 
+        : 'text-gray-700 hover:text-accent border-transparent'
     }`;
 
   return (
-    <header className="w-full flex flex-col z-50 sticky top-0 bg-white shadow-xs">
+    <header className="w-full flex flex-col z-40 sticky top-0 bg-white">
       
-      {/* 1. Subtle Top Utility Strip */}
-      <div className="w-full bg-[#071224] text-white py-1.5 px-4 sm:px-8 border-b border-white/10 text-[10px] md:text-[11px] tracking-wider">
-        <div className="max-w-[1500px] mx-auto flex justify-between items-center">
+      {/* 1. Executive Top Utility Strip */}
+      <div className="w-full bg-[#0B2144] text-white py-1.5 px-4 md:px-8 border-b border-accent/20 text-[10px] md:text-[11px] tracking-wide select-none">
+        <div className="max-w-7xl mx-auto flex justify-between items-center gap-2">
+          
+          {/* Left Brand Badge */}
           <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping hidden xs:inline-block"></span>
-            <span className="text-accent font-bold uppercase tracking-widest">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+            </span>
+            <span className="text-accent font-extrabold uppercase tracking-widest text-[9.5px] md:text-[10.5px]">
               PANIPAT DIRECT MANUFACTURER &amp; EXPORTER
             </span>
-            <span className="text-white/40 hidden sm:inline">•</span>
-            <span className="text-white/70 hidden sm:inline">Wholesale Factory MOQ Rates</span>
+            <span className="text-white/30 hidden sm:inline">•</span>
+            <span className="text-gray-300 hidden md:inline text-[10px]">
+              Wholesale Factory MOQ Rates • Worldwide Shipping
+            </span>
           </div>
 
-          <div className="flex items-center gap-4 text-white/80">
-            <a 
-              href="https://wa.me/919050555855?text=Hello%20JK%20Brothers,%20I%20am%20interested%20in%20wholesale%20catalogue"
+          {/* Right Direct Hotline & WhatsApp */}
+          <div className="flex items-center gap-4 text-gray-200">
+            <a
+              href="https://wa.me/919050555855?text=Hello%20JK%20Brothers,%20I%20am%20interested%20in%20your%20wholesale%20catalogue."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-green-400 transition-colors"
+              className="flex items-center gap-1.5 hover:text-green-400 transition-colors duration-200 cursor-pointer"
+              title="Chat on WhatsApp"
             >
-              <FaWhatsapp className="text-green-400 text-xs" />
-              <span className="font-semibold hidden sm:inline">WhatsApp Order</span>
+              <FaWhatsapp className="text-green-400 text-xs sm:text-sm" />
+              <span className="font-semibold hidden sm:inline text-[10.5px]">WhatsApp RFQ</span>
             </a>
-            <span className="text-white/30 hidden md:inline">|</span>
-            <a 
+            <span className="text-white/20 hidden sm:inline">|</span>
+            <a
               href="tel:+919050555855"
-              className="hidden md:flex items-center gap-1.5 hover:text-accent transition-colors"
+              className="hidden sm:flex items-center gap-1.5 hover:text-accent transition-colors duration-200 cursor-pointer"
+              title="Direct Call"
             >
               <FiPhoneCall className="text-accent text-xs" />
-              <span>+91 90505 55855</span>
+              <span className="font-semibold text-[10.5px]">+91 90505 55855</span>
             </a>
           </div>
+
         </div>
       </div>
 
-      {/* 2. Main Executive Header: Clean Single-Line Balanced Architecture */}
-      <div className={`w-full bg-white transition-all duration-300 border-b border-gray-100 ${
-        scrolled ? 'py-1.5 shadow-md' : 'py-2 sm:py-2.5'
-      }`}>
-        <div className="max-w-[1500px] mx-auto px-4 sm:px-8 flex justify-between items-center gap-4 lg:gap-8">
-          
-          {/* Brand Logo - Elegantly Proportioned */}
-          <Link to="/" className="flex items-center shrink-0 cursor-pointer group">
-            <img 
-              src={logoImg} 
-              alt="ZK Brother Logo" 
+      {/* 2. Main Executive Header Bar */}
+      <div 
+        className={`w-full bg-white/95 backdrop-blur-md transition-all duration-300 border-b border-gray-100 ${
+          scrolled ? 'py-1.5 shadow-sm' : 'py-2 sm:py-2.5'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center gap-2 lg:gap-4 xl:gap-6">
+
+          {/* Brand Logo */}
+          <Link 
+            to="/" 
+            className="flex items-center shrink-0 cursor-pointer group py-0.5 focus:outline-hidden"
+            title="JK Brothers Home"
+          >
+            <img
+              src={logoImg}
+              alt="JK Brothers Textiles Panipat"
               className={`${
-                scrolled ? 'h-9 sm:h-10 lg:h-11' : 'h-11 sm:h-12 lg:h-13'
-              } w-auto object-contain transition-all duration-300 group-hover:scale-102`} 
+                scrolled ? 'h-8 sm:h-9 lg:h-10' : 'h-9 sm:h-10 lg:h-11'
+              } w-auto object-contain transition-all duration-300 group-hover:scale-105`}
             />
           </Link>
 
-          {/* Desktop Navigation Links - Guaranteed Single Line, No Wrapping */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-7 whitespace-nowrap">
+          {/* Desktop Navigation Menu */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6.5 shrink-0">
             <NavLink to="/" className={navLinkClass} end>
               HOME
             </NavLink>
-            
-            {/* Handloom Dropdown */}
-            <div className="relative group py-2">
-              <NavLink 
+
+            {/* Handloom Dropdown (with seamless hover bridge) */}
+            <div className="relative group py-1">
+              <NavLink
                 to="/handloom"
-                className={({ isActive }) => `flex items-center gap-1 text-[11px] xl:text-xs font-bold tracking-widest uppercase whitespace-nowrap transition-colors ${
-                  isActive ? 'text-accent border-b-2 border-accent pb-0.5' : 'text-gray-800 hover:text-accent'
+                className={({ isActive }) => `flex items-center gap-1 text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors duration-200 border-b-2 ${
+                  isActive ? 'text-accent border-accent' : 'text-gray-700 hover:text-accent border-transparent'
                 }`}
               >
                 <span>HANDLOOM</span>
-                <FiChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180 text-gray-500 group-hover:text-accent" />
+                <FiChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180 text-gray-400 group-hover:text-accent" />
               </NavLink>
-              <div className="absolute top-full left-0 mt-1 w-52 bg-white text-gray-800 rounded-sm shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100 z-50 p-2">
-                {handloomCategories.map((cat, idx) => (
-                  <Link 
-                    key={idx} 
-                    to={`/handloom?sub=${cat.filter}`}
-                    className="block w-full text-left px-3 py-2 hover:bg-gray-50 hover:text-accent text-xs font-semibold rounded-xs transition-colors"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
+
+              {/* Dropdown Card with hover bridge */}
+              <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
+                <div className="bg-white rounded-md shadow-xl border border-gray-100 p-2.5 flex flex-col gap-1">
+                  <div className="px-3 py-1 text-[9px] font-black tracking-widest text-accent uppercase border-b border-gray-100">
+                    Handloom Factory Products
+                  </div>
+                  {handloomCategories.map((cat, idx) => (
+                    <Link
+                      key={idx}
+                      to={`/handloom?sub=${cat.filter}`}
+                      className="group/item block px-3 py-2 rounded-sm hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="text-xs font-bold text-gray-800 group-hover/item:text-accent transition-colors">
+                        {cat.name}
+                      </div>
+                      <div className="text-[10px] text-gray-400 font-medium truncate">
+                        {cat.desc}
+                      </div>
+                    </Link>
+                  ))}
+                  <div className="pt-1 mt-1 border-t border-gray-100">
+                    <Link
+                      to="/handloom"
+                      className="block text-center text-[10px] font-extrabold text-primary hover:text-accent uppercase tracking-wider py-1"
+                    >
+                      View All Handloom &rarr;
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Garments Dropdown */}
-            <div className="relative group py-2">
-              <NavLink 
+            {/* Garments Dropdown (with seamless hover bridge) */}
+            <div className="relative group py-1">
+              <NavLink
                 to="/garments"
-                className={({ isActive }) => `flex items-center gap-1 text-[11px] xl:text-xs font-bold tracking-widest uppercase whitespace-nowrap transition-colors ${
-                  isActive ? 'text-accent border-b-2 border-accent pb-0.5' : 'text-gray-800 hover:text-accent'
+                className={({ isActive }) => `flex items-center gap-1 text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors duration-200 border-b-2 ${
+                  isActive ? 'text-accent border-accent' : 'text-gray-700 hover:text-accent border-transparent'
                 }`}
               >
                 <span>GARMENTS</span>
-                <FiChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180 text-gray-500 group-hover:text-accent" />
+                <FiChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180 text-gray-400 group-hover:text-accent" />
               </NavLink>
-              <div className="absolute top-full left-0 mt-1 w-52 bg-white text-gray-800 rounded-sm shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100 z-50 p-2">
-                {garmentCategories.map((cat, idx) => (
-                  <Link 
-                    key={idx} 
-                    to={`/garments?sub=${cat.filter}`}
-                    className="block w-full text-left px-3 py-2 hover:bg-gray-50 hover:text-accent text-xs font-semibold rounded-xs transition-colors"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
+
+              {/* Dropdown Card with hover bridge */}
+              <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
+                <div className="bg-white rounded-md shadow-xl border border-gray-100 p-2.5 flex flex-col gap-1">
+                  <div className="px-3 py-1 text-[9px] font-black tracking-widest text-accent uppercase border-b border-gray-100">
+                    Wholesale Apparel Line
+                  </div>
+                  {garmentCategories.map((cat, idx) => (
+                    <Link
+                      key={idx}
+                      to={`/garments?sub=${cat.filter}`}
+                      className="group/item block px-3 py-2 rounded-sm hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="text-xs font-bold text-gray-800 group-hover/item:text-accent transition-colors">
+                        {cat.name}
+                      </div>
+                      <div className="text-[10px] text-gray-400 font-medium truncate">
+                        {cat.desc}
+                      </div>
+                    </Link>
+                  ))}
+                  <div className="pt-1 mt-1 border-t border-gray-100">
+                    <Link
+                      to="/garments"
+                      className="block text-center text-[10px] font-extrabold text-primary hover:text-accent uppercase tracking-wider py-1"
+                    >
+                      View All Garments &rarr;
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <NavLink to="/new-arrivals" className={navLinkClass}>
-              <span className="flex items-center gap-1.5">
-                NEW ARRIVALS
-                <span className="bg-accent/20 text-accent font-black text-[9px] px-1.5 py-0.2 rounded-sm uppercase tracking-normal">
-                  HOT
-                </span>
-              </span>
-            </NavLink>
 
             <NavLink to="/catalogue" className={navLinkClass}>
               CATALOGUE
@@ -195,211 +253,266 @@ export default function Navbar() {
             </NavLink>
           </nav>
 
-          {/* Right Action Icons & Controls */}
-          <div className="flex items-center gap-3 sm:gap-4 xl:gap-5 text-gray-700 whitespace-nowrap">
+          {/* Right Action Icons & Search */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 text-gray-700 shrink-0">
             
-            {/* Search Toggle Button */}
-            <button 
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-1 hover:text-accent transition-colors cursor-pointer"
-              title="Search Products"
-              aria-label="Search"
-            >
-              <FiSearch className="text-xl" />
-            </button>
+            {/* Desktop Search Input */}
+            <form onSubmit={handleSearchSubmit} className="hidden md:flex relative items-center">
+              <input
+                type="text"
+                placeholder="Search bedsheets, suits..."
+                value={searchQuery}
+                onFocus={() => setIsSearchFocused(true)}
+                onBlur={() => setIsSearchFocused(false)}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={`pl-8 pr-3 py-1.5 bg-gray-50 focus:bg-white border text-xs text-gray-800 rounded-full focus:outline-hidden transition-all duration-300 ${
+                  isSearchFocused 
+                    ? 'w-48 lg:w-56 border-accent shadow-sm' 
+                    : 'w-32 lg:w-40 border-gray-200 hover:border-gray-300'
+                }`}
+              />
+              <button
+                type="submit"
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-accent transition-colors cursor-pointer"
+                title="Search Products"
+              >
+                <FiSearch className="text-xs" />
+              </button>
+            </form>
 
-            {/* Wishlist */}
-            <Link to="/wishlist" className="hover:text-accent transition-colors relative cursor-pointer p-1" title="Wishlist">
-              <FiHeart className="text-xl" />
+            {/* Wishlist Button */}
+            <Link 
+              to="/wishlist" 
+              className="relative p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer" 
+              title="Wishlist"
+            >
+              <FiHeart className="text-lg" />
               {wishlist.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-accent text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-xs">
+                <span className="absolute top-0.5 right-0.5 bg-accent text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-xs">
                   {wishlist.length}
                 </span>
               )}
             </Link>
 
-            {/* Compare */}
-            <Link to="/compare" className="hidden sm:inline-block hover:text-accent transition-colors relative cursor-pointer p-1" title="Compare">
-              <FiSliders className="text-xl" />
+            {/* Compare Button */}
+            <Link 
+              to="/compare" 
+              className="hidden sm:inline-flex relative p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer" 
+              title="Compare Products"
+            >
+              <FiSliders className="text-lg" />
               {compare.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-accent text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-xs">
+                <span className="absolute top-0.5 right-0.5 bg-accent text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-xs">
                   {compare.length}
                 </span>
               )}
             </Link>
 
             {/* Shopping Cart Drawer Trigger */}
-            <button 
-              onClick={() => setCartDrawerOpen(true)} 
-              className="hover:text-accent transition-colors relative cursor-pointer focus:outline-hidden p-1" 
-              title="Shopping Cart"
+            <button
+              onClick={() => setCartDrawerOpen(true)}
+              className="relative p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer focus:outline-hidden"
+              title="Wholesale Cart"
             >
-              <FiShoppingBag className="text-xl" />
+              <FiShoppingBag className="text-lg" />
               {getCartCount() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-xs">
+                <span className="absolute top-0.5 right-0.5 bg-[#0B2144] text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-xs">
                   {getCartCount()}
                 </span>
               )}
             </button>
 
-            {/* My Orders */}
-            <Link to="/orders" className="hidden sm:inline-block hover:text-accent transition-colors cursor-pointer p-1" title="My Orders">
-              <FiUser className="text-xl" />
+            {/* My Orders Button */}
+            <Link 
+              to="/orders" 
+              className="hidden sm:inline-flex p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer" 
+              title="Order History"
+            >
+              <FiUser className="text-lg" />
             </Link>
 
-            {/* Quick Quote CTA Button */}
+            {/* Request Quote CTA Button (Desktop) */}
             <Link
               to="/bulk-orders"
-              className="hidden xl:inline-flex items-center gap-1.5 bg-accent hover:bg-accent-dark text-primary font-extrabold text-[11px] tracking-widest uppercase px-4 py-2 rounded-full transition-all duration-300 shadow-sm"
+              className="hidden xl:inline-flex items-center gap-1.5 bg-[#0B2144] hover:bg-accent text-white font-bold text-[10.5px] tracking-wider uppercase px-4 py-2 rounded-full transition-all duration-300 shadow-xs hover:shadow-md cursor-pointer ml-1"
             >
               <span>GET QUOTE</span>
+              <FiArrowRight className="text-xs" />
             </Link>
 
             {/* Mobile Menu Hamburger */}
-            <button 
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden text-primary focus:outline-hidden p-1 cursor-pointer"
-              aria-label="Toggle menu"
+              className="lg:hidden p-2 rounded-md hover:bg-gray-100 text-gray-800 hover:text-accent transition-colors cursor-pointer focus:outline-hidden"
+              aria-label="Toggle navigation menu"
             >
               {isOpen ? <FiX className="text-2xl" /> : <FiMenu className="text-2xl" />}
             </button>
+
           </div>
 
         </div>
       </div>
 
-      {/* 3. Luxury Dropdown Search Overlay */}
-      {isSearchOpen && (
-        <div className="w-full bg-gray-50 border-b border-gray-200 py-3 px-4 sm:px-8 shadow-inner animate-fadeIn">
-          <form onSubmit={handleSearchSubmit} className="max-w-2xl mx-auto relative flex items-center">
-            <FiSearch className="absolute left-4 text-gray-400 text-lg" />
-            <input 
-              type="text" 
-              placeholder="Search bedsheets, designer suits, denim, fleece blankets..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              autoFocus
-              className="w-full pl-12 pr-10 py-2.5 bg-white border border-gray-300 focus:border-accent rounded-full text-xs sm:text-sm text-gray-800 focus:outline-hidden shadow-xs"
-            />
-            <button 
-              type="button" 
-              onClick={() => setIsSearchOpen(false)}
-              className="absolute right-4 text-gray-400 hover:text-gray-700 cursor-pointer"
-              title="Close search"
-            >
-              <FiX className="text-lg" />
-            </button>
-          </form>
-        </div>
-      )}
-
-      {/* 4. Mobile Navigation Drawer */}
+      {/* 3. Mobile Navigation Drawer (Full Responsive & Accessible) */}
       {isOpen && (
-        <div className="lg:hidden w-full bg-white border-b border-gray-200 py-4 px-6 flex flex-col gap-4 shadow-lg z-50 animate-fadeIn">
+        <div className="lg:hidden w-full bg-white border-b border-gray-200 px-4 py-5 flex flex-col gap-4 shadow-xl z-50">
+          
           {/* Mobile Search */}
-          <form onSubmit={handleSearchSubmit} className="relative">
-            <input 
-              type="text" 
-              placeholder="Search bedsheets, suits, jeans..." 
+          <form onSubmit={handleSearchSubmit} className="relative w-full">
+            <input
+              type="text"
+              placeholder="Search bedsheets, suits, denim..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 text-xs rounded-full text-gray-800 focus:outline-hidden focus:border-accent"
+              className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 text-xs rounded-full text-gray-800 focus:outline-hidden focus:border-accent focus:bg-white transition-colors"
             />
             <button type="submit" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
               <FiSearch className="text-sm" />
             </button>
           </form>
 
-          <ul className="flex flex-col gap-3 text-xs font-bold tracking-wider text-gray-800 uppercase">
-            <li>
-              <Link to="/" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                HOME
-              </Link>
-            </li>
-            <hr className="border-gray-100" />
-            
-            {/* Handloom */}
-            <li>
-              <div className="font-black text-accent mb-1 text-[10px] tracking-widest">HANDLOOM COLLECTION</div>
-              <div className="pl-3 flex flex-col gap-1.5 text-xs text-gray-600 font-semibold">
-                {handloomCategories.map((cat, idx) => (
-                  <Link 
-                    key={idx} 
-                    to={`/handloom?sub=${cat.filter}`}
-                    onClick={() => setIsOpen(false)}
-                    className="hover:text-accent py-0.5"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
-              </div>
-            </li>
-            <hr className="border-gray-100" />
-
-            {/* Garments */}
-            <li>
-              <div className="font-black text-accent mb-1 text-[10px] tracking-widest">GARMENTS COLLECTION</div>
-              <div className="pl-3 flex flex-col gap-1.5 text-xs text-gray-600 font-semibold">
-                {garmentCategories.map((cat, idx) => (
-                  <Link 
-                    key={idx} 
-                    to={`/garments?sub=${cat.filter}`}
-                    onClick={() => setIsOpen(false)}
-                    className="hover:text-accent py-0.5"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
-              </div>
-            </li>
-            <hr className="border-gray-100" />
-
-            <li>
-              <Link to="/new-arrivals" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                NEW ARRIVALS
-              </Link>
-            </li>
-            <li>
-              <Link to="/catalogue" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                CATALOGUE
-              </Link>
-            </li>
-            <li>
-              <Link to="/bulk-orders" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                BULK RFQ ORDERS
-              </Link>
-            </li>
-            <li>
-              <Link to="/about-us" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                ABOUT US
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact-us" onClick={() => setIsOpen(false)} className="block w-full hover:text-accent py-1">
-                CONTACT US
-              </Link>
-            </li>
-          </ul>
-
-          <div className="pt-2 border-t border-gray-100 flex items-center justify-between">
+          {/* Navigation Links */}
+          <nav className="flex flex-col gap-2 text-xs font-bold tracking-wider text-gray-800 uppercase">
             <Link 
-              to="/orders" 
+              to="/" 
               onClick={() => setIsOpen(false)} 
-              className="text-xs font-bold text-gray-700 hover:text-accent flex items-center gap-1.5"
+              className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent transition-colors"
+            >
+              HOME
+            </Link>
+
+            {/* Handloom Accordion */}
+            <div className="flex flex-col">
+              <button 
+                type="button"
+                onClick={() => setMobileHandloomOpen(!mobileHandloomOpen)}
+                className="flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-50 text-left cursor-pointer"
+              >
+                <span className="text-accent font-extrabold">HANDLOOM COLLECTION</span>
+                <FiChevronDown className={`text-xs transition-transform ${mobileHandloomOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileHandloomOpen && (
+                <div className="pl-6 flex flex-col gap-1.5 py-1 text-gray-600 font-semibold">
+                  {handloomCategories.map((cat, idx) => (
+                    <Link
+                      key={idx}
+                      to={`/handloom?sub=${cat.filter}`}
+                      onClick={() => setIsOpen(false)}
+                      className="py-1 hover:text-accent text-[11px]"
+                    >
+                      {cat.name}
+                    </Link>
+                  ))}
+                  <Link
+                    to="/handloom"
+                    onClick={() => setIsOpen(false)}
+                    className="py-1 text-accent font-bold text-[11px]"
+                  >
+                    View All Handloom &rarr;
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Garments Accordion */}
+            <div className="flex flex-col">
+              <button 
+                type="button"
+                onClick={() => setMobileGarmentsOpen(!mobileGarmentsOpen)}
+                className="flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-50 text-left cursor-pointer"
+              >
+                <span className="text-accent font-extrabold">GARMENTS COLLECTION</span>
+                <FiChevronDown className={`text-xs transition-transform ${mobileGarmentsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileGarmentsOpen && (
+                <div className="pl-6 flex flex-col gap-1.5 py-1 text-gray-600 font-semibold">
+                  {garmentCategories.map((cat, idx) => (
+                    <Link
+                      key={idx}
+                      to={`/garments?sub=${cat.filter}`}
+                      onClick={() => setIsOpen(false)}
+                      className="py-1 hover:text-accent text-[11px]"
+                    >
+                      {cat.name}
+                    </Link>
+                  ))}
+                  <Link
+                    to="/garments"
+                    onClick={() => setIsOpen(false)}
+                    className="py-1 text-accent font-bold text-[11px]"
+                  >
+                    View All Garments &rarr;
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <Link 
+              to="/new-arrivals" 
+              onClick={() => setIsOpen(false)} 
+              className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent flex items-center justify-between transition-colors"
+            >
+              <span>NEW ARRIVALS</span>
+              <span className="px-1.5 py-0.5 text-[8.5px] font-black bg-accent text-white rounded-full">
+                NEW
+              </span>
+            </Link>
+
+            <Link 
+              to="/catalogue" 
+              onClick={() => setIsOpen(false)} 
+              className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent transition-colors"
+            >
+              CATALOGUE
+            </Link>
+
+            <Link 
+              to="/bulk-orders" 
+              onClick={() => setIsOpen(false)} 
+              className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent transition-colors"
+            >
+              BULK RFQ ORDERS
+            </Link>
+
+            <Link 
+              to="/about-us" 
+              onClick={() => setIsOpen(false)} 
+              className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent transition-colors"
+            >
+              ABOUT US
+            </Link>
+
+            <Link 
+              to="/contact-us" 
+              onClick={() => setIsOpen(false)} 
+              className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent transition-colors"
+            >
+              CONTACT US
+            </Link>
+          </nav>
+
+          {/* Mobile Bottom Utility Shortcuts */}
+          <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-gray-700">
+            <Link
+              to="/orders"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-1.5 hover:text-accent"
             >
               <FiUser />
               <span>My Orders</span>
             </Link>
-            <a 
-              href="https://wa.me/919050555855" 
-              target="_blank" 
+            <a
+              href="https://wa.me/919050555855"
+              target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-bold text-green-600 hover:text-green-700 flex items-center gap-1"
+              className="flex items-center gap-1.5 text-green-600 hover:text-green-700"
             >
-              <FaWhatsapp />
-              <span>WhatsApp Us</span>
+              <FaWhatsapp className="text-sm" />
+              <span>WhatsApp Direct</span>
             </a>
           </div>
+
         </div>
       )}
 
