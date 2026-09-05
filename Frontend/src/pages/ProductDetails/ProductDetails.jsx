@@ -121,7 +121,7 @@ export default function ProductDetails() {
 
               {/* Price & MOQ display */}
               <div className="flex items-baseline gap-4 mb-6 pb-5 border-b border-gray-100">
-                <span className="font-serif text-2xl md:text-3xl font-black text-primary">₹{product.price}</span>
+                <span className="font-sans text-2xl md:text-3xl font-bold text-primary tracking-tight">₹{product.price.toLocaleString('en-IN')}</span>
                 <span className="text-gray-400 text-xs font-bold uppercase tracking-wider">/ Piece</span>
                 <span className="text-accent bg-accent/5 px-2.5 py-1 border border-accent/15 text-[10px] font-extrabold rounded-sm uppercase tracking-widest ml-auto">
                   MOQ: {product.moq} Pcs

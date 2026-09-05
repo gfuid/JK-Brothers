@@ -55,13 +55,13 @@ export default function Collections() {
       name: 'Mul Cotton Applique Suits',
       sub: 'Ladies Suits',
       img: mulCottonSuit1,
-      note: 'Size 38-46 | ₹2499',
+      note: 'Size 38-46 | ₹2,499',
     },
     {
       name: 'Silky Cotton Embroidered Suits',
       sub: 'Ladies Suits',
       img: embroideredCottonSuit1,
-      note: 'Size 38-46 | ₹1246',
+      note: 'Size 38-46 | ₹1,246',
     },
     {
       name: 'Festive Chanderi Suits',

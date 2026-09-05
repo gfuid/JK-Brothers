@@ -128,8 +128,8 @@ export default function CartDrawer() {
 
                     {/* Subtotal & Delete */}
                     <div className="text-right flex flex-col items-end gap-2 shrink-0">
-                      <span className="font-serif text-xs font-bold text-primary">
-                        ₹{item.product.price * item.quantity}
+                      <span className="font-sans text-xs font-bold text-primary">
+                        ₹{(item.product.price * item.quantity).toLocaleString('en-IN')}
                       </span>
                       <button
                         onClick={() => removeFromCart(item.product.id, item.color)}
@@ -147,9 +147,9 @@ export default function CartDrawer() {
             {/* Footer Summary & Action CTA */}
             {cart.length > 0 && (
               <div className="p-5 border-t border-gray-100 bg-[#FAF9F6] flex flex-col gap-4 text-xs">
-                <div className="flex justify-between items-baseline font-serif">
-                  <span className="font-bold text-primary uppercase tracking-wide">Est. Subtotal</span>
-                  <span className="text-xl font-black text-primary">₹{getCartTotal()}</span>
+                <div className="flex justify-between items-baseline">
+                  <span className="font-serif font-bold text-primary uppercase tracking-wide">Est. Subtotal</span>
+                  <span className="font-sans text-xl font-bold text-primary tracking-tight">₹{getCartTotal().toLocaleString('en-IN')}</span>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-3.5 mt-2">

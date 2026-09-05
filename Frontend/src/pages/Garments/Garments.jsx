@@ -206,7 +206,7 @@ export default function Garments() {
 
                         <div>
                           <div className="flex justify-between items-center pt-3 border-t border-gray-100 text-xs font-bold mb-3">
-                            <span className="text-primary font-serif text-sm">₹{product.price} / pc</span>
+                            <span className="text-primary font-sans font-bold text-sm">₹{product.price.toLocaleString('en-IN')} / pc</span>
                             <span className="text-gray-400">MOQ: {product.moq} pcs</span>
                           </div>
                           

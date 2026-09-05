@@ -78,6 +78,17 @@ export async function sendOrderConfirmationEmail({ orderId, customerDetails, car
     }),
     order_items: itemsText,       // For plain text tags
     order_items_html: itemsHtml,  // For rich HTML template tables
+
+    // Standard EmailJS variable aliases (ensures delivery regardless of template settings)
+    email: customerDetails.email,
+    to_email: customerDetails.email,
+    reply_to: customerDetails.email,
+    name: customerDetails.contactName,
+    to_name: customerDetails.contactName,
+    from_name: customerDetails.contactName,
+    phone: customerDetails.phone,
+    address: fullAddress,
+    message: `New Wholesale Order Received!\n\nOrder ID: ${orderId}\nTotal Amount: ₹${totalAmount.toLocaleString('en-IN')}\nCustomer: ${customerDetails.contactName}\nEmail: ${customerDetails.email}\nPhone: ${customerDetails.phone}\nCompany: ${customerDetails.businessName || 'Individual / Retail'}\nAddress: ${fullAddress}\nPayment Mode: ${customerDetails.paymentMode || 'Bank Transfer (TT)'}\n\nItems:\n${itemsText}`
   };
 
   try {
@@ -166,7 +177,11 @@ export async function sendEnquiryEmail({
     subject: subject,
     message: message,
     category: category,
-    quantity: quantity
+    quantity: quantity,
+    to_email: email,
+    reply_to: email,
+    from_name: name,
+    to_name: name
   };
 
   try {

@@ -236,7 +236,7 @@ export default function Checkout() {
                         <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Color: {item.color} | Qty: {item.quantity}</p>
                       </div>
                     </div>
-                    <span className="font-serif font-bold text-primary shrink-0">₹{item.product.price * item.quantity}</span>
+                    <span className="font-sans font-bold text-primary shrink-0">₹{(item.product.price * item.quantity).toLocaleString('en-IN')}</span>
                   </div>
                 ))}
               </div>
@@ -244,11 +244,11 @@ export default function Checkout() {
               <div className="flex flex-col gap-2.5 text-xs font-semibold text-gray-500 border-t border-gray-100 pt-4 mb-4">
                 <div className="flex justify-between">
                   <span>Total Items</span>
-                  <span className="text-primary font-bold">{getCartCount()} pcs</span>
+                  <span className="text-primary font-bold font-sans">{getCartCount()} pcs</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span className="text-primary font-bold">₹{getCartTotal()}</span>
+                  <span className="text-primary font-bold font-sans">₹{getCartTotal().toLocaleString('en-IN')}</span>
                 </div>
                 <div className="flex justify-between text-emerald-600">
                   <span>F.O.B Shipping</span>
@@ -258,7 +258,7 @@ export default function Checkout() {
 
               <div className="flex justify-between items-baseline border-t border-gray-100 pt-3 mb-6">
                 <span className="font-serif text-sm font-bold text-primary uppercase tracking-wide">Final Amount</span>
-                <span className="font-serif text-xl font-black text-primary">₹{getCartTotal()}</span>
+                <span className="font-sans text-xl font-bold text-primary tracking-tight">₹{getCartTotal().toLocaleString('en-IN')}</span>
               </div>
 
               <button

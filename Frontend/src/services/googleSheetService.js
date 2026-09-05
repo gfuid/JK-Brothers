@@ -45,7 +45,8 @@ export async function recordOrderInGoogleSheet({ orderId, customerDetails, cartI
     address: fullAddress,
     payment_mode: customerDetails.paymentMode || 'Bank Transfer (TT)',
     items: formatItemsForSheet(cartItems),
-    total_amount: `₹${totalAmount.toLocaleString('en-IN')}`
+    total_amount: `₹${totalAmount.toLocaleString('en-IN')}`,
+    status: 'Processing'
   };
 
   try {
@@ -64,6 +65,38 @@ export async function recordOrderInGoogleSheet({ orderId, customerDetails, cartI
   } catch (error) {
     console.error('Failed to sync order to Google Sheet:', error);
     return { success: false, error };
+  }
+}
+
+/**
+ * Fetches real-time status of a specific order directly from Google Sheets
+ */
+export async function fetchLiveOrderStatus(orderId) {
+  if (!GOOGLE_SHEET_URL) return null;
+  try {
+    const res = await fetch(`${GOOGLE_SHEET_URL}?action=getStatus&order_id=${encodeURIComponent(orderId)}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data && data.success ? data.status : null;
+  } catch (err) {
+    console.warn('Could not fetch live order status from sheet:', err);
+    return null;
+  }
+}
+
+/**
+ * Fetches all order statuses from Google Sheet in a single batch call
+ */
+export async function fetchAllLiveOrderStatuses() {
+  if (!GOOGLE_SHEET_URL) return {};
+  try {
+    const res = await fetch(`${GOOGLE_SHEET_URL}?action=getAllStatuses`);
+    if (!res.ok) return {};
+    const data = await res.json();
+    return data && data.orders ? data.orders : {};
+  } catch (err) {
+    console.warn('Could not fetch all order statuses from sheet:', err);
+    return {};
   }
 }
 

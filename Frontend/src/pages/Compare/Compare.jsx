@@ -95,8 +95,8 @@ export default function Compare() {
               <tr>
                 <td className="p-4 font-bold text-gray-400 uppercase tracking-wider bg-[#FAF9F6]/30">Price</td>
                 {comparedProducts.map((p) => (
-                  <td key={p.id} className="p-4 border-l border-gray-100 text-center font-serif font-bold text-base text-primary">
-                    ₹{p.price} / Piece
+                  <td key={p.id} className="p-4 border-l border-gray-100 text-center font-sans font-bold text-base text-primary">
+                    ₹{p.price.toLocaleString('en-IN')} / Piece
                   </td>
                 ))}
                 {[...Array(3 - comparedProducts.length)].map((_, idx) => (

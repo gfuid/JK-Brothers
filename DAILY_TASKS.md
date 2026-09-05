@@ -110,7 +110,9 @@
   * Footer Quick Contact: Dispatches quick lead submissions to Google Sheets & EmailJS.
 * **Hero Section Mobile Layout & Autoplay:**
   * Re-ordered mobile Hero view so product cards appear at the top, directly under the Brand Title & Subtitle, with buttons and slider navigation controls below.
-  * Fixed mobile touch hover-lock bug in autoplay loop; carousel now auto-advances continuously and smoothly every 3.5s with timer auto-reset on interaction.
+* **Clean Modern Currency & Rupee Typography:**
+  * Removed Playfair Display (`font-serif`) styling from all prices, totals, and rupee (`₹`) signs across Cart, Cart Drawer, Checkout, Product Details, Handloom, Garments, and Orders.
+  * Switched to clean, geometric `font-sans` with Indian number comma formatting (`₹19,470`) for maximum readability.
 
 ---
 *Created by Pair Programming Assistant on 05-09-2026*

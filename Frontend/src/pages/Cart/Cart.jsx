@@ -84,8 +84,8 @@ export default function Cart() {
                   <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-2">
                     Color: <span className="text-gray-700">{item.color}</span>
                   </p>
-                  <span className="text-xs text-gray-400 font-bold">
-                    Unit Price: ₹{item.product.price}
+                  <span className="text-xs text-gray-400 font-bold font-sans">
+                    Unit Price: ₹{item.product.price.toLocaleString('en-IN')}
                   </span>
                 </div>
 
@@ -102,7 +102,7 @@ export default function Cart() {
                     >
                       <FiMinus className="text-xs" />
                     </button>
-                    <span className="px-4 text-xs font-extrabold text-primary min-w-[40px] text-center">
+                    <span className="px-4 text-xs font-extrabold text-primary min-w-[40px] text-center font-sans">
                       {item.quantity}
                     </span>
                     <button
@@ -121,8 +121,8 @@ export default function Cart() {
                     <span className="text-[9px] font-extrabold text-gray-400 tracking-widest uppercase block sm:mb-1">
                       Subtotal
                     </span>
-                    <span className="font-serif text-base font-extrabold text-primary block">
-                      ₹{item.product.price * item.quantity}
+                    <span className="font-sans text-base font-bold text-primary block">
+                      ₹{(item.product.price * item.quantity).toLocaleString('en-IN')}
                     </span>
                   </div>
 
@@ -148,11 +148,11 @@ export default function Cart() {
             <div className="flex flex-col gap-3 text-xs font-semibold text-gray-500 leading-normal border-b border-gray-100 pb-4">
               <div className="flex justify-between">
                 <span>Total Items</span>
-                <span className="text-primary font-bold">{getCartCount()} pcs</span>
+                <span className="text-primary font-bold font-sans">{getCartCount()} pcs</span>
               </div>
               <div className="flex justify-between">
                 <span>Cart Subtotal</span>
-                <span className="text-primary font-bold">₹{getCartTotal()}</span>
+                <span className="text-primary font-bold font-sans">₹{getCartTotal().toLocaleString('en-IN')}</span>
               </div>
               <div className="flex justify-between items-center text-emerald-600">
                 <span>B2B Logistics</span>
@@ -164,7 +164,7 @@ export default function Cart() {
 
             <div className="flex justify-between items-baseline py-1">
               <span className="font-serif text-base font-bold text-primary uppercase tracking-wide">Estimated Total</span>
-              <span className="font-serif text-2xl font-black text-primary">₹{getCartTotal()}</span>
+              <span className="font-sans text-2xl font-bold text-primary tracking-tight">₹{getCartTotal().toLocaleString('en-IN')}</span>
             </div>
 
             <button
