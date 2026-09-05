@@ -99,7 +99,21 @@
 * `df9c1d8`: feat: add Google Search Console HTML verification file
 
 ---
-*Created by Pair Programming Assistant on 02-09-2026*
+
+### 9. Website Enquiry & Contact Forms Automation (Live Google Sheets & EmailJS)
+* **Problem Resolved:** Previously, only cart checkout had sheet/email integration. Contact Us, Bulk Orders, and Footer forms were using mock timeouts.
+* **Google Sheets Extension:** Added `recordEnquiryInGoogleSheet` in `googleSheetService.js` with 100% backward-compatibility with existing Apps Script.
+* **EmailJS Integration:** Added `sendEnquiryEmail` in `emailService.js` to dispatch inquiry notifications instantly.
+* **Touchpoints Connected:**
+  * Contact Us (`/contact-us`): Added Phone/WhatsApp field, real sheet sync & EmailJS dispatch.
+  * Bulk Orders B2B Portal (`/bulk-orders`): Dispatches custom RFQ quote requests to Google Sheets & EmailJS.
+  * Footer Quick Contact: Dispatches quick lead submissions to Google Sheets & EmailJS.
+* **Hero Section Mobile Layout & Autoplay:**
+  * Re-ordered mobile Hero view so product cards appear at the top, directly under the Brand Title & Subtitle, with buttons and slider navigation controls below.
+  * Fixed mobile touch hover-lock bug in autoplay loop; carousel now auto-advances continuously and smoothly every 3.5s with timer auto-reset on interaction.
+
+---
+*Created by Pair Programming Assistant on 05-09-2026*
 
 
 

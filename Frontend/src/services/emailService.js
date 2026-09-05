@@ -89,3 +89,93 @@ export async function sendOrderConfirmationEmail({ orderId, customerDetails, car
     return { success: false, error };
   }
 }
+
+/**
+ * Sends enquiry / quote request notification email via EmailJS
+ */
+export async function sendEnquiryEmail({
+  enquiryId,
+  name,
+  email,
+  phone = '',
+  company = '',
+  address = '',
+  city = '',
+  state = '',
+  postalCode = '',
+  country = 'India',
+  subject = '',
+  message = '',
+  category = '',
+  quantity = null,
+  type = 'General Enquiry'
+}) {
+  if (!PUBLIC_KEY || PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+    console.warn('EmailJS Public Key is not configured yet. Please set VITE_EMAILJS_PUBLIC_KEY in .env');
+    return { success: false, reason: 'unconfigured_keys' };
+  }
+
+  const fullLocation = [address, city, state, country, postalCode].filter(Boolean).join(', ');
+  const displayId = enquiryId || `ZK-ENQ-${Math.floor(1000 + Math.random() * 9000)}`;
+  const displayDate = new Date().toLocaleDateString('en-IN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  const plainSummary = [
+    `Type: ${type}`,
+    subject ? `Subject: ${subject}` : '',
+    category ? `Category: ${category}` : '',
+    quantity ? `Quantity: ${quantity} pcs` : '',
+    `Message: ${message}`
+  ].filter(Boolean).join('\n');
+
+  const richHtml = `
+    <div style="font-family: sans-serif; color: #333; line-height: 1.5;">
+      <h3 style="color: #0B2144; margin-bottom: 8px;">New ${type} Received</h3>
+      <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+        ${subject ? `<tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0; font-weight: bold; width: 130px;">Subject:</td><td>${subject}</td></tr>` : ''}
+        ${category ? `<tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0; font-weight: bold;">Category:</td><td>${category}</td></tr>` : ''}
+        ${quantity ? `<tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0; font-weight: bold;">Target Quantity:</td><td>${quantity} pcs</td></tr>` : ''}
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0; font-weight: bold; vertical-align: top;">Message:</td><td style="white-space: pre-wrap;">${message || 'No additional message.'}</td></tr>
+      </table>
+    </div>
+  `;
+
+  const templateParams = {
+    order_id: displayId,
+    customer_name: name,
+    customer_email: email,
+    customer_phone: phone || 'Not provided',
+    business_name: company || 'Direct Website Contact',
+    shipping_address: fullLocation || 'Direct Website Submission',
+    payment_mode: `Enquiry: ${type}`,
+    total_amount: quantity ? `${quantity} pcs (Quote Request)` : 'Direct Lead',
+    order_date: displayDate,
+    order_items: plainSummary,
+    order_items_html: richHtml,
+    // Direct fields for custom template variables
+    enquiry_id: displayId,
+    name: name,
+    email: email,
+    phone: phone,
+    company: company,
+    subject: subject,
+    message: message,
+    category: category,
+    quantity: quantity
+  };
+
+  try {
+    const response = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+    console.log('EmailJS Enquiry Sent:', response.status, response.text);
+    return { success: true, response };
+  } catch (error) {
+    console.error('EmailJS Enquiry Send Error:', error);
+    return { success: false, error };
+  }
+}
+

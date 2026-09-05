@@ -66,3 +66,82 @@ export async function recordOrderInGoogleSheet({ orderId, customerDetails, cartI
     return { success: false, error };
   }
 }
+
+/**
+ * Sends enquiry / quote payload to Google Apps Script Webhook
+ * Fully compatible with existing Order Sheets Apps Script deployment while passing rich enquiry fields
+ */
+export async function recordEnquiryInGoogleSheet({
+  enquiryId,
+  name,
+  email,
+  phone = '',
+  company = '',
+  address = '',
+  city = '',
+  state = '',
+  postalCode = '',
+  country = 'India',
+  subject = '',
+  message = '',
+  category = '',
+  quantity = null,
+  type = 'General Enquiry'
+}) {
+  if (!GOOGLE_SHEET_URL) {
+    console.warn('Google Sheet Web App URL is not set. Please add VITE_GOOGLE_SHEET_WEBAPP_URL in .env');
+    return { success: false, reason: 'missing_sheet_url' };
+  }
+
+  const fullLocation = [address, city, state, country, postalCode].filter(Boolean).join(', ');
+  const itemsText = [
+    category ? `Category: ${category}` : '',
+    quantity ? `Target Qty: ${quantity} pcs` : '',
+    subject ? `Subject: ${subject}` : '',
+    message ? `Note: ${message}` : ''
+  ].filter(Boolean).join(' | ') || 'Direct Enquiry';
+
+  const payload = {
+    // Backward-compatible mapping with currently deployed Google Apps Script
+    order_id: enquiryId || `ZK-ENQ-${Math.floor(1000 + Math.random() * 9000)}`,
+    order_date: new Date().toLocaleDateString('en-IN', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    }),
+    customer_name: name,
+    business_name: company || 'Individual / Direct Lead',
+    email: email,
+    phone: phone ? "'" + String(phone).trim() : "'-",
+    address: fullLocation || 'Online Website Enquiry',
+    payment_mode: `[${type.toUpperCase()}] ${subject || category || 'Enquiry'}`,
+    items: itemsText,
+    total_amount: quantity ? `${quantity} pcs (Quote Req)` : 'Enquiry Lead',
+
+    // Extended fields
+    enquiry_type: type,
+    subject: subject,
+    category: category,
+    quantity: quantity,
+    message: message
+  };
+
+  try {
+    await fetch(GOOGLE_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    console.log('Enquiry successfully synced to Google Sheet');
+    return { success: true };
+  } catch (error) {
+    console.error('Failed to sync enquiry to Google Sheet:', error);
+    return { success: false, error };
+  }
+}

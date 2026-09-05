@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiPhone, FiMail, FiMapPin, FiClock, FiCheckCircle } from 'react-icons/fi';
+import { recordEnquiryInGoogleSheet } from '../../services/googleSheetService';
+import { sendEnquiryEmail } from '../../services/emailService';
 
 export default function ContactUs() {
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -11,17 +13,42 @@ export default function ContactUs() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setShowSuccess(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setShowSuccess(false), 5000);
-    }, 1200);
+    const enquiryId = `ZK-ENQ-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    try {
+      await Promise.allSettled([
+        recordEnquiryInGoogleSheet({
+          enquiryId,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          type: 'Contact Us Enquiry'
+        }),
+        sendEnquiryEmail({
+          enquiryId,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          type: 'Contact Us Enquiry'
+        })
+      ]);
+    } catch (err) {
+      console.warn('Enquiry dispatch note:', err);
+    }
+
+    setIsSubmitting(false);
+    setShowSuccess(true);
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    setTimeout(() => setShowSuccess(false), 6000);
   };
 
   return (
@@ -169,16 +196,29 @@ export default function ContactUs() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label className="font-bold text-gray-700 uppercase tracking-wider">Subject</label>
-                <input 
-                  type="text" 
-                  name="subject" 
-                  placeholder="Wholesale blankets enquiry / private label stitching"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  className="p-3 border border-gray-200 rounded-xs focus:outline-hidden focus:border-accent text-gray-800"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-bold text-gray-700 uppercase tracking-wider">Phone / WhatsApp</label>
+                  <input 
+                    type="tel" 
+                    name="phone" 
+                    placeholder="+91 98965 00000"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="p-3 border border-gray-200 rounded-xs focus:outline-hidden focus:border-accent text-gray-800"
+                  />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label className="font-bold text-gray-700 uppercase tracking-wider">Subject</label>
+                  <input 
+                    type="text" 
+                    name="subject" 
+                    placeholder="Wholesale blankets / garments enquiry"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    className="p-3 border border-gray-200 rounded-xs focus:outline-hidden focus:border-accent text-gray-800"
+                  />
+                </div>
               </div>
 
               <div className="flex flex-col gap-1.5">

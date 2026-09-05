@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiCheckCircle, FiInbox, FiClock, FiFileText } from 'react-icons/fi';
+import { recordEnquiryInGoogleSheet } from '../../services/googleSheetService';
+import { sendEnquiryEmail } from '../../services/emailService';
 
 export default function BulkOrders() {
   const [formData, setFormData] = useState({
@@ -34,44 +36,81 @@ export default function BulkOrders() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone || !formData.company || !formData.address || !formData.city || !formData.postalCode) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      const quoteId = `ZK-BQ-${Math.floor(1000 + Math.random() * 9000)}`;
-      const newQuote = {
-        id: quoteId,
-        date: new Date().toLocaleDateString('en-IN', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
+    const quoteId = `ZK-BQ-${Math.floor(1000 + Math.random() * 9000)}`;
+    const newQuote = {
+      id: quoteId,
+      date: new Date().toLocaleDateString('en-IN', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      }),
+      ...formData,
+      status: 'Pending Review'
+    };
+
+    try {
+      await Promise.allSettled([
+        recordEnquiryInGoogleSheet({
+          enquiryId: quoteId,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          country: formData.country,
+          address: formData.address,
+          city: formData.city,
+          state: formData.state,
+          postalCode: formData.postalCode,
+          category: formData.category,
+          quantity: formData.quantity,
+          message: formData.message,
+          type: 'B2B Bulk Quote Enquiry'
         }),
-        ...formData,
-        status: 'Pending Review'
-      };
+        sendEnquiryEmail({
+          enquiryId: quoteId,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          country: formData.country,
+          address: formData.address,
+          city: formData.city,
+          state: formData.state,
+          postalCode: formData.postalCode,
+          category: formData.category,
+          quantity: formData.quantity,
+          message: formData.message,
+          type: 'B2B Bulk Quote Enquiry'
+        })
+      ]);
+    } catch (err) {
+      console.warn('Bulk quote dispatch note:', err);
+    }
 
-      setBulkQuotes([newQuote, ...bulkQuotes]);
-      setIsSubmitting(false);
-      setShowSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        country: 'India',
-        address: '',
-        city: '',
-        state: '',
-        postalCode: '',
-        category: 'Blankets',
-        quantity: 100,
-        message: ''
-      });
+    setBulkQuotes([newQuote, ...bulkQuotes]);
+    setIsSubmitting(false);
+    setShowSuccess(true);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      country: 'India',
+      address: '',
+      city: '',
+      state: '',
+      postalCode: '',
+      category: 'Blankets',
+      quantity: 100,
+      message: ''
+    });
 
-      setTimeout(() => setShowSuccess(false), 5000);
-    }, 1200);
+    setTimeout(() => setShowSuccess(false), 6000);
   };
 
   const categories = [

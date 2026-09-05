@@ -8,6 +8,8 @@ import {
   FaYoutube 
 } from 'react-icons/fa';
 import { FiPhone, FiMail, FiMapPin, FiCheckCircle } from 'react-icons/fi';
+import { recordEnquiryInGoogleSheet } from '../services/googleSheetService';
+import { sendEnquiryEmail } from '../services/emailService';
 const logoImg = '/logo.webp';
 
 export default function Footer() {
@@ -19,17 +21,38 @@ export default function Footer() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1200);
+    const enquiryId = `ZK-ENQ-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    try {
+      await Promise.allSettled([
+        recordEnquiryInGoogleSheet({
+          enquiryId,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          type: 'Footer Quick Contact'
+        }),
+        sendEnquiryEmail({
+          enquiryId,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          type: 'Footer Quick Contact'
+        })
+      ]);
+    } catch (err) {
+      console.warn('Footer enquiry dispatch note:', err);
+    }
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    setFormData({ name: '', email: '', message: '' });
+    setTimeout(() => setIsSubmitted(false), 6000);
   };
 
   return (

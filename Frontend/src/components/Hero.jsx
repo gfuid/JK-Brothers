@@ -73,29 +73,42 @@ const SLIDES = [
   },
 ];
 
-const AUTOPLAY_DURATION = 5000;
+const AUTOPLAY_DURATION = 3500;
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
   const touchStartXRef = useRef(null);
+  const autoplayTimerRef = useRef(null);
+
+  const resetAutoplayTimer = useCallback(() => {
+    if (autoplayTimerRef.current) clearInterval(autoplayTimerRef.current);
+    autoplayTimerRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
+    }, AUTOPLAY_DURATION);
+  }, []);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % SLIDES.length);
-  }, []);
+    resetAutoplayTimer();
+  }, [resetAutoplayTimer]);
 
   const prevSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
-  }, []);
+    resetAutoplayTimer();
+  }, [resetAutoplayTimer]);
 
-  // Autoplay loop (pauses on hover)
+  const goToSlide = useCallback((index) => {
+    setCurrentIndex(index);
+    resetAutoplayTimer();
+  }, [resetAutoplayTimer]);
+
+  // Autoplay loop - continuously slides smoothly every 3.5s
   useEffect(() => {
-    if (isHovered) return;
-    const timer = setInterval(() => {
-      nextSlide();
-    }, AUTOPLAY_DURATION);
-    return () => clearInterval(timer);
-  }, [nextSlide, isHovered]);
+    resetAutoplayTimer();
+    return () => {
+      if (autoplayTimerRef.current) clearInterval(autoplayTimerRef.current);
+    };
+  }, [resetAutoplayTimer]);
 
   // Touch Swipe for mobile devices
   const handleTouchStart = (e) => {
@@ -115,8 +128,6 @@ export default function Hero() {
   return (
     <section 
       className="relative w-full bg-[#FAF9F6] overflow-hidden flex flex-col justify-center py-8 sm:py-10 lg:py-14 select-none"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -198,7 +209,7 @@ export default function Hero() {
             </motion.h1>
 
             {/* Subtitle with Smooth Slide Transition */}
-            <div className="min-h-[28px] flex items-center justify-center mb-6">
+            <div className="min-h-[28px] flex items-center justify-center mb-3 sm:mb-6">
               <AnimatePresence mode="wait">
                 <motion.h2
                   key={`sub-${currentSlide.id}`}
@@ -213,8 +224,59 @@ export default function Hero() {
               </AnimatePresence>
             </div>
 
+            {/* Mobile Product Visualizations - Placed above description, buttons & controls */}
+            <div className="lg:hidden grid grid-cols-2 gap-3.5 w-full max-w-sm sm:max-w-md my-4">
+              <Link to={currentSlide.leftLink} className="block">
+                <div className="relative p-1 bg-white border border-gray-200 rounded-sm shadow-md cursor-pointer overflow-hidden transform -rotate-1 hover:rotate-0 transition-transform">
+                  <div className="relative w-full h-44 sm:h-52 overflow-hidden rounded-xs bg-gray-50">
+                    <AnimatePresence mode="wait">
+                      <motion.img 
+                        key={`mobile-left-${currentSlide.id}`}
+                        src={currentSlide.leftImg} 
+                        alt={currentSlide.leftAlt} 
+                        initial={{ opacity: 0, scale: 1.04 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.98 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-full h-full object-cover rounded-xs" 
+                        loading="eager"
+                        onError={handleImageError}
+                      />
+                    </AnimatePresence>
+                    <span className="absolute bottom-2 left-2 bg-primary text-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-xs z-10 shadow-xs">
+                      {currentSlide.leftTag}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+
+              <Link to={currentSlide.rightLink} className="block">
+                <div className="relative p-1 bg-white border border-gray-200 rounded-sm shadow-md cursor-pointer overflow-hidden transform rotate-1 hover:rotate-0 transition-transform">
+                  <div className="relative w-full h-44 sm:h-52 overflow-hidden rounded-xs bg-gray-50">
+                    <AnimatePresence mode="wait">
+                      <motion.img 
+                        key={`mobile-right-${currentSlide.id}`}
+                        src={currentSlide.rightImg} 
+                        alt={currentSlide.rightAlt} 
+                        initial={{ opacity: 0, scale: 1.04 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.98 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-full h-full object-cover rounded-xs" 
+                        loading="eager"
+                        onError={handleImageError}
+                      />
+                    </AnimatePresence>
+                    <span className="absolute bottom-2 right-2 bg-accent text-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-xs z-10 shadow-xs">
+                      {currentSlide.rightTag}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+
             {/* Description with Smooth Slide Transition */}
-            <div className="min-h-[64px] sm:min-h-[56px] flex items-center justify-center mb-8">
+            <div className="min-h-[56px] sm:min-h-[56px] flex items-center justify-center mb-6 sm:mb-8">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={`desc-${currentSlide.id}`}
@@ -264,7 +326,7 @@ export default function Hero() {
                 {SLIDES.map((slide, idx) => (
                   <button
                     key={slide.id}
-                    onClick={() => setCurrentIndex(idx)}
+                    onClick={() => goToSlide(idx)}
                     aria-label={`Slide ${idx + 1}`}
                     className={`transition-all duration-300 rounded-full cursor-pointer ${
                       idx === currentIndex 
@@ -330,57 +392,6 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-        </div>
-
-        {/* Mobile Product Visualizations with Slider */}
-        <div className="lg:hidden grid grid-cols-2 gap-4 mt-8">
-          <Link to={currentSlide.leftLink} className="block">
-            <div className="relative p-1 bg-white border border-gray-200 rounded-sm shadow-md cursor-pointer overflow-hidden">
-              <div className="relative w-full h-44 overflow-hidden rounded-xs bg-gray-50">
-                <AnimatePresence mode="wait">
-                  <motion.img 
-                    key={`mobile-left-${currentSlide.id}`}
-                    src={currentSlide.leftImg} 
-                    alt={currentSlide.leftAlt} 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full object-cover rounded-xs" 
-                    loading="lazy"
-                    onError={handleImageError}
-                  />
-                </AnimatePresence>
-                <span className="absolute bottom-2 left-2 bg-primary text-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-xs z-10">
-                  {currentSlide.leftTag}
-                </span>
-              </div>
-            </div>
-          </Link>
-
-          <Link to={currentSlide.rightLink} className="block">
-            <div className="relative p-1 bg-white border border-gray-200 rounded-sm shadow-md cursor-pointer overflow-hidden">
-              <div className="relative w-full h-44 overflow-hidden rounded-xs bg-gray-50">
-                <AnimatePresence mode="wait">
-                  <motion.img 
-                    key={`mobile-right-${currentSlide.id}`}
-                    src={currentSlide.rightImg} 
-                    alt={currentSlide.rightAlt} 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full object-cover rounded-xs" 
-                    loading="lazy"
-                    onError={handleImageError}
-                  />
-                </AnimatePresence>
-                <span className="absolute bottom-2 right-2 bg-accent text-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-xs z-10">
-                  {currentSlide.rightTag}
-                </span>
-              </div>
-            </div>
-          </Link>
         </div>
 
       </div>
