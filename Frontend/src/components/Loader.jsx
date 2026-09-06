@@ -25,7 +25,7 @@ export default function Loader() {
         >
           <img
             src={logoImg}
-            alt="ZK Brother Logo"
+            alt="ZK BROTHERS Logo"
             className="w-full h-full object-contain"
           />
         </motion.div>
@@ -34,7 +34,7 @@ export default function Loader() {
       {/* Brand Statement / Loading Text */}
       <div className="text-center flex flex-col items-center gap-1.5">
         <span className="text-accent text-[9px] font-extrabold tracking-[0.3em] uppercase block">
-          ZK Brother
+          ZK BROTHERS
         </span>
         <span className="text-primary text-[10px] font-bold tracking-widest uppercase block animate-pulse">
           Loading catalog...

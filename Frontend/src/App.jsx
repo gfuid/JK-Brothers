@@ -77,20 +77,20 @@ export default function App() {
     window.scrollTo({ top: 0 });
 
     const titles = {
-      '/': 'JK Brothers | Premium Garments & Handloom Textiles Manufacturer & Exporter Panipat',
-      '/handloom': 'Wholesale Handloom, Bedsheets & Blankets | JK Brothers Panipat',
-      '/garments': 'Wholesale Garments, Denim Jeans & Designer Suits | JK Brothers',
-      '/new-arrivals': 'New Arrivals 2026 | Fresh Textiles & Apparel Releases | JK Brothers',
-      '/catalogue': 'Product Catalogues & Spec Sheets | JK Brothers Panipat',
-      '/bulk-orders': 'Wholesale Bulk Orders & Export Enquiries | JK Brothers Panipat',
-      '/about-us': 'About JK Brothers | Textile Manufacturing Facility Panipat Haryana',
-      '/contact-us': 'Contact JK Brothers | Panipat Wholesale Textile Suppliers',
-      '/cart': 'Wholesale Cart | JK Brothers',
-      '/wishlist': 'My Wishlist / Favorites | JK Brothers',
-      '/checkout': 'Secure Checkout & Wholesale Order Portal | JK Brothers',
-      '/orders': 'Order History & Status | JK Brothers',
-      '/compare': 'Product Comparison Tool | JK Brothers',
-      '/search': 'Search Catalogues & Products | JK Brothers',
+      '/': 'ZK BROTHERS | Premium Garments & Handloom Textiles Manufacturer & Exporter Panipat',
+      '/handloom': 'Wholesale Handloom, Bedsheets & Blankets | ZK BROTHERS Panipat',
+      '/garments': 'Wholesale Garments, Denim Jeans & Designer Suits | ZK BROTHERS',
+      '/new-arrivals': 'New Arrivals 2026 | Fresh Textiles & Apparel Releases | ZK BROTHERS',
+      '/catalogue': 'Product Catalogues & Spec Sheets | ZK BROTHERS Panipat',
+      '/bulk-orders': 'Wholesale Bulk Orders & Export Enquiries | ZK BROTHERS Panipat',
+      '/about-us': 'About ZK BROTHERS | Textile Manufacturing Facility Panipat Haryana',
+      '/contact-us': 'Contact ZK BROTHERS | Panipat Wholesale Textile Suppliers',
+      '/cart': 'Wholesale Cart | ZK BROTHERS',
+      '/wishlist': 'My Wishlist / Favorites | ZK BROTHERS',
+      '/checkout': 'Secure Checkout & Wholesale Order Portal | ZK BROTHERS',
+      '/orders': 'Order History & Status | ZK BROTHERS',
+      '/compare': 'Product Comparison Tool | ZK BROTHERS',
+      '/search': 'Search Catalogues & Products | ZK BROTHERS',
     };
 
     if (titles[location.pathname]) {

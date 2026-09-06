@@ -1,5 +1,5 @@
-// JK Brothers Real Product & Brand Asset Registry
-// Restored directly from original JK Brothers / ZK Brother product collection
+// ZK BROTHERS Real Product & Brand Asset Registry
+// Restored directly from original ZK BROTHERS product collection
 
 // Brand & Factory Assets
 import heroBanner from '../assets/hero/hero_banner.webp';
@@ -49,7 +49,7 @@ import jeans14 from '../assets/products/jeans/jeans_14.webp';
 import jeans15 from '../assets/products/jeans/jeans_15.webp';
 
 // Fallback Luxury SVG
-export const FALLBACK_IMAGE = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600"><rect width="600" height="600" fill="%230B2144"/><path d="M150 450 L300 250 L450 450 Z" fill="%23C5A85C" opacity="0.4"/><circle cx="420" cy="200" r="40" fill="%23C5A85C" opacity="0.6"/><text x="50%25" y="82%25" text-anchor="middle" fill="%23FFFFFF" font-family="sans-serif" font-size="24" font-weight="bold" letter-spacing="2">JK BROTHERS TEXTILES</text></svg>';
+export const FALLBACK_IMAGE = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600"><rect width="600" height="600" fill="%230B2144"/><path d="M150 450 L300 250 L450 450 Z" fill="%23C5A85C" opacity="0.4"/><circle cx="420" cy="200" r="40" fill="%23C5A85C" opacity="0.6"/><text x="50%25" y="82%25" text-anchor="middle" fill="%23FFFFFF" font-family="sans-serif" font-size="24" font-weight="bold" letter-spacing="2">ZK BROTHERS TEXTILES</text></svg>';
 
 export const handleImageError = (e) => {
   if (e?.currentTarget && e.currentTarget.src !== FALLBACK_IMAGE) {

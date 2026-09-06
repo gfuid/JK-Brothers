@@ -205,7 +205,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.15 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black text-primary leading-tight mb-2 tracking-wide uppercase"
             >
-              Z K BROTHER
+              ZK BROTHERS
             </motion.h1>
 
             {/* Subtitle with Smooth Slide Transition */}

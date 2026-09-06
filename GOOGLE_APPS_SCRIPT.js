@@ -1,6 +1,6 @@
 /**
  * =========================================================================
- * JK BROTHERS (zkbrother.com) — 2-WAY LIVE ORDER & ENQUIRY SYNC SYSTEM
+ * ZK BROTHERS (zkbrother.com) — 2-WAY LIVE ORDER & ENQUIRY SYNC SYSTEM
  * =========================================================================
  * 
  * Features:

@@ -13,7 +13,7 @@ export default function AboutUs() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(197,168,92,0.1),transparent)] pointer-events-none"></div>
         <div className="relative z-10 max-w-4xl mx-auto px-4">
           <span className="text-accent text-xs font-bold tracking-[0.3em] uppercase block mb-3">Our Legacy & Operations</span>
-          <h1 className="text-4xl md:text-6xl font-serif font-black uppercase tracking-wide mb-6">About ZK Brother</h1>
+          <h1 className="text-4xl md:text-6xl font-serif font-black uppercase tracking-wide mb-6">About ZK BROTHERS</h1>
           <p className="text-sm md:text-base text-gray-300 font-medium leading-relaxed max-w-2xl mx-auto">
             A trusted name in weaving history, manufacturing premium garments, and exporting high-grade handloom textiles worldwide from Panipat, Haryana.
           </p>
@@ -37,7 +37,7 @@ export default function AboutUs() {
             <div className="relative w-full aspect-4/3 rounded-sm overflow-hidden border-4 border-white shadow-xl z-10 bg-gray-100">
               <img 
                 src={aboutFactoryImg} 
-                alt="ZK Brother Manufacturing Plant" 
+                alt="ZK BROTHERS Manufacturing Plant" 
                 className="w-full h-full object-cover"
                 loading="lazy"
                 onError={handleImageError}
@@ -60,7 +60,7 @@ export default function AboutUs() {
             <div className="w-12 h-[2px] bg-accent mb-2"></div>
             
             <p>
-              Founded in Panipat, Haryana—India's legendary center for home furnishings and loom crafts—ZK Brother has grown from a humble family-run weaving mill into a major integrated manufacturer, exporter, and supplier of premium garments and handloom merchandise.
+              Founded in Panipat, Haryana—India's legendary center for home furnishings and loom crafts—ZK BROTHERS has grown from a humble family-run weaving mill into a major integrated manufacturer, exporter, and supplier of premium garments and handloom merchandise.
             </p>
             <p>
               We operate state-of-the-art automatic looms, high-speed shuttleless weaving machines, and integrated industrial stitching lines. This allows us to scale production of double-ply fleece blankets, cotton towel sets, bedsheets, and high-fashion denim, shirts, and custom apparel with ease.

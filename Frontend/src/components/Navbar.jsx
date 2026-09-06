@@ -10,7 +10,8 @@ import {
   FiChevronDown,
   FiSliders,
   FiPhoneCall,
-  FiArrowRight
+  FiArrowRight,
+  FiTruck
 } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { ShopContext } from '../context/ShopContext';
@@ -95,7 +96,7 @@ export default function Navbar() {
           {/* Right Direct Hotline & WhatsApp */}
           <div className="flex items-center gap-4 text-gray-200">
             <a
-              href="https://wa.me/919050555855?text=Hello%20JK%20Brothers,%20I%20am%20interested%20in%20your%20wholesale%20catalogue."
+              href="https://wa.me/919050555855?text=Hello%20ZK%20BROTHERS,%20I%20am%20interested%20in%20your%20wholesale%20catalogue."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 hover:text-green-400 transition-colors duration-200 cursor-pointer"
@@ -130,11 +131,11 @@ export default function Navbar() {
           <Link 
             to="/" 
             className="flex items-center shrink-0 cursor-pointer group py-0.5 focus:outline-hidden"
-            title="JK Brothers Home"
+            title="ZK BROTHERS Home"
           >
             <img
               src={logoImg}
-              alt="JK Brothers Textiles Panipat"
+              alt="ZK BROTHERS Textiles Panipat"
               className={`${
                 scrolled ? 'h-8 sm:h-9 lg:h-10' : 'h-9 sm:h-10 lg:h-11'
               } w-auto object-contain transition-all duration-300 group-hover:scale-105`}
@@ -322,13 +323,13 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* My Orders Button */}
+            {/* Track Orders & History Button */}
             <Link 
               to="/orders" 
               className="hidden sm:inline-flex p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer" 
-              title="Order History"
+              title="Track Orders & Live Status"
             >
-              <FiUser className="text-lg" />
+              <FiTruck className="text-lg" />
             </Link>
 
             {/* Request Quote CTA Button (Desktop) */}
@@ -499,8 +500,8 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
               className="flex items-center gap-1.5 hover:text-accent"
             >
-              <FiUser />
-              <span>My Orders</span>
+              <FiTruck className="text-sm" />
+              <span>Track Orders</span>
             </Link>
             <a
               href="https://wa.me/919050555855"

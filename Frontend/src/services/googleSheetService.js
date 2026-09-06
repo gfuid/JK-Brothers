@@ -1,4 +1,4 @@
-// Google Sheets Order Integration Service for JK Brothers / ZK Brother
+// Google Sheets Order Integration Service for ZK BROTHERS
 // Sends order records directly to your Google Sheet via Google Apps Script Web App
 
 const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_WEBAPP_URL || 'https://script.google.com/macros/s/AKfycbwQoPbTCAyxt9NlqPBv36vdPzBc0_v_rgmZn6o9OQ4jRB-4J6263otnry_NVOqN1SHsOg/exec';

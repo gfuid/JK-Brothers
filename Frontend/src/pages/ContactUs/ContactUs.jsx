@@ -77,7 +77,7 @@ export default function ContactUs() {
             
             <div className="bg-primary text-white p-8 rounded-sm border border-blue-950/20 shadow-2xs">
               <h3 className="font-serif text-lg font-bold mb-6 border-b border-white/10 pb-3 uppercase tracking-wide">
-                ZK Brother Office
+                ZK BROTHERS Office
               </h3>
               
               <ul className="flex flex-col gap-6 text-xs text-gray-300 font-medium">

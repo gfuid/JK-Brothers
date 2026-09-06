@@ -49,9 +49,9 @@ export default function NotFound() {
         {/* Glass Card Header Bar */}
         <div className="flex items-center justify-between border-b border-white/10 pb-6 relative z-20">
           <Link to="/" className="flex items-center gap-3 group">
-            <img src={logoImg} alt="JK Brothers" className="h-8 sm:h-9 w-auto brightness-0 invert" />
+            <img src={logoImg} alt="ZK BROTHERS" className="h-8 sm:h-9 w-auto brightness-0 invert" />
             <span className="font-extrabold text-lg sm:text-xl tracking-tight text-white group-hover:text-white/80 transition-colors">
-              JK BROTHERS
+              ZK BROTHERS
             </span>
           </Link>
 

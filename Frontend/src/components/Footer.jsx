@@ -61,10 +61,10 @@ export default function Footer() {
       {/* Footer Top Grid */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-12 border-b border-gray-800">
         
-        {/* Col 1: About ZK Brother */}
+        {/* Col 1: About ZK BROTHERS */}
         <div className="lg:col-span-3 flex flex-col gap-4">
           <div className="flex items-center justify-center bg-white p-2 rounded-sm max-w-[180px] shadow-sm">
-            <img src={logoImg} alt="ZK Brother Logo" className="h-16 w-auto object-contain" />
+            <img src={logoImg} alt="ZK BROTHERS Logo" className="h-16 w-auto object-contain" />
           </div>
           <p className="text-xs text-gray-400 font-medium leading-relaxed">
             We are a premier Manufacturer, Exporter, and Supplier of high-quality Garments &amp; Handloom Products, operating out of Haryana, India. We serve clients globally with direct B2B supplies.
@@ -245,7 +245,7 @@ export default function Footer() {
 
       {/* Footer Bottom Bar */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-gray-500 font-bold uppercase tracking-widest text-center sm:text-left">
-        <p>© 2024 Z K Brother. All Rights Reserved.</p>
+        <p>© 2026 ZK BROTHERS. All Rights Reserved.</p>
         <div className="flex gap-4">
           <Link to="/about-us" className="hover:text-white transition-colors">Privacy Policy</Link>
           <span>|</span>
