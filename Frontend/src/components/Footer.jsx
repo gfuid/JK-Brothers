@@ -175,6 +175,15 @@ export default function Footer() {
                 >
                   Zkbrotherhomefurnishing<wbr />@gmail.com
                 </a>
+
+                <a
+                  href="mailto:infozkbrother@gmail.com"
+                  className="hover:text-white transition-colors break-all [overflow-wrap:anywhere] block leading-tight text-white/95"
+                  title="infozkbrother@gmail.com"
+                >
+                  infozkbrother<wbr />@gmail.com
+                </a>
+
               </div>
             </li>
             <li className="flex items-start gap-2.5 min-w-0">

@@ -12,7 +12,8 @@ import {
   FiPhoneCall,
   FiMail,
   FiArrowRight,
-  FiTruck
+  FiTruck,
+  FiMapPin
 } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { ShopContext } from '../context/ShopContext';
@@ -84,6 +85,7 @@ export default function Navbar() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
             </span>
+            <FiMapPin className="text-accent text-sm shrink-0 mt-0.5" />
             <span className="text-accent font-extrabold uppercase tracking-widest text-[9.5px] md:text-[10.5px]">
               PANIPAT, HARYANA DIRECT MANUFACTURER &amp; EXPORTER
             </span>
