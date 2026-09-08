@@ -79,8 +79,9 @@ export default function App() {
     const titles = {
       '/': 'ZK BROTHERS | Premium Garments & Handloom Textiles Manufacturer & Exporter Panipat',
       '/handloom': 'Wholesale Handloom, Bedsheets & Blankets | ZK BROTHERS Panipat',
-      '/garments': 'Khatib Fashion | Wholesale Apparel, Suits, Kurtis & Jeans | ZK BROTHERS',
-      '/khatib-fashion': 'Khatib Fashion | Wholesale Apparel, Suits, Kurtis & Jeans | ZK BROTHERS',
+      '/garments': 'Khadi Fashion | Wholesale Apparel, Suits, Kurtis & Jeans | ZK BROTHERS',
+      '/khadi-fashion': 'Khadi Fashion | Wholesale Apparel, Suits, Kurtis & Jeans | ZK BROTHERS',
+      '/khatib-fashion': 'Khadi Fashion | Wholesale Apparel, Suits, Kurtis & Jeans | ZK BROTHERS',
       '/new-arrivals': 'New Arrivals 2026 | Fresh Textiles & Apparel Releases | ZK BROTHERS',
       '/catalogue': 'Product Catalogues & Spec Sheets | ZK BROTHERS Panipat',
       '/bulk-orders': 'Wholesale Bulk Orders & Export Enquiries | ZK BROTHERS Panipat',
@@ -133,6 +134,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/handloom" element={<Handloom />} />
             <Route path="/garments" element={<Garments />} />
+            <Route path="/khadi-fashion" element={<Garments />} />
             <Route path="/khatib-fashion" element={<Garments />} />
             <Route path="/new-arrivals" element={<NewArrivals />} />
             <Route path="/catalogue" element={<Catalogue />} />

@@ -13,17 +13,17 @@ import {
 const SLIDES = [
   {
     id: 1,
-    subtitle: 'HANDLOOM TEXTILES & KHATIB FASHION APPAREL',
-    description: 'Manufacturer, Exporter & Supplier of a wide range of premium quality Handloom Products and Khatib Fashion Apparel crafted with tradition and modern excellence.',
+    subtitle: 'HANDLOOM TEXTILES & KHADI FASHION APPAREL',
+    description: 'Manufacturer, Exporter & Supplier of a wide range of premium quality Handloom Products and Khadi Fashion Apparel crafted with tradition and modern excellence.',
     leftImg: APPAREL_IMAGES.blankets,
     leftAlt: 'Handloom Blankets Collection',
     leftTag: 'Artisan Handloom',
     leftBtn: 'Browse Handloom',
     leftLink: '/handloom',
     rightImg: APPAREL_IMAGES.shirts,
-    rightAlt: 'Khatib Fashion Collection',
-    rightTag: 'Khatib Fashion',
-    rightBtn: 'Khatib Fashion',
+    rightAlt: 'Khadi Fashion Collection',
+    rightTag: 'Khadi Fashion',
+    rightBtn: 'Khadi Fashion',
     rightLink: '/garments',
   },
   {

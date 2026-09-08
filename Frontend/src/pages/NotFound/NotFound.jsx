@@ -145,7 +145,7 @@ export default function NotFound() {
                 <FiGrid />
               </div>
               <div className="text-left">
-                <p className="text-xs font-bold text-white uppercase tracking-wider">Khatib Fashion</p>
+                <p className="text-xs font-bold text-white uppercase tracking-wider">Khadi Fashion</p>
                 <p className="text-[10px] text-gray-400">Suits, Jeans, Shirts</p>
               </div>
             </div>

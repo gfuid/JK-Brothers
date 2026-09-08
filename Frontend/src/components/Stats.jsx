@@ -7,25 +7,25 @@ const CountUpComponent = typeof CountUp === 'function' ? CountUp : (CountUp.defa
 export default function Stats() {
   const statsData = [
     {
-      value: 10,
+      value: 4,
       suffix: '+',
       label: 'Years Of Experience',
       icon: <FiAward className="text-3xl text-accent" />,
     },
     {
-      value: 500,
+      value: 300,
       suffix: '+',
       label: 'Happy Clients',
       icon: <FiUsers className="text-3xl text-accent" />,
     },
     {
-      value: 2000,
+      value: 500,
       suffix: '+',
       label: 'Products Range',
       icon: <FiBox className="text-3xl text-accent" />,
     },
     {
-      value: 50,
+      value: 3,
       suffix: '+',
       label: 'Countries Supplied',
       icon: <FiGlobe className="text-3xl text-accent" />,

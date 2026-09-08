@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaFacebookF, 
-  FaInstagram, 
-  FaLinkedinIn, 
-  FaYoutube 
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube
 } from 'react-icons/fa';
 import { FiPhone, FiMail, FiMapPin, FiCheckCircle } from 'react-icons/fi';
 import { recordEnquiryInGoogleSheet } from '../services/googleSheetService';
@@ -24,7 +24,7 @@ export default function Footer() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-    
+
     setIsSubmitting(true);
     const enquiryId = `ZK-ENQ-${Math.floor(1000 + Math.random() * 9000)}`;
 
@@ -57,10 +57,10 @@ export default function Footer() {
 
   return (
     <footer className="bg-primary text-white pt-16 pb-8 border-t-4 border-accent relative overflow-hidden">
-      
+
       {/* Footer Top Grid */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-6 xl:gap-8 pb-12 border-b border-gray-800">
-        
+
         {/* Col 1: About ZK BROTHERS */}
         <div className="lg:col-span-3 flex flex-col gap-4">
           <div className="flex items-center justify-start max-w-[180px]">
@@ -74,13 +74,12 @@ export default function Footer() {
             {[
               { icon: <FaFacebookF />, link: 'https://facebook.com' },
               { icon: <FaInstagram />, link: 'https://instagram.com' },
-              { icon: <FaLinkedinIn />, link: 'https://linkedin.com' },
               { icon: <FaYoutube />, link: 'https://youtube.com' }
             ].map((social, idx) => (
-              <a 
+              <a
                 key={idx}
-                href={social.link} 
-                target="_blank" 
+                href={social.link}
+                target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-full border border-gray-700/60 flex items-center justify-center text-xs text-gray-400 hover:text-white hover:bg-accent hover:border-accent transition-all duration-300"
               >
@@ -108,7 +107,7 @@ export default function Footer() {
             </li>
             <li>
               <Link to="/garments" className="hover:text-white transition-colors">
-                Khatib Fashion
+                Khadi Fashion
               </Link>
             </li>
             <li>
@@ -163,15 +162,14 @@ export default function Footer() {
               <FiPhone className="text-accent text-sm shrink-0 mt-0.5" />
               <div>
                 <p className="text-white">+91 98965 07049</p>
-                <p className="text-white">+91 85972 662322</p>
                 <p className="text-[10px] text-gray-500">Mon - Sat, 9am - 7pm</p>
               </div>
             </li>
             <li className="flex items-start gap-2.5 min-w-0">
               <FiMail className="text-accent text-sm shrink-0 mt-0.5" />
               <div className="min-w-0 flex-1">
-                <a 
-                  href="mailto:Zkbrotherhomefurnishing@gmail.com" 
+                <a
+                  href="mailto:Zkbrotherhomefurnishing@gmail.com"
                   className="hover:text-white transition-colors break-all [overflow-wrap:anywhere] block leading-tight text-white/95"
                   title="Zkbrotherhomefurnishing@gmail.com"
                 >
@@ -193,10 +191,10 @@ export default function Footer() {
           <h4 className="font-serif text-sm font-bold tracking-widest uppercase text-accent border-b border-accent/25 pb-2">
             Quick Contact
           </h4>
-          
+
           <AnimatePresence mode="wait">
             {isSubmitted ? (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
@@ -208,34 +206,34 @@ export default function Footer() {
               </motion.div>
             ) : (
               <form onSubmit={handleFormSubmit} className="flex flex-col gap-2">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="name"
                   required
-                  placeholder="Your Name" 
+                  placeholder="Your Name"
                   value={formData.name}
                   onChange={handleFormChange}
                   className="w-full bg-[#162a4d] border border-gray-700/50 focus:border-accent text-xs p-2.5 rounded-xs text-white focus:outline-hidden"
                 />
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   name="email"
                   required
-                  placeholder="Your Email" 
+                  placeholder="Your Email"
                   value={formData.email}
                   onChange={handleFormChange}
                   className="w-full bg-[#162a4d] border border-gray-700/50 focus:border-accent text-xs p-2.5 rounded-xs text-white focus:outline-hidden"
                 />
-                <textarea 
+                <textarea
                   name="message"
                   required
-                  placeholder="Quick Message" 
+                  placeholder="Quick Message"
                   rows="3"
                   value={formData.message}
                   onChange={handleFormChange}
                   className="w-full bg-[#162a4d] border border-gray-700/50 focus:border-accent text-xs p-2.5 rounded-xs text-white resize-none focus:outline-hidden"
                 ></textarea>
-                <button 
+                <button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-accent hover:bg-accent-dark text-white text-[10px] font-bold tracking-widest uppercase py-2.5 rounded-xs transition-colors cursor-pointer shadow-xs disabled:bg-accent/50"

@@ -10,6 +10,7 @@ import {
   FiChevronDown,
   FiSliders,
   FiPhoneCall,
+  FiMail,
   FiArrowRight,
   FiTruck
 } from 'react-icons/fi';
@@ -65,19 +66,18 @@ export default function Navbar() {
   ];
 
   const navLinkClass = ({ isActive }) =>
-    `relative py-1 text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors duration-200 border-b-2 ${
-      isActive 
-        ? 'text-accent border-accent' 
-        : 'text-gray-700 hover:text-accent border-transparent'
+    `relative py-1 text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors duration-200 border-b-2 ${isActive
+      ? 'text-accent border-accent'
+      : 'text-gray-700 hover:text-accent border-transparent'
     }`;
 
   return (
     <header className="w-full flex flex-col z-40 sticky top-0 bg-white">
-      
+
       {/* 1. Executive Top Utility Strip */}
       <div className="w-full bg-[#0B2144] text-white py-1.5 px-4 md:px-8 border-b border-accent/20 text-[10px] md:text-[11px] tracking-wide select-none">
         <div className="max-w-7xl mx-auto flex justify-between items-center gap-2">
-          
+
           {/* Left Brand Badge */}
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
@@ -85,7 +85,7 @@ export default function Navbar() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
             </span>
             <span className="text-accent font-extrabold uppercase tracking-widest text-[9.5px] md:text-[10.5px]">
-              PANIPAT DIRECT MANUFACTURER &amp; EXPORTER
+              PANIPAT, HARYANA DIRECT MANUFACTURER &amp; EXPORTER
             </span>
             <span className="text-white/30 hidden sm:inline">•</span>
             <span className="text-gray-300 hidden md:inline text-[10px]">
@@ -93,8 +93,17 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* Right Direct Hotline & WhatsApp */}
-          <div className="flex items-center gap-4 text-gray-200">
+          {/* Right Direct Hotline, WhatsApp & Email */}
+          <div className="flex items-center gap-3 sm:gap-4 text-gray-200 shrink-0">
+            <a
+              href="mailto:Zkbrotherhomefurnishing@gmail.com"
+              className="flex items-center gap-1.5 hover:text-accent transition-colors duration-200 cursor-pointer"
+              title="Email Us: Zkbrotherhomefurnishing@gmail.com"
+            >
+              <FiMail className="text-accent text-xs" />
+              <span className="font-semibold hidden md:inline text-[10.5px]">Zkbrotherhomefurnishing@gmail.com</span>
+            </a>
+            <span className="text-white/20 hidden sm:inline">|</span>
             <a
               href="https://wa.me/919896507049?text=Hello%20ZK%20BROTHERS,%20I%20am%20interested%20in%20your%20wholesale%20catalogue."
               target="_blank"
@@ -120,25 +129,23 @@ export default function Navbar() {
       </div>
 
       {/* 2. Main Executive Header Bar */}
-      <div 
-        className={`w-full bg-white/95 backdrop-blur-md transition-all duration-300 border-b border-gray-100 ${
-          scrolled ? 'py-1.5 shadow-sm' : 'py-2 sm:py-2.5'
-        }`}
+      <div
+        className={`w-full bg-white/95 backdrop-blur-md transition-all duration-300 border-b border-gray-100 ${scrolled ? 'py-1.5 shadow-sm' : 'py-2 sm:py-2.5'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center gap-2 lg:gap-4 xl:gap-6">
 
           {/* Brand Logo */}
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center shrink-0 cursor-pointer group py-0.5 focus:outline-hidden"
             title="ZK BROTHERS Home"
           >
             <img
               src={logoImg}
               alt="ZK BROTHERS Textiles Panipat"
-              className={`${
-                scrolled ? 'h-8 sm:h-9 lg:h-10' : 'h-9 sm:h-10 lg:h-11'
-              } w-auto object-contain transition-all duration-300 group-hover:scale-105`}
+              className={`${scrolled ? 'h-8 sm:h-9 lg:h-10' : 'h-9 sm:h-10 lg:h-11'
+                } w-auto object-contain transition-all duration-300 group-hover:scale-105`}
             />
           </Link>
 
@@ -152,9 +159,8 @@ export default function Navbar() {
             <div className="relative group py-1">
               <NavLink
                 to="/handloom"
-                className={({ isActive }) => `flex items-center gap-1 text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors duration-200 border-b-2 ${
-                  isActive ? 'text-accent border-accent' : 'text-gray-700 hover:text-accent border-transparent'
-                }`}
+                className={({ isActive }) => `flex items-center gap-1 text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors duration-200 border-b-2 ${isActive ? 'text-accent border-accent' : 'text-gray-700 hover:text-accent border-transparent'
+                  }`}
               >
                 <span>HANDLOOM</span>
                 <FiChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180 text-gray-400 group-hover:text-accent" />
@@ -192,15 +198,14 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Khatib Fashion Dropdown (with seamless hover bridge) */}
+            {/* Khadi Fashion Dropdown (with seamless hover bridge) */}
             <div className="relative group py-1">
               <NavLink
                 to="/garments"
-                className={({ isActive }) => `flex items-center gap-1 text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors duration-200 border-b-2 ${
-                  isActive ? 'text-accent border-accent' : 'text-gray-700 hover:text-accent border-transparent'
-                }`}
+                className={({ isActive }) => `flex items-center gap-1 text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors duration-200 border-b-2 ${isActive ? 'text-accent border-accent' : 'text-gray-700 hover:text-accent border-transparent'
+                  }`}
               >
-                <span>KHATIB FASHION</span>
+                <span>KHADI FASHION</span>
                 <FiChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180 text-gray-400 group-hover:text-accent" />
               </NavLink>
 
@@ -208,7 +213,7 @@ export default function Navbar() {
               <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
                 <div className="bg-white rounded-md shadow-xl border border-gray-100 p-2.5 flex flex-col gap-1">
                   <div className="px-3 py-1 text-[9px] font-black tracking-widest text-accent uppercase border-b border-gray-100">
-                    Khatib Fashion Apparel Line
+                    Khadi Fashion Apparel Line
                   </div>
                   {garmentCategories.map((cat, idx) => (
                     <Link
@@ -229,7 +234,7 @@ export default function Navbar() {
                       to="/garments"
                       className="block text-center text-[10px] font-extrabold text-primary hover:text-accent uppercase tracking-wider py-1"
                     >
-                      View All Khatib Fashion &rarr;
+                      View All Khadi Fashion &rarr;
                     </Link>
                   </div>
                 </div>
@@ -256,7 +261,7 @@ export default function Navbar() {
 
           {/* Right Action Icons & Search */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 text-gray-700 shrink-0">
-            
+
             {/* Desktop Search Input */}
             <form onSubmit={handleSearchSubmit} className="hidden md:flex relative items-center">
               <input
@@ -266,11 +271,10 @@ export default function Navbar() {
                 onFocus={() => setIsSearchFocused(true)}
                 onBlur={() => setIsSearchFocused(false)}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className={`pl-8 pr-3 py-1.5 bg-gray-50 focus:bg-white border text-xs text-gray-800 rounded-full focus:outline-hidden transition-all duration-300 ${
-                  isSearchFocused 
-                    ? 'w-48 lg:w-56 border-accent shadow-sm' 
-                    : 'w-32 lg:w-40 border-gray-200 hover:border-gray-300'
-                }`}
+                className={`pl-8 pr-3 py-1.5 bg-gray-50 focus:bg-white border text-xs text-gray-800 rounded-full focus:outline-hidden transition-all duration-300 ${isSearchFocused
+                  ? 'w-48 lg:w-56 border-accent shadow-sm'
+                  : 'w-32 lg:w-40 border-gray-200 hover:border-gray-300'
+                  }`}
               />
               <button
                 type="submit"
@@ -282,9 +286,9 @@ export default function Navbar() {
             </form>
 
             {/* Wishlist Button */}
-            <Link 
-              to="/wishlist" 
-              className="relative p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer" 
+            <Link
+              to="/wishlist"
+              className="relative p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer"
               title="Wishlist"
             >
               <FiHeart className="text-lg" />
@@ -296,9 +300,9 @@ export default function Navbar() {
             </Link>
 
             {/* Compare Button */}
-            <Link 
-              to="/compare" 
-              className="hidden sm:inline-flex relative p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer" 
+            <Link
+              to="/compare"
+              className="hidden sm:inline-flex relative p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer"
               title="Compare Products"
             >
               <FiSliders className="text-lg" />
@@ -324,9 +328,9 @@ export default function Navbar() {
             </button>
 
             {/* Track Orders & History Button */}
-            <Link 
-              to="/orders" 
-              className="hidden sm:inline-flex p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer" 
+            <Link
+              to="/orders"
+              className="hidden sm:inline-flex p-2 rounded-full hover:bg-gray-100 hover:text-accent transition-colors duration-200 cursor-pointer"
               title="Track Orders & Live Status"
             >
               <FiTruck className="text-lg" />
@@ -358,7 +362,7 @@ export default function Navbar() {
       {/* 3. Mobile Navigation Drawer (Full Responsive & Accessible) */}
       {isOpen && (
         <div className="lg:hidden w-full bg-white border-b border-gray-200 px-4 py-5 flex flex-col gap-4 shadow-xl z-50">
-          
+
           {/* Mobile Search */}
           <form onSubmit={handleSearchSubmit} className="relative w-full">
             <input
@@ -375,9 +379,9 @@ export default function Navbar() {
 
           {/* Navigation Links */}
           <nav className="flex flex-col gap-2 text-xs font-bold tracking-wider text-gray-800 uppercase">
-            <Link 
-              to="/" 
-              onClick={() => setIsOpen(false)} 
+            <Link
+              to="/"
+              onClick={() => setIsOpen(false)}
               className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent transition-colors"
             >
               HOME
@@ -385,7 +389,7 @@ export default function Navbar() {
 
             {/* Handloom Accordion */}
             <div className="flex flex-col">
-              <button 
+              <button
                 type="button"
                 onClick={() => setMobileHandloomOpen(!mobileHandloomOpen)}
                 className="flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-50 text-left cursor-pointer"
@@ -418,12 +422,12 @@ export default function Navbar() {
 
             {/* Garments Accordion */}
             <div className="flex flex-col">
-              <button 
+              <button
                 type="button"
                 onClick={() => setMobileGarmentsOpen(!mobileGarmentsOpen)}
                 className="flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-50 text-left cursor-pointer"
               >
-                <span className="text-accent font-extrabold">KHATIB FASHION</span>
+                <span className="text-accent font-extrabold">KHADI FASHION</span>
                 <FiChevronDown className={`text-xs transition-transform ${mobileGarmentsOpen ? 'rotate-180' : ''}`} />
               </button>
               {mobileGarmentsOpen && (
@@ -443,15 +447,15 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className="py-1 text-accent font-bold text-[11px]"
                   >
-                    View All Khatib Fashion &rarr;
+                    View All Khadi Fashion &rarr;
                   </Link>
                 </div>
               )}
             </div>
 
-            <Link 
-              to="/new-arrivals" 
-              onClick={() => setIsOpen(false)} 
+            <Link
+              to="/new-arrivals"
+              onClick={() => setIsOpen(false)}
               className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent flex items-center justify-between transition-colors"
             >
               <span>NEW ARRIVALS</span>
@@ -460,33 +464,33 @@ export default function Navbar() {
               </span>
             </Link>
 
-            <Link 
-              to="/catalogue" 
-              onClick={() => setIsOpen(false)} 
+            <Link
+              to="/catalogue"
+              onClick={() => setIsOpen(false)}
               className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent transition-colors"
             >
               CATALOGUE
             </Link>
 
-            <Link 
-              to="/bulk-orders" 
-              onClick={() => setIsOpen(false)} 
+            <Link
+              to="/bulk-orders"
+              onClick={() => setIsOpen(false)}
               className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent transition-colors"
             >
               BULK RFQ ORDERS
             </Link>
 
-            <Link 
-              to="/about-us" 
-              onClick={() => setIsOpen(false)} 
+            <Link
+              to="/about-us"
+              onClick={() => setIsOpen(false)}
               className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent transition-colors"
             >
               ABOUT US
             </Link>
 
-            <Link 
-              to="/contact-us" 
-              onClick={() => setIsOpen(false)} 
+            <Link
+              to="/contact-us"
+              onClick={() => setIsOpen(false)}
               className="py-2 px-3 rounded-md hover:bg-gray-50 hover:text-accent transition-colors"
             >
               CONTACT US
@@ -494,23 +498,33 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile Bottom Utility Shortcuts */}
-          <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-gray-700">
-            <Link
-              to="/orders"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-1.5 hover:text-accent"
-            >
-              <FiTruck className="text-sm" />
-              <span>Track Orders</span>
-            </Link>
+          <div className="pt-3 border-t border-gray-100 flex flex-col gap-2.5 text-xs font-bold text-gray-700">
+            <div className="flex items-center justify-between">
+              <Link
+                to="/orders"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-1.5 hover:text-accent"
+              >
+                <FiTruck className="text-sm" />
+                <span>Track Orders</span>
+              </Link>
+              <a
+                href="https://wa.me/919896507049"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-green-600 hover:text-green-700"
+              >
+                <FaWhatsapp className="text-sm" />
+                <span>WhatsApp Direct</span>
+              </a>
+            </div>
             <a
-              href="https://wa.me/919896507049"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-green-600 hover:text-green-700"
+              href="mailto:Zkbrotherhomefurnishing@gmail.com"
+              className="flex items-center gap-1.5 text-gray-600 hover:text-accent break-all text-[11px]"
+              title="Email Us"
             >
-              <FaWhatsapp className="text-sm" />
-              <span>WhatsApp Direct</span>
+              <FiMail className="text-accent text-sm shrink-0" />
+              <span>Zkbrotherhomefurnishing@gmail.com</span>
             </a>
           </div>
 

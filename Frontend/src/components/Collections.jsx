@@ -158,14 +158,14 @@ export default function Collections() {
         </div>
       </section>
 
-      {/* 2. Khatib Fashion Section */}
-      <section id="khatib-fashion-collection" className="max-w-7xl mx-auto px-4 md:px-8">
+      {/* 2. Khadi Fashion Section */}
+      <section id="khadi-fashion-collection" className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12">
           <span className="text-[10.5px] font-black text-accent tracking-widest uppercase mb-1.5 inline-block bg-accent/10 px-3 py-1 rounded-xs">
             Special Wholesale Apparel Line
           </span>
           <h2 className="text-3xl md:text-4xl font-serif font-black text-primary tracking-wide uppercase mt-1">
-            Khatib Fashion
+            Khadi Fashion
           </h2>
           <div className="flex items-center justify-center gap-3 mt-3">
             <span className="h-[1px] w-12 bg-accent"></span>
@@ -173,7 +173,7 @@ export default function Collections() {
             <span className="h-[1px] w-12 bg-accent"></span>
           </div>
           <p className="text-gray-500 text-xs md:text-sm mt-3 max-w-lg mx-auto">
-            Discover designer Mul &amp; Silky cotton suits, exquisite boutique wear, export-grade denim jeans, and casual shirts from Khatib Fashion.
+            Discover designer Mul &amp; Silky cotton suits, exquisite boutique wear, export-grade denim jeans, and casual shirts from Khadi Fashion.
           </p>
         </div>
 
@@ -222,7 +222,7 @@ export default function Collections() {
             to="/garments"
             className="inline-flex items-center gap-2 bg-primary hover:bg-blue-950 text-white text-xs font-bold tracking-widest uppercase px-8 py-4 rounded-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group"
           >
-            VIEW ALL KHATIB FASHION PRODUCTS 
+            VIEW ALL KHADI FASHION PRODUCTS 
             <FiArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

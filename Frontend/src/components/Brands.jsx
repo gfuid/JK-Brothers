@@ -3,14 +3,6 @@ import { motion } from 'framer-motion';
 export default function Brands() {
   const brandLogos = [
     {
-      name: 'LuLu',
-      logo: (
-        <span className="font-sans font-black text-xl tracking-tighter text-emerald-700">
-          Lu<span className="text-red-500">Lu</span>
-        </span>
-      )
-    },
-    {
       name: 'Walmart',
       logo: (
         <div className="flex items-center gap-1">
@@ -45,10 +37,10 @@ export default function Brands() {
       )
     },
     {
-      name: 'Metro',
+      name: 'Meesho',
       logo: (
-        <span className="font-sans font-black text-xl text-[#002F6C] border-b-2 border-amber-500 tracking-wider">
-          METRO
+        <span className="font-sans font-black text-xl text-[#84226B] tracking-tight lowercase">
+          meesho
         </span>
       )
     }
@@ -57,7 +49,7 @@ export default function Brands() {
   return (
     <section className="py-12 bg-[#FAF9F6] border-t border-gray-250/20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        
+
         {/* Title */}
         <div className="text-center mb-8">
           <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] uppercase text-gray-400">
@@ -67,7 +59,7 @@ export default function Brands() {
         </div>
 
         {/* Brand Logos Carousel / Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center opacity-70 hover:opacity-100 transition-opacity duration-300">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 items-center justify-items-center max-w-5xl mx-auto opacity-70 hover:opacity-100 transition-opacity duration-300">
           {brandLogos.map((brand, idx) => (
             <motion.div
               key={idx}
