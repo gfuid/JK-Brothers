@@ -10,7 +10,7 @@ import {
 import { FiPhone, FiMail, FiMapPin, FiCheckCircle } from 'react-icons/fi';
 import { recordEnquiryInGoogleSheet } from '../services/googleSheetService';
 import { sendEnquiryEmail } from '../services/emailService';
-const logoImg = '/logo.webp';
+const logoImg = '/logo_white_text.webp';
 
 export default function Footer() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -59,11 +59,11 @@ export default function Footer() {
     <footer className="bg-primary text-white pt-16 pb-8 border-t-4 border-accent relative overflow-hidden">
       
       {/* Footer Top Grid */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-12 border-b border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-6 xl:gap-8 pb-12 border-b border-gray-800">
         
         {/* Col 1: About ZK BROTHERS */}
         <div className="lg:col-span-3 flex flex-col gap-4">
-          <div className="flex items-center justify-center bg-white p-2 rounded-sm max-w-[180px] shadow-sm">
+          <div className="flex items-center justify-start max-w-[180px]">
             <img src={logoImg} alt="ZK BROTHERS Logo" className="h-16 w-auto object-contain" />
           </div>
           <p className="text-xs text-gray-400 font-medium leading-relaxed">
@@ -108,7 +108,7 @@ export default function Footer() {
             </li>
             <li>
               <Link to="/garments" className="hover:text-white transition-colors">
-                Garments Collection
+                Khatib Fashion
               </Link>
             </li>
             <li>
@@ -135,7 +135,7 @@ export default function Footer() {
         </div>
 
         {/* Col 3: Our Products */}
-        <div className="lg:col-span-3 flex flex-col gap-4">
+        <div className="lg:col-span-2 flex flex-col gap-4">
           <h4 className="font-serif text-sm font-bold tracking-widest uppercase text-accent border-b border-accent/25 pb-2">
             Our Products
           </h4>
@@ -154,7 +154,7 @@ export default function Footer() {
         </div>
 
         {/* Col 4: Contact Info */}
-        <div className="lg:col-span-2 flex flex-col gap-4">
+        <div className="lg:col-span-3 flex flex-col gap-4 min-w-0">
           <h4 className="font-serif text-sm font-bold tracking-widest uppercase text-accent border-b border-accent/25 pb-2">
             Contact Info
           </h4>
@@ -167,16 +167,22 @@ export default function Footer() {
                 <p className="text-[10px] text-gray-500">Mon - Sat, 9am - 7pm</p>
               </div>
             </li>
-            <li className="flex items-start gap-2.5">
+            <li className="flex items-start gap-2.5 min-w-0">
               <FiMail className="text-accent text-sm shrink-0 mt-0.5" />
-              <a href="mailto:m.k.tulla2@gmail.com" className="hover:text-white transition-colors">
-                m.k.tulla2@gmail.com
-              </a>
+              <div className="min-w-0 flex-1">
+                <a 
+                  href="mailto:Zkbrotherhomefurnishing@gmail.com" 
+                  className="hover:text-white transition-colors break-all [overflow-wrap:anywhere] block leading-tight text-white/95"
+                  title="Zkbrotherhomefurnishing@gmail.com"
+                >
+                  Zkbrotherhomefurnishing<wbr />@gmail.com
+                </a>
+              </div>
             </li>
-            <li className="flex items-start gap-2.5">
+            <li className="flex items-start gap-2.5 min-w-0">
               <FiMapPin className="text-accent text-sm shrink-0 mt-0.5" />
-              <span className="leading-relaxed">
-                123, Textile Market, Panipat, Haryana, India - 132103
+              <span className="leading-relaxed [overflow-wrap:anywhere] text-gray-300">
+                Plot No-199, Street No-03, Near Mahadev Exports, Huda Industrial Area, Panipat - 132103, Haryana
               </span>
             </li>
           </ul>

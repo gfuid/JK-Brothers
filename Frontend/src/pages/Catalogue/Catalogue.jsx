@@ -39,12 +39,12 @@ export default function Catalogue() {
       desc: 'Complete listing of double-ply embossed fleece blankets, mink blankets, and traditional heavy wool blankets.'
     },
     {
-      title: 'Garments & Denim Jeans Apparel Catalog',
+      title: 'Khatib Fashion Apparel & Denim Catalog',
       type: 'PDF Catalog',
       size: '12.1 MB',
       pages: 48,
       img: garmentsShirtsImg,
-      desc: 'Showcasing our 15 export-grade denim jeans fits, casual linen shirts, and corporate wear collections.'
+      desc: 'Showcasing Khatib Fashion designer suits, export-grade denim jeans fits, casual linen shirts, and boutique collections.'
     }
   ];
 

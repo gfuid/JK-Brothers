@@ -96,7 +96,7 @@ export default function Navbar() {
           {/* Right Direct Hotline & WhatsApp */}
           <div className="flex items-center gap-4 text-gray-200">
             <a
-              href="https://wa.me/919050555855?text=Hello%20ZK%20BROTHERS,%20I%20am%20interested%20in%20your%20wholesale%20catalogue."
+              href="https://wa.me/919896507049?text=Hello%20ZK%20BROTHERS,%20I%20am%20interested%20in%20your%20wholesale%20catalogue."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 hover:text-green-400 transition-colors duration-200 cursor-pointer"
@@ -107,12 +107,12 @@ export default function Navbar() {
             </a>
             <span className="text-white/20 hidden sm:inline">|</span>
             <a
-              href="tel:+919050555855"
+              href="tel:+919896507049"
               className="hidden sm:flex items-center gap-1.5 hover:text-accent transition-colors duration-200 cursor-pointer"
               title="Direct Call"
             >
               <FiPhoneCall className="text-accent text-xs" />
-              <span className="font-semibold text-[10.5px]">+91 90505 55855</span>
+              <span className="font-semibold text-[10.5px]">+91 98965 07049</span>
             </a>
           </div>
 
@@ -192,7 +192,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Garments Dropdown (with seamless hover bridge) */}
+            {/* Khatib Fashion Dropdown (with seamless hover bridge) */}
             <div className="relative group py-1">
               <NavLink
                 to="/garments"
@@ -200,7 +200,7 @@ export default function Navbar() {
                   isActive ? 'text-accent border-accent' : 'text-gray-700 hover:text-accent border-transparent'
                 }`}
               >
-                <span>GARMENTS</span>
+                <span>KHATIB FASHION</span>
                 <FiChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180 text-gray-400 group-hover:text-accent" />
               </NavLink>
 
@@ -208,7 +208,7 @@ export default function Navbar() {
               <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
                 <div className="bg-white rounded-md shadow-xl border border-gray-100 p-2.5 flex flex-col gap-1">
                   <div className="px-3 py-1 text-[9px] font-black tracking-widest text-accent uppercase border-b border-gray-100">
-                    Wholesale Apparel Line
+                    Khatib Fashion Apparel Line
                   </div>
                   {garmentCategories.map((cat, idx) => (
                     <Link
@@ -229,7 +229,7 @@ export default function Navbar() {
                       to="/garments"
                       className="block text-center text-[10px] font-extrabold text-primary hover:text-accent uppercase tracking-wider py-1"
                     >
-                      View All Garments &rarr;
+                      View All Khatib Fashion &rarr;
                     </Link>
                   </div>
                 </div>
@@ -423,7 +423,7 @@ export default function Navbar() {
                 onClick={() => setMobileGarmentsOpen(!mobileGarmentsOpen)}
                 className="flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-50 text-left cursor-pointer"
               >
-                <span className="text-accent font-extrabold">GARMENTS COLLECTION</span>
+                <span className="text-accent font-extrabold">KHATIB FASHION</span>
                 <FiChevronDown className={`text-xs transition-transform ${mobileGarmentsOpen ? 'rotate-180' : ''}`} />
               </button>
               {mobileGarmentsOpen && (
@@ -443,7 +443,7 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className="py-1 text-accent font-bold text-[11px]"
                   >
-                    View All Garments &rarr;
+                    View All Khatib Fashion &rarr;
                   </Link>
                 </div>
               )}
@@ -504,7 +504,7 @@ export default function Navbar() {
               <span>Track Orders</span>
             </Link>
             <a
-              href="https://wa.me/919050555855"
+              href="https://wa.me/919896507049"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-green-600 hover:text-green-700"

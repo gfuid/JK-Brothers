@@ -94,8 +94,8 @@ export default function ContactUs() {
                   <FiMail className="text-accent text-lg shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold text-white uppercase tracking-wider mb-1">Wholesale Enquiries</h4>
-                    <a href="mailto:m.k.tulla2@gmail.com" className="text-sm font-semibold hover:text-accent">
-                      m.k.tulla2@gmail.com
+                    <a href="mailto:Zkbrotherhomefurnishing@gmail.com" className="text-sm font-semibold hover:text-accent break-all [overflow-wrap:anywhere] block">
+                      Zkbrotherhomefurnishing<wbr />@gmail.com
                     </a>
                   </div>
                 </li>
@@ -105,7 +105,7 @@ export default function ContactUs() {
                   <div>
                     <h4 className="font-bold text-white uppercase tracking-wider mb-1">Manufacturing Address</h4>
                     <p className="leading-relaxed">
-                      123, Textile Market, Panipat,<br />Haryana, India - 132103
+                      Plot No-199, Street No-03, Near Mahadev Exports,<br />Huda Industrial Area, Panipat - 132103, Haryana
                     </p>
                   </div>
                 </li>
@@ -130,9 +130,9 @@ export default function ContactUs() {
               <div className="relative text-center p-6 z-10">
                 <FiMapPin className="text-4xl text-accent mx-auto mb-2 animate-bounce" />
                 <h4 className="font-serif text-sm font-bold text-primary mb-1 uppercase">Factory Site Pin</h4>
-                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Panipat Textile Hub, Haryana, India</p>
+                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Huda Industrial Area, Panipat, Haryana</p>
                 <a 
-                  href="https://maps.google.com/?q=Panipat+Textile+Market" 
+                  href="https://maps.google.com/?q=Huda+Industrial+Area+Panipat+Haryana" 
                   target="_blank" 
                   rel="noreferrer"
                   className="inline-block mt-3 text-[10px] font-bold text-accent hover:underline uppercase tracking-widest"

@@ -64,9 +64,12 @@ export default function Garments() {
         <div className="bg-primary text-white p-8 md:p-12 rounded-sm mb-12 relative overflow-hidden shadow-md flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(197,168,92,0.15),transparent)] pointer-events-none"></div>
           <div className="relative z-10 text-center md:text-left max-w-xl">
-            <h1 className="text-3xl md:text-5xl font-serif font-black tracking-wide mb-3 uppercase">Garments Collection</h1>
+            <span className="text-[10.5px] font-black text-accent tracking-widest uppercase mb-1.5 inline-block">
+              Apparel &amp; Fashion Division
+            </span>
+            <h1 className="text-3xl md:text-5xl font-serif font-black tracking-wide mb-3 uppercase">Khatib Fashion Collection</h1>
             <p className="text-xs md:text-sm text-gray-300 font-medium leading-relaxed">
-              Discover premium fashion apparel, corporate formals, and traditional kurtis tailored to international stitching standards. Pre-washed fabrics, stretch fibers, and flawless sizing support.
+              Discover designer Mul &amp; Silky cotton suits, exquisite boutique wear, export-grade stretch denim jeans, and casual linen shirts under Khatib Fashion. High thread count, flawless sizing, and direct wholesale pricing.
             </p>
           </div>
           <div className="relative z-10 shrink-0 border border-accent/30 py-4 px-6 rounded-xs bg-white/5 backdrop-blur-xs text-center">
@@ -87,7 +90,7 @@ export default function Garments() {
             <form onSubmit={handleSearchSubmit} className="mb-6 relative">
               <input 
                 type="text" 
-                placeholder="Search garments..."
+                placeholder="Search Khatib Fashion apparel..."
                 value={searchVal}
                 onChange={(e) => setSearchVal(e.target.value)}
                 className="w-full pl-3 pr-10 py-2 border border-gray-200 text-xs rounded-sm focus:outline-hidden focus:border-accent text-gray-800"
@@ -121,7 +124,7 @@ export default function Garments() {
             
             {/* Toolbar status */}
             <div className="flex justify-between items-center mb-6 text-xs text-gray-500 font-medium">
-              <p>Showing <span className="text-primary font-bold">{filteredProducts.length}</span> Garments Products</p>
+              <p>Showing <span className="text-primary font-bold">{filteredProducts.length}</span> Khatib Fashion Products</p>
               {searchTerm && (
                 <button 
                   onClick={() => setSearchParams({})} 
@@ -134,7 +137,7 @@ export default function Garments() {
 
             {filteredProducts.length === 0 ? (
               <div className="text-center py-16 bg-white rounded-sm border border-gray-100 p-8">
-                <p className="text-gray-400 text-sm font-semibold mb-4">No garments match your selection.</p>
+                <p className="text-gray-400 text-sm font-semibold mb-4">No products match your selection in Khatib Fashion.</p>
                 <button 
                   onClick={() => setSearchParams({})}
                   className="bg-primary text-white px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs cursor-pointer hover:bg-blue-950"

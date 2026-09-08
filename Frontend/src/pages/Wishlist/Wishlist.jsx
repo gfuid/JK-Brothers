@@ -31,7 +31,7 @@ export default function Wishlist() {
             to="/garments"
             className="bg-accent hover:bg-accent-dark text-white px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs transition-colors"
           >
-            Shop Garments
+            Shop Khatib Fashion
           </Link>
         </div>
       </div>

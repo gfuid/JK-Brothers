@@ -345,7 +345,7 @@ export default function Orders() {
             {/* Quick WhatsApp Help */}
             <div className="flex items-center gap-2 self-start md:self-auto">
               <a
-                href={`https://wa.me/919050555855?text=${encodeURIComponent(
+                href={`https://wa.me/919896507049?text=${encodeURIComponent(
                   `Hello ZK BROTHERS, please check the status for my Order ID: ${selectedOrderId || 'Wholesale Order'}`
                 )}`}
                 target="_blank"
@@ -726,7 +726,7 @@ export default function Orders() {
                       Transport LR receipt, bilty ya expected delivery time jaanna chahte hain?
                     </span>
                     <a
-                      href={`https://wa.me/919050555855?text=${encodeURIComponent(
+                      href={`https://wa.me/919896507049?text=${encodeURIComponent(
                         `Hello ZK BROTHERS, please share the Transport Bilty / LR receipt and delivery estimate for Order ID: ${currentOrderObj.id}. Contact: ${currentOrderObj.shippingDetails?.contactName || ''}`
                       )}`}
                       target="_blank"
@@ -758,7 +758,7 @@ export default function Orders() {
                   </p>
                 </div>
                 <a
-                  href={`https://wa.me/919050555855?text=${encodeURIComponent(`Hello ZK BROTHERS, unable to track Order ID: ${trackedOrder.orderId}`)}`}
+                  href={`https://wa.me/919896507049?text=${encodeURIComponent(`Hello ZK BROTHERS, unable to track Order ID: ${trackedOrder.orderId}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 bg-rose-600 text-white font-bold rounded-xs shrink-0"

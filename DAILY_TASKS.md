@@ -142,7 +142,7 @@ Direct Google Sheets Database: Kisi alag software ya database ke chakkar mein pa
 📦 Ab tak Delivered & Live Kaam (Milestone 1):
 Real Product Catalog (34 Export Items): Aapke Panipat ke original bedsheets, ladies suits, jeans aur blankets ka complete setup minimum order quantity (MOQ) logic ke sath.
 Automated Order Tracking (Google Sheets): Har order ka data bina kisi server ke instant aapki sheet mein save hota hai.
-Branded Email Confirmation (EmailJS): Order hote hi customer aur aapko (m.k.tulla2@gmail.com) par formal confirmation invoice chali jati hai.
+* **Branded Email Confirmation (EmailJS):** Order hote hi customer aur aapko (`Zkbrotherhomefurnishing@gmail.com`) par formal confirmation invoice chali jati hai.
 Google Search & SEO Setup: Google Search Console verification, sitemap.xml, robots.txt, aur Panipat local business schema taaki Google par aapke wholesale products discover ho sakein.
 High Speed & Mobile Responsiveness: Website 1.5 seconds ke andar khulti hai aur mobile par ekdum smooth chalti hai.
 (Milestone 1 ka kaam successfully live hai. Iska final bill/payment clear kar dijiye taaki hum account close kar sakein.)
