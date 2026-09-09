@@ -18,7 +18,7 @@ import {
 import { FaWhatsapp } from 'react-icons/fa';
 import { ShopContext } from '../context/ShopContext';
 
-const logoImg = '/logo.webp';
+import logoImg from '../assets/logo.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

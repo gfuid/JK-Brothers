@@ -10,7 +10,7 @@ import {
 import { FiPhone, FiMail, FiMapPin, FiCheckCircle } from 'react-icons/fi';
 import { recordEnquiryInGoogleSheet } from '../services/googleSheetService';
 import { sendEnquiryEmail } from '../services/emailService';
-const logoImg = '/logo_white_text.webp';
+import logoImg from '../assets/logo.png';
 
 export default function Footer() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });

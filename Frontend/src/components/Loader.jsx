@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-const logoImg = '/logo.webp';
+import logoImg from '../assets/logo.png';
 
 export default function Loader() {
   return (

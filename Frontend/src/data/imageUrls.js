@@ -5,6 +5,7 @@
 import heroBanner from '../assets/hero/hero_banner.webp';
 import heroImg from '../assets/hero/hero.webp';
 import aboutFactory from '../assets/about/about_factory.webp';
+import logoImg from '../assets/logo.png';
 
 // Handloom Bedsheet Assets
 import caspian1 from '../assets/products/bedsheets/caspian_fitted_bedsheet_1.webp';
@@ -59,7 +60,7 @@ export const handleImageError = (e) => {
 
 // Brand & Layout Images
 export const BRAND_IMAGES = {
-  logo: '/logo.webp',
+  logo: logoImg,
   heroBanner,
   heroTexture: heroImg,
   aboutFactory,

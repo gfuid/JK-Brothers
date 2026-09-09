@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiHome, FiSearch, FiShoppingBag, FiArrowRight, FiCompass, FiGrid } from 'react-icons/fi';
-const logoImg = '/logo.webp';
+import logoImg from '../../assets/logo.png';
 
 export default function NotFound() {
   // Generate random animated floating petals/particles matching reference image
