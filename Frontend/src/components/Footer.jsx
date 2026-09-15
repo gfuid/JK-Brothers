@@ -106,11 +106,6 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link to="/garments" className="hover:text-white transition-colors">
-                Khadi Fashion
-              </Link>
-            </li>
-            <li>
               <Link to="/new-arrivals" className="hover:text-white transition-colors">
                 New Arrivals
               </Link>
@@ -118,6 +113,11 @@ export default function Footer() {
             <li>
               <Link to="/about-us" className="hover:text-white transition-colors">
                 About Us
+              </Link>
+            </li>
+            <li>
+              <Link to="/catalogue" className="hover:text-white transition-colors">
+                Product Catalogue
               </Link>
             </li>
             <li>
@@ -140,15 +140,13 @@ export default function Footer() {
           </h4>
           <div className="grid grid-cols-2 gap-x-2 gap-y-2.5 text-xs text-gray-400 font-medium">
             <Link to="/handloom?sub=Blankets" className="hover:text-white transition-colors text-left">Blankets</Link>
-            <Link to="/garments?sub=Jeans" className="hover:text-white transition-colors text-left">Jeans</Link>
-            <Link to="/handloom?sub=Towels" className="hover:text-white transition-colors text-left">Towels</Link>
-            <Link to="/garments?sub=Shirts" className="hover:text-white transition-colors text-left">Shirts</Link>
             <Link to="/handloom?sub=Bedsheets" className="hover:text-white transition-colors text-left">Bedsheets</Link>
-            <Link to="/garments?sub=Kurtis" className="hover:text-white transition-colors text-left">Kurtis</Link>
-            <Link to="/handloom?sub=Carpets" className="hover:text-white transition-colors text-left">Carpets</Link>
-            <Link to="/garments?sub=Gowns" className="hover:text-white transition-colors text-left">Gowns</Link>
-            <Link to="/handloom?sub=Curtains" className="hover:text-white transition-colors text-left">Curtains</Link>
-            <Link to="/garments?sub=Fancy Dresses" className="hover:text-white transition-colors text-left">Fancy Dresses</Link>
+            <Link to="/handloom?sub=Bedsheets" className="hover:text-white transition-colors text-left">Fitted Sheets</Link>
+            <Link to="/handloom?sub=Blankets" className="hover:text-white transition-colors text-left">Fleece Sets</Link>
+            <Link to="/handloom?sub=Bedsheets" className="hover:text-white transition-colors text-left">Printed Linen</Link>
+            <Link to="/handloom?sub=Bedsheets" className="hover:text-white transition-colors text-left">King Flat</Link>
+            <Link to="/handloom?sub=Bedsheets" className="hover:text-white transition-colors text-left">Glace Cotton</Link>
+            <Link to="/handloom" className="hover:text-white transition-colors text-left">Hotel Linen</Link>
           </div>
         </div>
 

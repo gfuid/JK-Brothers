@@ -17,7 +17,7 @@ export default function Compare() {
         </div>
         <h2 className="font-serif text-xl md:text-2xl font-bold text-primary mb-2 uppercase">No Products to Compare</h2>
         <p className="text-gray-400 text-xs md:text-sm font-semibold max-w-xs mb-8">
-          Add up to 3 handloom or garment items from our catalog list to compare their prices, MOQs, and specifications side-by-side.
+          Add up to 3 handloom bedsheets or blankets from our catalog to compare their prices, MOQs, and specifications side-by-side.
         </p>
         <div className="flex gap-4">
           <Link 
@@ -27,10 +27,10 @@ export default function Compare() {
             Browse Handloom
           </Link>
           <Link 
-            to="/garments"
+            to="/catalogue"
             className="bg-accent hover:bg-accent-dark text-white px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs transition-colors"
           >
-            Browse Khadi Fashion
+            Browse Catalogue
           </Link>
         </div>
       </div>

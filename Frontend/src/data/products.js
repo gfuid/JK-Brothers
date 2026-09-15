@@ -1,9 +1,11 @@
 import { 
   BEDSHEET_IMAGES, 
-  SUIT_IMAGES, 
-  APPAREL_IMAGES, 
-  JEANS_IMAGES 
+  APPAREL_IMAGES,
+  CURTAIN_IMAGES
 } from './imageUrls.js';
+
+// Archived garments products are safely preserved in `./garments/garmentsProducts.js`
+export { garmentsProducts as archivedGarmentsProducts } from './garments/garmentsProducts.js';
 
 // Bedsheets CDN Assets
 const caspianBedsheet1 = BEDSHEET_IMAGES.caspian1;
@@ -13,41 +15,23 @@ const caspianBedsheet4 = BEDSHEET_IMAGES.caspian4;
 const caspianBedsheet5 = BEDSHEET_IMAGES.caspian5;
 const printedBedsheet1 = BEDSHEET_IMAGES.printed1;
 const printedBedsheet2 = BEDSHEET_IMAGES.printed2;
+const featherFittedBedsheet = BEDSHEET_IMAGES.featherFitted;
+const sageFloralBedsheet = BEDSHEET_IMAGES.sageFloral;
 
-// Ladies Suits CDN Assets
-const mulCottonSuit1 = SUIT_IMAGES.mulCotton1;
-const mulCottonSuit2 = SUIT_IMAGES.mulCotton2;
-const embroideredCottonSuit1 = SUIT_IMAGES.embroidered1;
-const embroideredCottonSuit2 = SUIT_IMAGES.embroidered2;
-const embroideredCottonSuit3 = SUIT_IMAGES.embroidered3;
-const embroideredCottonSuit4 = SUIT_IMAGES.embroidered4;
-const classicSuit1 = SUIT_IMAGES.classic1;
-const classicSuit2 = SUIT_IMAGES.classic2;
-const classicSuit3 = SUIT_IMAGES.classic3;
-const classicSuit4 = SUIT_IMAGES.classic4;
-
-// Handloom Blankets & Shirts CDN Assets
+// Handloom Blankets & Mats CDN Assets
 const handloomBlanketsImg = APPAREL_IMAGES.blankets;
-const garmentsShirtsImg = APPAREL_IMAGES.shirts;
+const bathMatImg = APPAREL_IMAGES.bathMat;
 
-// Denim Jeans CDN Assets (1-15)
-const jeans1 = JEANS_IMAGES.jeans1;
-const jeans2 = JEANS_IMAGES.jeans2;
-const jeans3 = JEANS_IMAGES.jeans3;
-const jeans4 = JEANS_IMAGES.jeans4;
-const jeans5 = JEANS_IMAGES.jeans5;
-const jeans6 = JEANS_IMAGES.jeans6;
-const jeans7 = JEANS_IMAGES.jeans7;
-const jeans8 = JEANS_IMAGES.jeans8;
-const jeans9 = JEANS_IMAGES.jeans9;
-const jeans10 = JEANS_IMAGES.jeans10;
-const jeans11 = JEANS_IMAGES.jeans11;
-const jeans12 = JEANS_IMAGES.jeans12;
-const jeans13 = JEANS_IMAGES.jeans13;
-const jeans14 = JEANS_IMAGES.jeans14;
-const jeans15 = JEANS_IMAGES.jeans15;
+// Curtains & Drapes Assets
+const curtain1 = CURTAIN_IMAGES.curtain1;
+const curtain2 = CURTAIN_IMAGES.curtain2;
+const curtain3 = CURTAIN_IMAGES.curtain3;
+const curtain4 = CURTAIN_IMAGES.curtain4;
+const curtain5 = CURTAIN_IMAGES.curtain5;
+const curtain6 = CURTAIN_IMAGES.curtain6;
+const curtain7 = CURTAIN_IMAGES.curtain7;
 
-export const products = [
+export const handloomProducts = [
   // ==========================================
   // 1. CASPIAN FITTED BEDSHEETS (Direct Client Spec)
   // ==========================================
@@ -198,207 +182,7 @@ export const products = [
   },
 
   // ==========================================
-  // 2. LADIES SUITS (Direct Client Spec)
-  // ==========================================
-  {
-    id: 8,
-    name: 'Mul Cotton Suit with Lining & Applique Embroidery (Mustard)',
-    category: 'GARMENTS',
-    subCategory: 'Ladies Suits',
-    img: mulCottonSuit1,
-    price: 2499,
-    moq: 10,
-    rating: 5,
-    description: 'Premium Mul cotton 3-piece ladies suit set with breathable attached inner lining and fine handcrafted Applique embroidery. Lightweight, luxurious drape designed for festive and boutique collections.',
-    specs: {
-      material: '100% Pure Mul Cotton with Attached Inner Lining',
-      embroidery: 'Handcrafted Applique Embroidery & Detailed Neckline',
-      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
-      setIncludes: 'Embroidered Kurti, Attached Lining, Pants / Bottom, Pure Dupatta',
-      care: 'Dry Clean or Gentle Hand Wash'
-    },
-    colors: ['Golden Mustard', 'Warm Ochre'],
-    isNewArrival: true
-  },
-  {
-    id: 9,
-    name: 'Mul Cotton Suit with Lining & Applique Embroidery (Rose Pink)',
-    category: 'GARMENTS',
-    subCategory: 'Ladies Suits',
-    img: mulCottonSuit2,
-    price: 2499,
-    moq: 10,
-    rating: 5,
-    description: 'Exquisite Mul cotton suit set featuring delicate floral applique needlework with soft cotton lining. Comes with tailored pants and a printed mul dupatta.',
-    specs: {
-      material: '100% Pure Mul Cotton with Attached Inner Lining',
-      embroidery: 'Handcrafted Applique Embroidery & Border Work',
-      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
-      setIncludes: 'Embroidered Kurti, Attached Lining, Trousers, Dupatta',
-      care: 'Dry Clean or Gentle Hand Wash'
-    },
-    colors: ['Dusty Rose Pink', 'Coral Peach'],
-    isNewArrival: true
-  },
-  {
-    id: 10,
-    name: 'Silky Cotton Suit with Lining & Embroidery (Navy Blue)',
-    category: 'GARMENTS',
-    subCategory: 'Ladies Suits',
-    img: embroideredCottonSuit1,
-    price: 1246,
-    moq: 15,
-    rating: 5,
-    description: 'Restocked client favorite! Silky cotton 3-piece suit set with attached inner lining and detailed resham thread embroidery. High quality finish at factory-direct wholesale pricing.',
-    specs: {
-      material: 'Silky Soft Cotton Fabric with Cotton Lining',
-      embroidery: 'Intricate Resham Thread & Zari Needlework',
-      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
-      status: 'Restocked Best-Seller',
-      setIncludes: 'Embroidered Kurti with Lining, Bottom, Dupatta'
-    },
-    colors: ['Royal Navy Blue', 'Deep Indigo'],
-    isNewArrival: true
-  },
-  {
-    id: 11,
-    name: 'Silky Cotton Suit with Lining & Embroidery (Maroon Wine)',
-    category: 'GARMENTS',
-    subCategory: 'Ladies Suits',
-    img: embroideredCottonSuit2,
-    price: 1246,
-    moq: 15,
-    rating: 5,
-    description: 'Restocked silky cotton suit with lining and fine embroidery on yoke and hemline. Rich maroon tone suitable for wedding guests and formal events.',
-    specs: {
-      material: 'Silky Soft Cotton Fabric with Cotton Lining',
-      embroidery: 'Intricate Resham Thread & Zari Needlework',
-      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
-      status: 'Restocked Best-Seller',
-      setIncludes: 'Embroidered Kurti with Lining, Bottom, Dupatta'
-    },
-    colors: ['Maroon Wine', 'Burgundy'],
-    isNewArrival: true
-  },
-  {
-    id: 12,
-    name: 'Silky Cotton Suit with Lining & Embroidery (Emerald Green)',
-    category: 'GARMENTS',
-    subCategory: 'Ladies Suits',
-    img: embroideredCottonSuit3,
-    price: 1246,
-    moq: 15,
-    rating: 5,
-    description: 'Vibrant emerald green silky cotton suit with attached inner lining and floral embroidery. Clean tailored silhouette in sizes 38 through 46.',
-    specs: {
-      material: 'Silky Soft Cotton Fabric with Cotton Lining',
-      embroidery: 'Intricate Thread Work & Fine Neckline Detailing',
-      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
-      status: 'Restocked Best-Seller',
-      setIncludes: 'Embroidered Kurti with Lining, Bottom, Dupatta'
-    },
-    colors: ['Emerald Green', 'Forest Teal'],
-    isNewArrival: false
-  },
-  {
-    id: 13,
-    name: 'Silky Cotton Suit with Lining & Embroidery (Golden Olive)',
-    category: 'GARMENTS',
-    subCategory: 'Ladies Suits',
-    img: embroideredCottonSuit4,
-    price: 1246,
-    moq: 15,
-    rating: 5,
-    description: 'Classic earthy olive tone with premium thread work. Includes silky cotton kurti with lining, matching cigarette pants, and lightweight dupatta.',
-    specs: {
-      material: 'Silky Soft Cotton Fabric with Cotton Lining',
-      embroidery: 'Intricate Resham Thread Work',
-      size: '38, 40, 42, 44, 46 (Full Size Range 38 to 46)',
-      status: 'Restocked Best-Seller',
-      setIncludes: 'Embroidered Kurti with Lining, Bottom, Dupatta'
-    },
-    colors: ['Golden Olive', 'Antique Beige'],
-    isNewArrival: false
-  },
-  {
-    id: 14,
-    name: 'Classic Chanderi Silk Embroidered Suit Set',
-    category: 'GARMENTS',
-    subCategory: 'Ladies Suits',
-    img: classicSuit1,
-    price: 1450,
-    moq: 20,
-    rating: 5,
-    description: 'Festive Chanderi silk ladies suit set featuring traditional zari work, premium inner lining, and a glossy woven border dupatta.',
-    specs: {
-      material: 'Chanderi Silk Blend with Soft Cotton Lining',
-      embroidery: 'Traditional Zari & Thread Work',
-      size: '38, 40, 42, 44, 46',
-      setIncludes: 'Kurti, Pant, Dupatta'
-    },
-    colors: ['Teal Blue', 'Royal Wine'],
-    isNewArrival: false
-  },
-  {
-    id: 15,
-    name: 'Boutique Festive Embroidered Salwar Suit',
-    category: 'GARMENTS',
-    subCategory: 'Ladies Suits',
-    img: classicSuit2,
-    price: 1550,
-    moq: 20,
-    rating: 5,
-    description: 'Boutique-ready ladies suit with heavy neckline ornamentation and soft inner lining. Tailored for wedding celebrations and premium retail stores.',
-    specs: {
-      material: 'Premium Cotton Silk with Lining',
-      embroidery: 'Heavy Zari Embroidery & Stone Accents',
-      size: '38, 40, 42, 44, 46',
-      setIncludes: 'Kurti, Salwar, Dupatta'
-    },
-    colors: ['Crimson Red', 'Mustard Gold'],
-    isNewArrival: true
-  },
-  {
-    id: 16,
-    name: 'Handloom Cotton Silk Designer Suit',
-    category: 'GARMENTS',
-    subCategory: 'Ladies Suits',
-    img: classicSuit3,
-    price: 1380,
-    moq: 20,
-    rating: 4,
-    description: 'Panipat woven cotton silk suit with subtle thread embroidery on neckline and hem. Breathable comfort for daily office and family gatherings.',
-    specs: {
-      material: 'Handloom Cotton Silk with Breathable Lining',
-      embroidery: 'Subtle Thread Work & Motif Details',
-      size: '38, 40, 42, 44, 46',
-      setIncludes: 'Kurti, Bottom, Dupatta'
-    },
-    colors: ['Sky Blue', 'Pastel Peach'],
-    isNewArrival: false
-  },
-  {
-    id: 17,
-    name: 'Royal Traditional Zari Work Ladies Suit',
-    category: 'GARMENTS',
-    subCategory: 'Ladies Suits',
-    img: classicSuit4,
-    price: 1650,
-    moq: 20,
-    rating: 5,
-    description: 'Luxurious evening suit crafted with rich zari borders, comfortable inner lining, and an embroidered organza dupatta.',
-    specs: {
-      material: 'Silk Blend with Attached Inner Lining',
-      embroidery: 'Intricate Zari Floral Jaal',
-      size: '38, 40, 42, 44, 46',
-      setIncludes: 'Kurti with Lining, Pants, Organza Dupatta'
-    },
-    colors: ['Plum Purple', 'Midnight Blue'],
-    isNewArrival: true
-  },
-
-  // ==========================================
-  // 3. HANDLOOM BLANKETS & GARMENTS SHIRTS
+  // 2. HANDLOOM BLANKETS
   // ==========================================
   {
     id: 18,
@@ -419,312 +203,233 @@ export const products = [
     colors: ['Wine Red', 'Royal Blue', 'Golden Mustard', 'Forest Green', 'Chocolate Brown'],
     isNewArrival: true
   },
+
+  // ==========================================
+  // 3. NEW RELEASES: FITTED BEDSHEETS & LUXURY GLACE COTTON
+  // ==========================================
   {
-    id: 19,
-    name: 'Linen Casual Men Slim Fit Shirt',
-    category: 'GARMENTS',
-    subCategory: 'Shirts',
-    img: garmentsShirtsImg,
-    price: 280,
-    moq: 80,
+    id: 35,
+    name: 'Caspian Feather Motif Fitted Double Bed Bedsheet Set',
+    category: 'HANDLOOM',
+    subCategory: 'Bedsheets',
+    img: featherFittedBedsheet,
+    price: 649,
+    moq: 30,
     rating: 5,
-    description: 'A summer-friendly, highly breathable casual button-down shirt for men. Crafted with premium linen-cotton blends, it has pre-washed softness, a neat spread collar, and double-stitched buttons.',
+    description: 'Contemporary multi-colored feather and leaf pattern double bedsheet crafted for luxury and everyday comfort. Designed with 360-degree elastic corners for a wrinkle-free, snug mattress tuck that stays smooth through the night. Includes 2 matching designer pillow shams.',
     specs: {
-      material: '55% Organic Linen / 45% Cotton',
-      size: 'S, M, L, XL, XXL (Standard Fit)',
-      weight: '180 gsm',
-      packaging: 'Individual Polybag with Collar Card'
+      material: '100% Super-Soft Glace Cotton Blend',
+      bedsheetSize: '72 × 78 + 9 Inches (Fitted Double Bed)',
+      pillowCoverSize: '20 × 30 Inches (Set of 2)',
+      stitching: 'Full 360° Heavy-Duty Elastic Skirt with Reinforced Seams',
+      mattressFitting: 'Snug Grip for up to 9" Mattress Depth',
+      colorfastness: 'Guaranteed Reactive Prints - 100% Bleed Resistant',
+      packaging: 'PVC Zipper Book Bag with Photographic Inset'
     },
-    colors: ['Crisp White', 'Sky Blue', 'Olive Green', 'Peach', 'Khaki'],
+    colors: ['Multicolor Feather Print', 'Ocean Navy Motif', 'Blush Pastel Leaf'],
+    isNewArrival: true
+  },
+  {
+    id: 36,
+    name: 'Royal Sage Floral Glace Cotton King Bedsheet Set (Grand Jaal)',
+    category: 'HANDLOOM',
+    subCategory: 'Bedsheets',
+    img: sageFloralBedsheet,
+    price: 699,
+    moq: 30,
+    rating: 5,
+    description: 'High thread-count glace cotton king bedsheet set featuring an opulent sage-green backdrop with intricate botanical floral jaal prints. Delivers a soft lustrous sheen, silky drape, and cool breathability for premium hospitality and retail boutique collections.',
+    specs: {
+      material: 'High-GSM Glace Cotton Satin Finish (300 TC Feel)',
+      bedsheetSize: '90 × 108 Inches (Super King Flat / Double Bed)',
+      pillowCoverSize: '20 × 30 Inches (Set of 2 with Border Flange)',
+      threadCount: '300 TC Satin Weave Feel',
+      printType: 'High-Definition Digital Botanical Floral Jaal',
+      packaging: 'Luxury Rigid Gift / Book Box Packaging'
+    },
+    colors: ['Sage Green Flora', 'Muted Olive Blossom', 'Dusty Rose Bloom'],
     isNewArrival: true
   },
 
   // ==========================================
-  // 4. DENIM JEANS (All 15 WebP Assets)
+  // 4. NEW RELEASES: BATH MATS & RUGS
   // ==========================================
   {
-    id: 20,
-    name: 'Premium Slim Fit Denim Jeans (Indigo)',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans1,
-    price: 390,
-    moq: 100,
-    rating: 5,
-    description: 'High-stretch, breathable denim jeans designed for everyday rugged comfort. Styled with a classic five-pocket layout, metal rivets, and YKK zipper fly.',
-    specs: {
-      material: '98% Cotton Denim / 2% Spandex Lycra',
-      size: '28, 30, 32, 34, 36, 38, 40 (Waist)',
-      weight: '12 Oz Heavy Denim',
-      packaging: 'Corrugated Box Carton packs'
-    },
-    colors: ['Dark Indigo', 'Classic Blue Wash', 'Charcoal Black'],
-    isNewArrival: true
-  },
-  {
-    id: 21,
-    name: 'Classic Regular Fit Denim Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans2,
-    price: 410,
-    moq: 100,
-    rating: 5,
-    description: 'Traditional straight fit denim jeans built for maximum comfort and durability. Standard waist with button closure and heavy-duty stitching.',
-    specs: {
-      material: '100% Cotton Raw Indigo Denim',
-      size: '30, 32, 34, 36, 38 (Waist)',
-      weight: '13 Oz Heavy Denim',
-      packaging: 'Individually wrapped in polybags'
-    },
-    colors: ['Classic Indigo Blue', 'Deep Indigo'],
-    isNewArrival: false
-  },
-  {
-    id: 22,
-    name: 'Relaxed Fit Stonewash Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans3,
-    price: 420,
-    moq: 80,
-    rating: 4,
-    description: 'Stonewashed blue denim jeans featuring a relaxed seat and thigh. Provides vintage looks and soft wear texture right out of the box.',
-    specs: {
-      material: '99% Cotton / 1% Elastane',
-      size: '30, 32, 34, 36, 38, 40',
-      weight: '12.5 Oz Denim',
-      packaging: 'Carton pack of 20'
-    },
-    colors: ['Vintage Stonewash', 'Light Blue Wash'],
-    isNewArrival: true
-  },
-  {
-    id: 23,
-    name: 'Bootcut Indigo Stretch Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans4,
-    price: 430,
-    moq: 100,
-    rating: 5,
-    description: 'Bootcut opening profile crafted with stretch denim. Classic design with modern flexibility.',
-    specs: {
-      material: '97% Cotton / 3% Lycra Spandex',
-      size: '28, 30, 32, 34, 36',
-      weight: '11.8 Oz Denim',
-      packaging: 'Carton packs of 30'
-    },
-    colors: ['Deep Midnight Blue', 'Classic Indigo'],
-    isNewArrival: false
-  },
-  {
-    id: 24,
-    name: 'Super-Skinny Charcoal Black Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans5,
-    price: 395,
-    moq: 120,
-    rating: 5,
-    description: 'Sleek super-skinny fit black denim with heavy spandex recovery. Remains shape-retentive throughout high wear cycles.',
-    specs: {
-      material: '95% Cotton / 4% Polyester / 1% Spandex',
-      size: '28, 30, 32, 34',
-      weight: '11 Oz Stretch Denim',
-      packaging: 'Corrugated cartons'
-    },
-    colors: ['Charcoal Black', 'Faded Gray'],
-    isNewArrival: true
-  },
-  {
-    id: 25,
-    name: 'Distressed Biker Denim Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans6,
-    price: 460,
+    id: 37,
+    name: 'Ultra-Plush Memory Foam Anti-Skid Bath Mat (Camel Beige)',
+    category: 'HANDLOOM',
+    subCategory: 'Bath Mats',
+    img: bathMatImg,
+    price: 220,
     moq: 50,
-    rating: 4,
-    description: 'Premium biker styled denim with ribbed knee panels, light distressing, and stonewashed details.',
-    specs: {
-      material: '98% Cotton Denim / 2% Elastane',
-      size: '30, 32, 34, 36',
-      weight: '12 Oz Denim',
-      packaging: 'Polybag packs'
-    },
-    colors: ['Ash Gray Distressed', 'Indigo Distressed'],
-    isNewArrival: false
-  },
-  {
-    id: 26,
-    name: 'Comfort Jogger Fit Denim Pants',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans7,
-    price: 380,
-    moq: 100,
     rating: 5,
-    description: 'Ergonomic jogger styled denim pants featuring elastic drawstrings, cuffed ankles, and lightweight stretch.',
+    description: 'Engineered for five-star hotel comfort and modern bathrooms. Crafted with dense quick-drying microfiber pile over a thick resilient memory foam core that cushions feet gently. Features heavy-duty TPR anti-skid rubberized backing for secure floor grip and safety on wet tile floors.',
     specs: {
-      material: '90% Cotton / 8% Polyester / 2% Spandex',
-      size: 'S, M, L, XL',
-      weight: '10 Oz Comfort Denim',
-      packaging: 'Flat bundle packing'
+      material: 'Super-Absorbent Microfiber with High-Density Memory Foam Core',
+      size: '40 × 60 cm (16 × 24 Inches)',
+      thickness: '15mm Extra Cushioned Rebound',
+      backing: 'Anti-Skid TPR / Rubber Grip Backing',
+      absorption: 'Rapid 3-Second Water Absorption',
+      care: 'Machine Washable on Gentle Cycle',
+      packaging: 'Individual Poly Wrap with Header Card'
     },
-    colors: ['Classic Blue', 'Slate Blue'],
+    colors: ['Camel Beige', 'Charcoal Grey', 'Coffee Brown', 'Sky Blue'],
+    isNewArrival: true
+  },
+
+  // ==========================================
+  // 5. NEW RELEASES: DESIGNER CURTAINS & DRAPES
+  // ==========================================
+  {
+    id: 38,
+    name: 'Emerald Foil Leaf Embossed Velvet Curtains (Set of 2)',
+    category: 'HANDLOOM',
+    subCategory: 'Curtains',
+    img: curtain1,
+    price: 499,
+    moq: 20,
+    rating: 5,
+    description: 'Opulent sea-green velvet curtains embellished with shimmering gold metallic foil leaf vines. Heavyweight fall with pre-fitted rust-proof stainless steel eyelet rings for smooth sliding on standard curtain rods. Provides 70% light filtering and thermal insulation.',
+    specs: {
+      material: 'Heavy Crush Velvet with Metallic Gold Foil Work',
+      size: '4 × 7 Feet (Door) / 4 × 9 Feet (Long Door)',
+      headerType: '8 Rust-Resistant Metal Eyelet Grommets (1.6" Inner Diameter)',
+      lightFiltering: '70% Room Darkening & Thermal Insulation',
+      setIncludes: 'Pack of 2 Curtain Panels',
+      care: 'Dry Clean or Gentle Cold Hand Wash'
+    },
+    colors: ['Emerald Sea Green', 'Royal Navy Gold', 'Wine Maroon Gold'],
     isNewArrival: true
   },
   {
-    id: 27,
-    name: 'Heavyweight Raw Selvage Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans8,
-    price: 520,
-    moq: 40,
+    id: 39,
+    name: 'Mocha Floral Linen-Touch Eyelet Door Curtains (Set of 2)',
+    category: 'HANDLOOM',
+    subCategory: 'Curtains',
+    img: curtain2,
+    price: 399,
+    moq: 25,
     rating: 5,
-    description: 'Premium unwashed raw selvage denim. Develops custom character creases and fades uniquely over time.',
+    description: 'Earthy mocha-coffee textured curtains printed with delicate botanical autumn branches and floral blossoms in amber, ochre, and white tones. Pre-washed woven texture with brass-finished eyelets, designed for natural light diffusion in modern living rooms and bedrooms.',
     specs: {
-      material: '100% Cotton Ring-Spun Selvage',
-      size: '30, 32, 34, 36, 38',
-      weight: '14.5 Oz Heavy Denim',
-      packaging: 'Custom branded boxes'
+      material: 'Linen-Blend Textured Heavy Poly-Cotton',
+      size: '4 × 7 Feet (Door) / 4 × 5 Feet (Window)',
+      headerType: '8 Premium Eyelet Rings with Metal Lining',
+      lightFiltering: '60% Semi-Blackout Light Softening',
+      setIncludes: 'Pack of 2 Curtain Panels',
+      care: 'Machine Washable on Gentle Cycle'
     },
-    colors: ['Raw Rigid Indigo'],
-    isNewArrival: false
-  },
-  {
-    id: 28,
-    name: 'Athletic Tapered Denim Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans9,
-    price: 415,
-    moq: 90,
-    rating: 4,
-    description: 'Designed for athletic builds with extra room in the seat and thigh, tapering down to a clean ankle opening.',
-    specs: {
-      material: '98% Cotton / 2% Lycra',
-      size: '32, 34, 36, 38, 40',
-      weight: '12 Oz Denim',
-      packaging: 'Standard polybags'
-    },
-    colors: ['Dark Wash', 'Medium Wash'],
-    isNewArrival: false
-  },
-  {
-    id: 29,
-    name: 'Vintage Light Wash Denim Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans10,
-    price: 390,
-    moq: 100,
-    rating: 5,
-    description: 'Classic 90s inspired light wash denim. Bleach washed texture with clean hems and comfortable straight fit.',
-    specs: {
-      material: '100% Cotton',
-      size: '28, 30, 32, 34, 36, 38',
-      weight: '12 Oz Denim',
-      packaging: 'Carton packs'
-    },
-    colors: ['Light Bleach Blue'],
+    colors: ['Mocha Coffee Brown', 'Natural Khaki', 'Slate Grey'],
     isNewArrival: true
   },
   {
-    id: 30,
-    name: 'Carpenter Utility Work Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans11,
-    price: 440,
-    moq: 70,
-    rating: 5,
-    description: 'Rugged utility work jeans equipped with tool loops, dual side pockets, and triple-needle flat-fell stitching.',
-    specs: {
-      material: '100% Cotton Heavy Duck Denim',
-      size: '30, 32, 34, 36, 38, 40',
-      weight: '13.8 Oz Heavy Denim',
-      packaging: 'Bulk carton bundles'
-    },
-    colors: ['Classic Denim Blue', 'Raw Indigo'],
-    isNewArrival: false
-  },
-  {
-    id: 31,
-    name: 'Premium Corduroy Texture Denim',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans12,
+    id: 40,
+    name: 'Heavy Jacquard Leaf Weave Blackout Curtains (Multicolor Assortment)',
+    category: 'HANDLOOM',
+    subCategory: 'Curtains',
+    img: curtain3,
     price: 450,
-    moq: 80,
+    moq: 30,
     rating: 5,
-    description: 'Unique corduroy-denim blended weave for winter catalog collections. Soft touch with fine cord vertical stripes.',
+    description: 'Commercial showroom flagship! Dense self-jacquard weave curtains with elegant leaf silhouettes woven directly into the fabric. High thread count, anti-wrinkle drape that resists fading from sunlight exposure. Ideal for retail stores, hotels, and luxury apartments.',
     specs: {
-      material: '60% Cotton / 38% Polyester / 2% Elastane',
-      size: '30, 32, 34, 36, 38',
-      weight: '11.5 Oz Blend',
-      packaging: 'PVC zipper bags'
+      material: '100% High-Density Jacquard Polyester',
+      size: '4 × 7 Feet (Door) / 4 × 9 Feet (Long Door)',
+      headerType: 'Eyelet Grommets with High-Tension Stitching',
+      lightFiltering: '75% Room Darkening',
+      setIncludes: 'Pack of 2 Curtain Panels',
+      care: 'Cold Machine Wash, No Bleach'
     },
-    colors: ['Tan Gold', 'Espresso Brown', 'Charcoal'],
+    colors: ['Burgundy Wine', 'Chocolate Brown', 'Champagne Beige', 'Slate Blue', 'Golden Mocha'],
+    isNewArrival: false
+  },
+  {
+    id: 41,
+    name: 'Two-Tone Floral Border Heavy Door Curtains (Set of 2)',
+    category: 'HANDLOOM',
+    subCategory: 'Curtains',
+    img: curtain4,
+    price: 420,
+    moq: 30,
+    rating: 5,
+    description: 'Architectural two-tone design featuring an elegant printed floral upper border contrasted with rich solid self-textured bottom drapes. Precision stitched with calibrated bottom hem weights for a straight vertical drop and graceful wave folds.',
+    specs: {
+      material: 'Premium Textured Twill Polyester Blend',
+      size: '4 × 7 Feet (Standard Door)',
+      headerType: '8 Heavy Metal Grommets',
+      stitching: 'Blind Hem Stitch with Heavy Bottom Weight',
+      setIncludes: 'Pack of 2 Curtain Panels',
+      care: 'Easy Hand or Machine Wash'
+    },
+    colors: ['Espresso Brown & Beige', 'Teal Blue & Ivory', 'Dark Walnut & Cream'],
+    isNewArrival: false
+  },
+  {
+    id: 42,
+    name: 'Triple-Weave Thermal Blackout Curtains (Charcoal Black)',
+    category: 'HANDLOOM',
+    subCategory: 'Curtains',
+    img: curtain5,
+    price: 549,
+    moq: 20,
+    rating: 5,
+    description: 'True triple-weave blackout technology that blocks out 85%+ of ambient sunlight and UV rays while reducing outside noise. Thick thermal insulation helps keep rooms cooler in summer and warmer in winter. Tailored with antique bronze eyelets for modern minimalist decor.',
+    specs: {
+      material: 'Triple-Weave Thermal Polyester Blackout Fabric',
+      size: '4 × 7 Feet (Door) / 4 × 9 Feet (Long Door)',
+      blackoutRating: '85% - 90% Total Light Blocking',
+      headerType: '8 Antique Bronze Metal Grommets (1.6" Inner Diameter)',
+      thermalProperties: 'Energy Efficient Noise & Temperature Buffer',
+      packaging: 'Zipper PVC Bag with Color Inset Card'
+    },
+    colors: ['Charcoal Black', 'Jet Onyx', 'Anthracite Dark'],
     isNewArrival: true
   },
   {
-    id: 32,
-    name: 'Fleece-Lined Winter Denim Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans13,
-    price: 495,
-    moq: 60,
+    id: 43,
+    name: 'Luxury Trellis Lattice 3-Piece Living Room Curtain Set (Silver & Gold)',
+    category: 'HANDLOOM',
+    subCategory: 'Curtains',
+    img: curtain6,
+    price: 799,
+    moq: 15,
     rating: 5,
-    description: 'Heavyweight denim jeans internally bonded with thermal fleece backing. Maximum insulation for cold climate sales.',
+    description: 'Complete 3-panel designer living room statement set. Includes 2 shimmering silver-grey textured blackout side panels and 1 opulent gold-accented geometric trellis lattice center sheer drape. Creates depth, elegance, and multi-layered light control across large windows and french doors.',
     specs: {
-      material: 'Denim Cotton exterior, Polyester Fleece lining',
-      size: '30, 32, 34, 36, 38, 40',
-      weight: '15 Oz Insulated',
-      packaging: 'Heavy poly packs'
+      material: 'Textured Jacquard Poly-Satin (Side) + Gold Foil Trellis Sheer (Center)',
+      size: 'Each Panel 4 × 7 Feet (Total Width 12 Feet Coverage)',
+      setIncludes: '3 Panels (2 Textured Side Drapes + 1 Geometric Center Drape)',
+      headerType: 'Stainless Steel Grommets Across All 3 Panels',
+      style: 'Modern Neo-Classical Living Room Setup',
+      packaging: 'Luxury Box Packaging with Hanger'
     },
-    colors: ['Dark Charcoal Black', 'Deep Indigo Wash'],
-    isNewArrival: false
+    colors: ['Silver Grey & Gold Lattice', 'Champagne Ivory & Rose Gold'],
+    isNewArrival: true
   },
   {
-    id: 33,
-    name: 'Modern Straight Fit Dark Blue Jeans',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans14,
-    price: 405,
-    moq: 100,
+    id: 44,
+    name: 'Triple-Weave Thermal Blackout Curtains (Royal Navy Blue)',
+    category: 'HANDLOOM',
+    subCategory: 'Curtains',
+    img: curtain7,
+    price: 549,
+    moq: 20,
     rating: 5,
-    description: 'Clean, wash-free look denim jeans for corporate-casual wardrobes. Sits flat on the waist with straight legs.',
+    description: 'Deep royal navy blue thermal room-darkening curtain pair. Constructed with interwoven black yarn technology between front and back microfiber layers to create natural blackout performance without stiff chemical coatings. Silky smooth touch with seamless drape.',
     specs: {
-      material: '98% Cotton / 2% Spandex',
-      size: '28, 30, 32, 34, 36, 38',
-      weight: '12 Oz Denim',
-      packaging: 'Standard cartons'
+      material: 'Triple-Weave Interwoven High-Density Microfiber',
+      size: '4 × 7 Feet (Door) / 4 × 9 Feet (Long Door)',
+      blackoutRating: '85% - 90% Total Light Blocking',
+      headerType: '8 Antique Bronze Metal Grommets',
+      features: 'Fade Resistant, Thermal Balanced, Easy Slide',
+      packaging: 'Zipper PVC Bag with Color Inset Card'
     },
-    colors: ['Raw Ink Blue', 'Midnight Denim'],
-    isNewArrival: false
-  },
-  {
-    id: 34,
-    name: 'Urban Hip-Hop Loose Fit Denim',
-    category: 'GARMENTS',
-    subCategory: 'Jeans',
-    img: jeans15,
-    price: 425,
-    moq: 80,
-    rating: 4,
-    description: 'Baggy styled streetwear denim jeans featuring wide cuffs, custom wash fade gradients, and deep pockets.',
-    specs: {
-      material: '100% Cotton Denim',
-      size: '30, 32, 34, 36, 38',
-      weight: '13 Oz Denim',
-      packaging: 'Hanger bundles'
-    },
-    colors: ['Vintage Faded Blue', 'Acid Wash Black'],
+    colors: ['Royal Navy Blue', 'Deep Midnight Ocean', 'Indigo Cobalt'],
     isNewArrival: true
   }
 ];
+
+// Active products exported to the entire website (Handloom products only)
+export const products = handloomProducts;
+
+export default products;

@@ -24,7 +24,7 @@ export default function Cart() {
         </div>
         <h2 className="font-serif text-xl md:text-2xl font-bold text-primary mb-2 uppercase">Your Cart is Empty</h2>
         <p className="text-gray-400 text-xs md:text-sm font-semibold max-w-xs mb-8">
-          You haven't added any products to your wholesale cart yet. Explore our handloom or garments listings to start.
+          You haven't added any products to your wholesale cart yet. Explore our handloom collection to start.
         </p>
         <div className="flex gap-4">
           <Link 
@@ -34,10 +34,10 @@ export default function Cart() {
             Shop Handloom
           </Link>
           <Link 
-            to="/garments"
+            to="/catalogue"
             className="bg-accent hover:bg-accent-dark text-white px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs transition-colors"
           >
-            Shop Garments
+            View Catalogue
           </Link>
         </div>
       </div>

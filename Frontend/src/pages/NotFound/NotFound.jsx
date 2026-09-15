@@ -137,7 +137,7 @@ export default function NotFound() {
           </Link>
 
           <Link 
-            to="/garments"
+            to="/catalogue"
             className="group bg-white/[0.04] hover:bg-white/[0.09] border border-white/10 rounded-2xl p-4 flex items-center justify-between transition-all duration-300 backdrop-blur-md"
           >
             <div className="flex items-center gap-3">
@@ -145,8 +145,8 @@ export default function NotFound() {
                 <FiGrid />
               </div>
               <div className="text-left">
-                <p className="text-xs font-bold text-white uppercase tracking-wider">Khadi Fashion</p>
-                <p className="text-[10px] text-gray-400">Suits, Jeans, Shirts</p>
+                <p className="text-xs font-bold text-white uppercase tracking-wider">Catalogue</p>
+                <p className="text-[10px] text-gray-400">PDF Product Spec Sheets</p>
               </div>
             </div>
             <FiArrowRight className="text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all" />

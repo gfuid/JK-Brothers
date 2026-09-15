@@ -31,7 +31,7 @@ export default function Handloom() {
     return matchesSub && matchesSearch;
   });
 
-  const categories = ['ALL', 'Bedsheets', 'Blankets'];
+  const categories = ['ALL', 'Bedsheets', 'Blankets', 'Curtains', 'Bath Mats'];
 
   const handleTabClick = (cat) => {
     setSearchParams(prev => {

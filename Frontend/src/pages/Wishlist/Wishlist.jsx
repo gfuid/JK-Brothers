@@ -18,7 +18,7 @@ export default function Wishlist() {
         </div>
         <h2 className="font-serif text-xl md:text-2xl font-bold text-primary mb-2 uppercase">Your Wishlist is Empty</h2>
         <p className="text-gray-400 text-xs md:text-sm font-semibold max-w-xs mb-8">
-          Save your favorite garments and handloom products to request a custom quote or order later.
+          Save your favorite handloom products and bedsheets to request a custom quote or order later.
         </p>
         <div className="flex gap-4">
           <Link 
@@ -28,10 +28,10 @@ export default function Wishlist() {
             Shop Handloom
           </Link>
           <Link 
-            to="/garments"
+            to="/catalogue"
             className="bg-accent hover:bg-accent-dark text-white px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs transition-colors"
           >
-            Shop Khadi Fashion
+            View Catalogue
           </Link>
         </div>
       </div>

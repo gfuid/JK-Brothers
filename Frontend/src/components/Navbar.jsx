@@ -26,7 +26,6 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [mobileHandloomOpen, setMobileHandloomOpen] = useState(false);
-  const [mobileGarmentsOpen, setMobileGarmentsOpen] = useState(false);
 
   const { wishlist, getCartCount, compare, setCartDrawerOpen } = useContext(ShopContext);
   const navigate = useNavigate();
@@ -57,13 +56,9 @@ export default function Navbar() {
   const handloomCategories = [
     { name: 'Caspian Fitted Bedsheets', filter: 'Bedsheets', desc: '100% pure combed cotton with elastic perimeter' },
     { name: 'Fleece & Mink Blankets', filter: 'Blankets', desc: 'Heavy double bed warm embossed blankets' },
+    { name: 'Designer Curtains & Drapes', filter: 'Curtains', desc: 'Thermal blackout, foil velvet & jacquard eyelet drapes' },
     { name: 'Printed Cotton Sets', filter: 'Bedsheets', desc: 'Vibrant colorfast heritage double bedsheets' },
-  ];
-
-  const garmentCategories = [
-    { name: 'Designer Ladies Suits', filter: 'Ladies Suits', desc: 'Mul Cotton & Silk hand-embroidered boutique sets' },
-    { name: 'Export Denim Jeans', filter: 'Jeans', desc: 'Stretch heavyweight cotton-spandex denim' },
-    { name: 'Casual Linen Shirts', filter: 'Shirts', desc: 'Breathable 100% cotton-linen woven shirts' },
+    { name: 'Memory Foam Bath Mats', filter: 'Bath Mats', desc: 'High-density anti-skid quick-absorbent mats' },
   ];
 
   const navLinkClass = ({ isActive }) =>
@@ -200,50 +195,6 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Khadi Fashion Dropdown (with seamless hover bridge) */}
-            <div className="relative group py-1">
-              <NavLink
-                to="/garments"
-                className={({ isActive }) => `flex items-center gap-1 text-[11px] xl:text-xs font-bold tracking-wider uppercase transition-colors duration-200 border-b-2 ${isActive ? 'text-accent border-accent' : 'text-gray-700 hover:text-accent border-transparent'
-                  }`}
-              >
-                <span>KHADI FASHION</span>
-                <FiChevronDown className="text-xs transition-transform duration-200 group-hover:rotate-180 text-gray-400 group-hover:text-accent" />
-              </NavLink>
-
-              {/* Dropdown Card with hover bridge */}
-              <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
-                <div className="bg-white rounded-md shadow-xl border border-gray-100 p-2.5 flex flex-col gap-1">
-                  <div className="px-3 py-1 text-[9px] font-black tracking-widest text-accent uppercase border-b border-gray-100">
-                    Khadi Fashion Apparel Line
-                  </div>
-                  {garmentCategories.map((cat, idx) => (
-                    <Link
-                      key={idx}
-                      to={`/garments?sub=${cat.filter}`}
-                      className="group/item block px-3 py-2 rounded-sm hover:bg-gray-50 transition-colors"
-                    >
-                      <div className="text-xs font-bold text-gray-800 group-hover/item:text-accent transition-colors">
-                        {cat.name}
-                      </div>
-                      <div className="text-[10px] text-gray-400 font-medium truncate">
-                        {cat.desc}
-                      </div>
-                    </Link>
-                  ))}
-                  <div className="pt-1 mt-1 border-t border-gray-100">
-                    <Link
-                      to="/garments"
-                      className="block text-center text-[10px] font-extrabold text-primary hover:text-accent uppercase tracking-wider py-1"
-                    >
-                      View All Khadi Fashion &rarr;
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
             <NavLink to="/catalogue" className={navLinkClass}>
               CATALOGUE
             </NavLink>
@@ -268,7 +219,7 @@ export default function Navbar() {
             <form onSubmit={handleSearchSubmit} className="hidden md:flex relative items-center">
               <input
                 type="text"
-                placeholder="Search bedsheets, suits..."
+                placeholder="Search bedsheets, blankets..."
                 value={searchQuery}
                 onFocus={() => setIsSearchFocused(true)}
                 onBlur={() => setIsSearchFocused(false)}
@@ -369,7 +320,7 @@ export default function Navbar() {
           <form onSubmit={handleSearchSubmit} className="relative w-full">
             <input
               type="text"
-              placeholder="Search bedsheets, suits, denim..."
+              placeholder="Search bedsheets, blankets..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 text-xs rounded-full text-gray-800 focus:outline-hidden focus:border-accent focus:bg-white transition-colors"
@@ -417,39 +368,6 @@ export default function Navbar() {
                     className="py-1 text-accent font-bold text-[11px]"
                   >
                     View All Handloom &rarr;
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Garments Accordion */}
-            <div className="flex flex-col">
-              <button
-                type="button"
-                onClick={() => setMobileGarmentsOpen(!mobileGarmentsOpen)}
-                className="flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-50 text-left cursor-pointer"
-              >
-                <span className="text-accent font-extrabold">KHADI FASHION</span>
-                <FiChevronDown className={`text-xs transition-transform ${mobileGarmentsOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {mobileGarmentsOpen && (
-                <div className="pl-6 flex flex-col gap-1.5 py-1 text-gray-600 font-semibold">
-                  {garmentCategories.map((cat, idx) => (
-                    <Link
-                      key={idx}
-                      to={`/garments?sub=${cat.filter}`}
-                      onClick={() => setIsOpen(false)}
-                      className="py-1 hover:text-accent text-[11px]"
-                    >
-                      {cat.name}
-                    </Link>
-                  ))}
-                  <Link
-                    to="/garments"
-                    onClick={() => setIsOpen(false)}
-                    className="py-1 text-accent font-bold text-[11px]"
-                  >
-                    View All Khadi Fashion &rarr;
                   </Link>
                 </div>
               )}

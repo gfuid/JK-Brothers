@@ -8,12 +8,12 @@ import { handleImageError } from '../data/imageUrls';
 export default function FeaturedProducts() {
   const [filter, setFilter] = useState('ALL');
 
-  // Pick the top 8 flagship real products (including client bedsheets, suits, jeans, blankets)
-  const featuredList = products.filter(p => [1, 2, 8, 9, 10, 11, 18, 20].includes(p.id));
+  // Pick the top flagship real handloom products (fitted bedsheets, printed sets, blankets)
+  const featuredList = products;
 
   const filteredProducts = filter === 'ALL' 
     ? featuredList 
-    : featuredList.filter(p => p.category === filter);
+    : featuredList.filter(p => p.subCategory === filter || p.category === filter);
 
   const handleEnquireClick = () => {
     window.scrollTo({
@@ -37,13 +37,13 @@ export default function FeaturedProducts() {
             <span className="h-[1px] w-12 bg-accent"></span>
           </div>
           <p className="text-gray-500 text-xs md:text-sm mt-3 max-w-md mx-auto">
-            Direct factory craftsmanship — Caspian fitted bedsheets, designer applique suits, and premium denim.
+            Direct factory craftsmanship — Caspian fitted double bedsheets, printed cotton sets, and embossed blankets.
           </p>
         </div>
 
         {/* Filter Buttons */}
         <div className="flex justify-center gap-4 mb-12">
-          {['ALL', 'HANDLOOM', 'GARMENTS'].map((tab) => (
+          {['ALL', 'Bedsheets', 'Blankets'].map((tab) => (
             <button
               key={tab}
               onClick={() => setFilter(tab)}

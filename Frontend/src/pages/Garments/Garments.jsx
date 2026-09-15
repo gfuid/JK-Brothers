@@ -136,14 +136,22 @@ export default function Garments() {
             </div>
 
             {filteredProducts.length === 0 ? (
-              <div className="text-center py-16 bg-white rounded-sm border border-gray-100 p-8">
-                <p className="text-gray-400 text-sm font-semibold mb-4">No products match your selection in Khadi Fashion.</p>
-                <button 
-                  onClick={() => setSearchParams({})}
-                  className="bg-primary text-white px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xs cursor-pointer hover:bg-blue-950"
+              <div className="text-center py-16 bg-white rounded-sm border border-gray-100 p-8 shadow-xs">
+                <div className="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center mx-auto mb-4 font-serif font-bold text-xl">
+                  ZK
+                </div>
+                <h3 className="text-base font-bold text-primary mb-2 uppercase tracking-wide">
+                  Garments Catalog Under Seasonal Update
+                </h3>
+                <p className="text-gray-500 text-xs sm:text-sm font-medium max-w-md mx-auto mb-6 leading-relaxed">
+                  Our apparel &amp; garments listings are currently being updated with new seasonal collections. In the meantime, please explore our flagship Handloom bedding, Caspian fitted sheets, and embossed blankets.
+                </p>
+                <Link 
+                  to="/handloom"
+                  className="inline-block bg-primary text-white px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-xs cursor-pointer hover:bg-blue-950 transition-colors shadow-xs"
                 >
-                  Show All Products
-                </button>
+                  Explore Handloom Collection &rarr;
+                </Link>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

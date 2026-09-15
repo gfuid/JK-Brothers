@@ -3,14 +3,13 @@ import { FiDownload, FiEye, FiBookOpen } from 'react-icons/fi';
 import { 
   APPAREL_IMAGES, 
   BEDSHEET_IMAGES, 
-  SUIT_IMAGES, 
   handleImageError 
 } from '../../data/imageUrls';
 
 const handloomBlanketsImg = APPAREL_IMAGES.blankets;
-const garmentsShirtsImg = APPAREL_IMAGES.shirts;
 const caspianBedsheet1 = BEDSHEET_IMAGES.caspian1;
-const mulCottonSuit1 = SUIT_IMAGES.mulCotton1;
+const caspianBedsheet2 = BEDSHEET_IMAGES.caspian2;
+const printedBedsheet1 = BEDSHEET_IMAGES.printed1;
 
 export default function Catalogue() {
   const catalogues = [
@@ -23,12 +22,12 @@ export default function Catalogue() {
       desc: 'Complete specification sheet for 72x78+9" Caspian fitted double bedsheets with zig zag pillow finish and printed bedsheets.'
     },
     {
-      title: 'Designer Ladies Suits & Ethnic Couture Catalog',
+      title: 'Luxury Glace Cotton & Printed Bedding Catalog',
       type: 'PDF Catalog',
-      size: '14.5 MB',
-      pages: 44,
-      img: mulCottonSuit1,
-      desc: 'Featuring Mul cotton applique embroidered suits, silky cotton restocked suits (Size 38 to 46), and boutique festive collections.'
+      size: '11.4 MB',
+      pages: 40,
+      img: printedBedsheet1,
+      desc: 'Complete swatch sheets for 250 TC pure cotton flat sheets, floral glace cotton sets, and matching pillow shams.'
     },
     {
       title: 'Premium Handloom Blanket Collection 2026',
@@ -39,12 +38,12 @@ export default function Catalogue() {
       desc: 'Complete listing of double-ply embossed fleece blankets, mink blankets, and traditional heavy wool blankets.'
     },
     {
-      title: 'Khadi Fashion Apparel & Denim Catalog',
+      title: 'Hospitality & Institutional Bulk Bedding Spec Sheet',
       type: 'PDF Catalog',
-      size: '12.1 MB',
-      pages: 48,
-      img: garmentsShirtsImg,
-      desc: 'Showcasing Khadi Fashion designer suits, export-grade denim jeans fits, casual linen shirts, and boutique collections.'
+      size: '7.8 MB',
+      pages: 28,
+      img: caspianBedsheet2,
+      desc: 'Technical specs, shrinkage certificates, packaging weights, and export container load calculations for hotel & institutional supplies.'
     }
   ];
 

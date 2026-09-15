@@ -15,10 +15,22 @@ import caspian4 from '../assets/products/bedsheets/caspian_fitted_bedsheet_4.web
 import caspian5 from '../assets/products/bedsheets/caspian_fitted_bedsheet_5.webp';
 import printed1 from '../assets/products/bedsheets/printed_bedsheet_1.webp';
 import printed2 from '../assets/products/bedsheets/printed_bedsheet_2.webp';
+import featherBedsheetImg from '../assets/products/bedsheets/feather_fitted_bedsheet.jpg';
+import sageFloralBedsheetImg from '../assets/products/bedsheets/sage_floral_luxury_bedsheet.jpg';
 
-// Apparel & Blankets Assets
+// Apparel, Blankets & Mats Assets
 import shirtsImg from '../assets/products/garments/garments_shirts.webp';
 import blanketsImg from '../assets/products/handloom/handloom_blankets.webp';
+import bathMatImg from '../assets/products/handloom/bath_mat_memory_foam.jpg';
+
+// Premium Curtain & Drapery Assets
+import curtain1 from '../assets/products/curtain/curtain1.jpeg';
+import curtain2 from '../assets/products/curtain/curtain2.jpeg';
+import curtain3 from '../assets/products/curtain/curtain3.jpeg';
+import curtain4 from '../assets/products/curtain/curtain4.jpeg';
+import curtain5 from '../assets/products/curtain/curtain5.jpeg';
+import curtain6 from '../assets/products/curtain/curtain6.jpeg';
+import curtain7 from '../assets/products/curtain/curtain7.jpeg';
 
 // Designer Suits Assets
 import mulCotton1 from '../assets/products/suits/mul_cotton_applique_suit_1.webp';
@@ -75,6 +87,8 @@ export const BEDSHEET_IMAGES = {
   caspian5,
   printed1,
   printed2,
+  featherFitted: featherBedsheetImg,
+  sageFloral: sageFloralBedsheetImg,
 };
 
 // Designer Suits Images
@@ -91,10 +105,11 @@ export const SUIT_IMAGES = {
   classic4,
 };
 
-// Apparel & Blankets Images
+// Apparel, Blankets & Mats Images
 export const APPAREL_IMAGES = {
   shirts: shirtsImg,
   blankets: blanketsImg,
+  bathMat: bathMatImg,
 };
 
 // Denim Jeans Images
@@ -114,4 +129,15 @@ export const JEANS_IMAGES = {
   jeans13,
   jeans14,
   jeans15,
+};
+
+// Premium Curtains & Drapes Images
+export const CURTAIN_IMAGES = {
+  curtain1,
+  curtain2,
+  curtain3,
+  curtain4,
+  curtain5,
+  curtain6,
+  curtain7,
 };

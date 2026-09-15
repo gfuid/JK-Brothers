@@ -3,27 +3,32 @@ import { useNavigate, Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
 import { 
   BEDSHEET_IMAGES, 
-  SUIT_IMAGES, 
-  APPAREL_IMAGES, 
-  JEANS_IMAGES,
+  APPAREL_IMAGES,
+  CURTAIN_IMAGES,
   handleImageError 
 } from '../data/imageUrls';
 
 const handloomBlanketsImg = APPAREL_IMAGES.blankets;
-const garmentsShirtsImg = APPAREL_IMAGES.shirts;
+const bathMatImg = APPAREL_IMAGES.bathMat;
 const caspianBedsheet1 = BEDSHEET_IMAGES.caspian1;
+const caspianBedsheet2 = BEDSHEET_IMAGES.caspian2;
 const caspianBedsheet3 = BEDSHEET_IMAGES.caspian3;
 const printedBedsheet1 = BEDSHEET_IMAGES.printed1;
-const mulCottonSuit1 = SUIT_IMAGES.mulCotton1;
-const embroideredCottonSuit1 = SUIT_IMAGES.embroidered1;
-const classicSuit1 = SUIT_IMAGES.classic1;
-const jeans1 = JEANS_IMAGES.jeans1;
-const jeans3 = JEANS_IMAGES.jeans3;
+const printedBedsheet2 = BEDSHEET_IMAGES.printed2;
+const featherFittedBedsheet = BEDSHEET_IMAGES.featherFitted;
+const sageFloralBedsheet = BEDSHEET_IMAGES.sageFloral;
+const curtain1 = CURTAIN_IMAGES.curtain1;
 
 export default function Collections() {
   const navigate = useNavigate();
 
   const handloomItems = [
+    {
+      name: 'Designer Eyelet Curtains',
+      sub: 'Curtains',
+      img: curtain1,
+      count: 'Velvet, Jacquard & Blackout',
+    },
     {
       name: 'Caspian Fitted Bedsheets',
       sub: 'Bedsheets',
@@ -34,13 +39,31 @@ export default function Collections() {
       name: 'Embossed Blankets',
       sub: 'Blankets',
       img: handloomBlanketsImg,
-      count: 'Heavy Double Bed',
+      count: 'Heavy Double Bed Fleece',
+    },
+    {
+      name: 'Caspian Feather Motif Fitted',
+      sub: 'Bedsheets',
+      img: featherFittedBedsheet,
+      count: 'All-Around Elastic Tuck',
+    },
+    {
+      name: 'Royal Sage Floral Glace Set',
+      sub: 'Bedsheets',
+      img: sageFloralBedsheet,
+      count: '300 TC Satin Weave Feel',
+    },
+    {
+      name: 'Memory Foam Bath Mats',
+      sub: 'Bath Mats',
+      img: bathMatImg,
+      count: 'High-Density Anti-Skid',
     },
     {
       name: 'Printed Cotton Bedsheets',
       sub: 'Bedsheets',
       img: printedBedsheet1,
-      count: '100% Pure Cotton',
+      count: '100% Pure Cotton King',
     },
     {
       name: 'Botanical Fitted Bedsheets',
@@ -48,54 +71,30 @@ export default function Collections() {
       img: caspianBedsheet3,
       count: 'Elastic Mattress Grip',
     },
-  ];
-
-  const garmentItems = [
     {
-      name: 'Mul Cotton Applique Suits',
-      sub: 'Ladies Suits',
-      img: mulCottonSuit1,
-      note: 'Size 38-46 | ₹2,499',
+      name: 'Pastel Geometric Fitted',
+      sub: 'Bedsheets',
+      img: caspianBedsheet2,
+      count: 'High-Density Glace Cotton',
     },
     {
-      name: 'Silky Cotton Embroidered Suits',
-      sub: 'Ladies Suits',
-      img: embroideredCottonSuit1,
-      note: 'Size 38-46 | ₹1,246',
-    },
-    {
-      name: 'Festive Chanderi Suits',
-      sub: 'Ladies Suits',
-      img: classicSuit1,
-      note: 'Designer Boutique Wear',
-    },
-    {
-      name: 'Slim Fit Denim Jeans',
-      sub: 'Jeans',
-      img: jeans1,
-      note: 'Heavyweight Stretch Denim',
-    },
-    {
-      name: 'Casual Linen Shirts',
-      sub: 'Shirts',
-      img: garmentsShirtsImg,
-      note: '100% Breathable Cotton-Linen',
-    },
-    {
-      name: 'Vintage Stonewash Jeans',
-      sub: 'Jeans',
-      img: jeans3,
-      note: 'Premium Rugged Wash',
+      name: 'Luxury Floral Glace Cotton',
+      sub: 'Bedsheets',
+      img: printedBedsheet2,
+      count: 'Super King Flat Set',
     },
   ];
 
   return (
     <div className="py-20 bg-[#fcfbf9] overflow-hidden">
       
-      {/* 1. Handloom Collection Section */}
-      <section id="handloom-collection" className="max-w-7xl mx-auto px-4 md:px-8 mb-24">
+      {/* Handloom Collection Section */}
+      <section id="handloom-collection" className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-serif font-black text-primary tracking-wide uppercase">
+          <span className="text-[10.5px] font-black text-accent tracking-widest uppercase mb-1.5 inline-block bg-accent/10 px-3 py-1 rounded-xs">
+            Artisan Handloom Weaving Mill
+          </span>
+          <h2 className="text-3xl md:text-4xl font-serif font-black text-primary tracking-wide uppercase mt-1">
             Our Handloom Collection
           </h2>
           <div className="flex items-center justify-center gap-3 mt-3">
@@ -104,25 +103,25 @@ export default function Collections() {
             <span className="h-[1px] w-12 bg-accent"></span>
           </div>
           <p className="text-gray-500 text-xs md:text-sm mt-3 max-w-md mx-auto">
-            Explore our heritage handloom fabrics, Caspian fitted double bedsheets, and embossed blankets.
+            Explore our heritage handloom fabrics, Caspian fitted double bedsheets with zig-zag stitch finish, and embossed fleece blankets.
           </p>
         </div>
 
         {/* Handloom Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {handloomItems.map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
               whileHover={{ y: -6 }}
               onClick={() => navigate(`/handloom?sub=${item.sub}`)}
               className="group relative bg-white border border-gray-100 rounded-sm overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col cursor-pointer"
             >
               {/* Image Container */}
-              <div className="relative h-64 overflow-hidden bg-gray-50">
+              <div className="relative h-64 sm:h-72 overflow-hidden bg-gray-50">
                 <img
                   src={item.img}
                   alt={item.name}
@@ -153,76 +152,6 @@ export default function Collections() {
             className="inline-flex items-center gap-2 bg-primary hover:bg-blue-950 text-white text-xs font-bold tracking-widest uppercase px-8 py-4 rounded-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group"
           >
             VIEW ALL HANDLOOM PRODUCTS 
-            <FiArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </section>
-
-      {/* 2. Khadi Fashion Section */}
-      <section id="khadi-fashion-collection" className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="text-center mb-12">
-          <span className="text-[10.5px] font-black text-accent tracking-widest uppercase mb-1.5 inline-block bg-accent/10 px-3 py-1 rounded-xs">
-            Special Wholesale Apparel Line
-          </span>
-          <h2 className="text-3xl md:text-4xl font-serif font-black text-primary tracking-wide uppercase mt-1">
-            Khadi Fashion
-          </h2>
-          <div className="flex items-center justify-center gap-3 mt-3">
-            <span className="h-[1px] w-12 bg-accent"></span>
-            <span className="w-2 h-2 rotate-45 border border-accent bg-accent"></span>
-            <span className="h-[1px] w-12 bg-accent"></span>
-          </div>
-          <p className="text-gray-500 text-xs md:text-sm mt-3 max-w-lg mx-auto">
-            Discover designer Mul &amp; Silky cotton suits, exquisite boutique wear, export-grade denim jeans, and casual shirts from Khadi Fashion.
-          </p>
-        </div>
-
-        {/* Garments Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
-          {garmentItems.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
-              onClick={() => navigate(`/garments?sub=${item.sub}`)}
-              className="group relative bg-white border border-gray-100 rounded-sm overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col"
-            >
-              <div className="relative h-72 sm:h-80 overflow-hidden bg-gray-50">
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  onError={handleImageError}
-                />
-                {/* Overlay Text */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex flex-col justify-end p-4">
-                  <div>
-                    <h3 className="font-serif text-sm sm:text-base font-bold text-white tracking-wide uppercase mb-1 drop-shadow-xs">
-                      {item.name}
-                    </h3>
-                    <p className="text-[10px] text-accent font-bold tracking-wider uppercase mb-1">
-                      {item.note}
-                    </p>
-                    <p className="text-[9px] text-white/80 font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      Explore Collection &rarr;
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* View All Button */}
-        <div className="text-center mt-12">
-          <Link 
-            to="/garments"
-            className="inline-flex items-center gap-2 bg-primary hover:bg-blue-950 text-white text-xs font-bold tracking-widest uppercase px-8 py-4 rounded-sm transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group"
-          >
-            VIEW ALL KHADI FASHION PRODUCTS 
             <FiArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
