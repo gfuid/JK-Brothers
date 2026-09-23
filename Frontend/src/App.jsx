@@ -2,7 +2,7 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
-import { FiArrowUp } from 'react-icons/fi';
+import { FiArrowUp, FiPhoneCall } from 'react-icons/fi';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -128,7 +128,7 @@ export default function App() {
         <Navbar />
 
         {/* Main Routed Area */}
-      <main className="flex-1">
+      <main className="flex-1 pb-16 sm:pb-0">
         <Suspense fallback={<RouteLoading />}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -140,6 +140,7 @@ export default function App() {
             <Route path="/catalogue" element={<Catalogue />} />
             <Route path="/bulk-orders" element={<BulkOrders />} />
             <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/about" element={<AboutUs />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<Cart />} />
@@ -157,7 +158,7 @@ export default function App() {
       <Footer />
 
       {/* Floating Action Buttons */}
-      <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+      <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 flex flex-col gap-3 z-50">
         {/* WhatsApp Floating Button */}
         <a 
           href="https://wa.me/919896507049?text=Hi!%20I%20am%20interested%20in%20your%20garments%20and%20handloom%20products." 
@@ -184,6 +185,26 @@ export default function App() {
             </motion.button>
           )}
         </AnimatePresence>
+      </div>
+
+      {/* Mobile Sticky B2B Lead Conversion Bar */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200/90 px-3 py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.12)] flex items-center gap-2.5">
+        <a
+          href="tel:+919896507049"
+          className="flex-1 flex items-center justify-center gap-2 bg-primary text-white py-3 px-2 rounded-sm font-bold text-xs uppercase tracking-wider shadow-sm active:scale-95 transition-transform"
+        >
+          <FiPhoneCall className="text-sm text-accent" />
+          <span>Call Founder</span>
+        </a>
+        <a
+          href="https://wa.me/919896507049?text=Hello%20Mr.%20M.%20Karam,%20please%20send%20me%20the%20latest%20wholesale%20rate%20list%20and%20product%20catalog."
+          target="_blank"
+          rel="noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 px-2 rounded-sm font-bold text-xs uppercase tracking-wider shadow-sm active:scale-95 transition-transform"
+        >
+          <FaWhatsapp className="text-base" />
+          <span>WhatsApp Rates</span>
+        </a>
       </div>
 
     </div>

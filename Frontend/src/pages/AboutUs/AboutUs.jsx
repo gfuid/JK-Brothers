@@ -15,10 +15,15 @@ import {
   FiHeadphones,
   FiMapPin,
   FiFileText,
-  FiArrowRight
+  FiArrowRight,
+  FiDownload,
+  FiUser,
+  FiSmartphone,
+  FiPackage
 } from 'react-icons/fi';
 import { FaWhatsapp, FaHandshake, FaIndustry } from 'react-icons/fa';
 import Stats from '../../components/Stats';
+import { recordEnquiryInGoogleSheet } from '../../services/googleSheetService';
 
 // Assets
 import ownerImg from '../../assets/owner.png';
@@ -30,11 +35,98 @@ import doormatImg from '../../assets/products/handloom/bath_mat_memory_foam.jpg'
 
 export default function AboutUs() {
   const [copiedKey, setCopiedKey] = useState(null);
+  const [leadForm, setLeadForm] = useState({
+    name: '',
+    phone: '',
+    category: 'All 5 High-Demand Products'
+  });
+  const [leadSubmitting, setLeadSubmitting] = useState(false);
+  const [leadSuccess, setLeadSuccess] = useState(false);
+
+  // Bottom Form State for full wholesale inquiry
+  const [bottomForm, setBottomForm] = useState({
+    name: '',
+    phone: '',
+    city: '',
+    category: 'All 5 High-Demand Products',
+    quantity: '',
+    message: ''
+  });
+  const [bottomSubmitting, setBottomSubmitting] = useState(false);
+  const [bottomSuccess, setBottomSuccess] = useState(false);
 
   const handleCopy = (text, key) => {
     navigator.clipboard.writeText(text);
     setCopiedKey(key);
     setTimeout(() => setCopiedKey(null), 2500);
+  };
+
+  const handleBottomSubmit = async (e) => {
+    e.preventDefault();
+    if (!bottomForm.phone.trim()) return;
+
+    setBottomSubmitting(true);
+    const enquiryId = `ZK-RFQ-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    try {
+      await recordEnquiryInGoogleSheet({
+        enquiryId,
+        name: bottomForm.name || 'Wholesale Buyer',
+        phone: bottomForm.phone,
+        city: bottomForm.city,
+        category: bottomForm.category,
+        quantity: bottomForm.quantity,
+        subject: `Wholesale RFQ - ${bottomForm.category}`,
+        message: `Quantity: ${bottomForm.quantity || 'Bulk'} | City: ${bottomForm.city || 'India'} | Note: ${bottomForm.message || 'Standard quote'}`,
+        type: 'Wholesale Bottom RFQ'
+      });
+    } catch (err) {
+      console.warn('RFQ log:', err);
+    }
+
+    setBottomSubmitting(false);
+    setBottomSuccess(true);
+
+    const whatsappText = `Hello Mr. M. Karam, I am ${bottomForm.name || 'a wholesale buyer'} from ${bottomForm.city || 'India'}. I need a wholesale quotation for ${bottomForm.category}${bottomForm.quantity ? ` (Quantity: ${bottomForm.quantity})` : ''}. ${bottomForm.message ? `Details: ${bottomForm.message}.` : ''} My WhatsApp contact is ${bottomForm.phone}.`;
+
+    const whatsappUrl = `https://wa.me/919896507049?text=${encodeURIComponent(whatsappText)}`;
+
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+    }, 700);
+  };
+
+  const handleLeadSubmit = async (e) => {
+    e.preventDefault();
+    if (!leadForm.phone.trim()) return;
+
+    setLeadSubmitting(true);
+    const enquiryId = `ZK-RATE-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    try {
+      await recordEnquiryInGoogleSheet({
+        enquiryId,
+        name: leadForm.name || 'Wholesale Buyer',
+        phone: leadForm.phone,
+        category: leadForm.category,
+        subject: 'Wholesale Price List & Catalog Request',
+        message: `Requested 2026 Wholesale Rate Card & Catalog for ${leadForm.category}`,
+        type: 'Wholesale Rate Request'
+      });
+    } catch (err) {
+      console.warn('Lead submission log:', err);
+    }
+
+    setLeadSubmitting(false);
+    setLeadSuccess(true);
+
+    const whatsappUrl = `https://wa.me/919896507049?text=${encodeURIComponent(
+      `Hello Mr. M. Karam, I am ${leadForm.name || 'a wholesale buyer'}. Please send me the 2026 Wholesale Rate Card & Catalog for ${leadForm.category}. My contact number is ${leadForm.phone}.`
+    )}`;
+
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+    }, 700);
   };
 
   const dealProducts = [
@@ -408,6 +500,134 @@ export default function AboutUs() {
         </div>
       </section>
 
+      {/* 4.5 High-Converting Wholesale Rate & Catalog Lead Box */}
+      <section className="py-12 bg-primary text-white relative overflow-hidden border-y-2 border-accent/30">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(197,168,92,0.18),transparent_70%)] pointer-events-none"></div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="bg-white/5 border border-white/15 backdrop-blur-md rounded-sm p-6 sm:p-10 shadow-2xl">
+            
+            <div className="text-center max-w-2xl mx-auto mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/20 border border-accent/40 text-accent text-[11px] font-bold tracking-[0.2em] uppercase mb-3">
+                <FiDownload className="text-sm" />
+                Instant B2B Price Dispatch
+              </div>
+              <h3 className="text-2xl sm:text-3.5xl font-serif font-black uppercase tracking-wide text-white">
+                Get 2026 Wholesale Rate List & Catalog
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-300 font-medium mt-2 leading-relaxed">
+                Enter your WhatsApp number to receive our genuine factory rate card, MOQ details, and bulk packing specs directly on WhatsApp within 5 minutes.
+              </p>
+            </div>
+
+            {leadSuccess ? (
+              <div className="bg-emerald-950/60 border border-emerald-500/50 rounded-sm p-6 text-center flex flex-col items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+                  <FiCheckCircle />
+                </div>
+                <h4 className="font-serif text-lg font-bold text-white">Request Received Successfully!</h4>
+                <p className="text-xs text-gray-200 max-w-md">
+                  Opening WhatsApp to connect with Mr. M. KARAM. If it didn't open automatically, click the button below:
+                </p>
+                <a
+                  href={`https://wa.me/919896507049?text=${encodeURIComponent(
+                    `Hello Mr. M. Karam, I am ${leadForm.name || 'a wholesale buyer'}. Please send me the 2026 Wholesale Rate Card & Catalog for ${leadForm.category}. My contact number is ${leadForm.phone}.`
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white px-6 py-2.5 rounded-sm font-bold text-xs uppercase tracking-wider transition-all shadow-md"
+                >
+                  <FaWhatsapp className="text-base" />
+                  <span>Chat On WhatsApp Now</span>
+                </a>
+              </div>
+            ) : (
+              <form onSubmit={handleLeadSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  
+                  {/* Field 1: Name / Firm Name */}
+                  <div>
+                    <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                      Your Name / Firm Name
+                    </label>
+                    <div className="relative">
+                      <FiUser className="absolute left-3.5 top-1/2 -translate-y-1/2 text-accent text-sm" />
+                      <input
+                        type="text"
+                        value={leadForm.name}
+                        onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
+                        placeholder="e.g. Ramesh Kumar / Balaji Handlooms"
+                        className="w-full bg-white/10 border border-white/20 rounded-xs pl-10 pr-3 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-hidden focus:border-accent focus:bg-white/15 transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Field 2: WhatsApp Number */}
+                  <div>
+                    <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                      WhatsApp Mobile No. <span className="text-accent">*</span>
+                    </label>
+                    <div className="relative">
+                      <FiSmartphone className="absolute left-3.5 top-1/2 -translate-y-1/2 text-accent text-sm" />
+                      <input
+                        type="tel"
+                        required
+                        value={leadForm.phone}
+                        onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
+                        placeholder="e.g. 98965 07049"
+                        className="w-full bg-white/10 border border-white/20 rounded-xs pl-10 pr-3 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-hidden focus:border-accent focus:bg-white/15 transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Field 3: Product Interest */}
+                  <div>
+                    <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                      Product Line Needed
+                    </label>
+                    <div className="relative">
+                      <FiPackage className="absolute left-3.5 top-1/2 -translate-y-1/2 text-accent text-sm" />
+                      <select
+                        value={leadForm.category}
+                        onChange={(e) => setLeadForm({ ...leadForm, category: e.target.value })}
+                        className="w-full bg-[#0B2144] border border-white/20 rounded-xs pl-10 pr-3 py-2.5 text-xs text-white focus:outline-hidden focus:border-accent transition-all cursor-pointer"
+                      >
+                        <option value="All 5 High-Demand Products">All 5 Products (Full Catalog)</option>
+                        <option value="Blankets (All Types)">1. Blankets (All Types)</option>
+                        <option value="Double & Single Bedsheets">2. Double & Single Bedsheets</option>
+                        <option value="Curtains">3. Curtains</option>
+                        <option value="Pillow Covers">4. Pillow Covers</option>
+                        <option value="Paydan / Doormats">5. Paydan / Doormats</option>
+                      </select>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Submit Button */}
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="flex flex-wrap items-center gap-4 text-[11px] text-gray-300">
+                    <span className="flex items-center gap-1.5"><FiCheckCircle className="text-accent" /> 100% Genuine Mill Price</span>
+                    <span className="flex items-center gap-1.5"><FiCheckCircle className="text-accent" /> Sample Kits Available</span>
+                    <span className="flex items-center gap-1.5"><FiCheckCircle className="text-accent" /> Zero Brokerage</span>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={leadSubmitting}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-accent hover:bg-accent-dark text-primary px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-wider transition-all shadow-lg hover:scale-105 cursor-pointer disabled:opacity-70"
+                  >
+                    <FaWhatsapp className="text-base" />
+                    <span>{leadSubmitting ? 'Sending Request...' : 'Send Wholesale Rates On WhatsApp'}</span>
+                  </button>
+                </div>
+              </form>
+            )}
+
+          </div>
+        </div>
+      </section>
+
       {/* 5. Why Clients Trust Us? - 7 Pillars */}
       <section className="py-20 bg-[#FAF9F6] border-t border-gray-150">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -576,40 +796,248 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* 7. Direct Founder Contact Call to Action */}
-      <section className="py-16 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(197,168,92,0.12),transparent_70%)] pointer-events-none"></div>
+      {/* 7. Comprehensive Bottom Wholesale Inquiry Form & Founder Contact */}
+      <section className="py-20 bg-primary text-white relative overflow-hidden border-t-2 border-accent/30">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(197,168,92,0.15),transparent_70%)] pointer-events-none"></div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
-          <span className="text-accent text-xs font-bold tracking-[0.3em] uppercase block mb-3">
-            Start Your B2B Relationship
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-serif font-black uppercase tracking-wide mb-4">
-            Connect Directly With Mr. M. KARAM
-          </h2>
-          <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto mb-8 font-medium leading-relaxed">
-            In B2B, every commitment is personal. Call or WhatsApp our founder directly to get current mill rate cards, sample dispatches, or customized bulk lots.
-          </p>
-
-          <div className="flex flex-wrap justify-center items-center gap-4">
-            <a
-              href="tel:+919896507049"
-              className="inline-flex items-center gap-2.5 bg-accent hover:bg-accent-dark text-primary px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider transition-all shadow-lg hover:scale-105"
-            >
-              <FiPhoneCall className="text-base" />
-              <span>Call Founder: +91 98965 07049</span>
-            </a>
-
-            <a
-              href="https://wa.me/919896507049?text=Hello%20Mr.%20M.%20Karam,%20I%20am%20interested%20in%20bulk%20textiles%20from%20Z%20K%20BROTHER."
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white px-7 py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider transition-all shadow-lg hover:scale-105"
-            >
-              <FaWhatsapp className="text-base" />
-              <span>WhatsApp Direct RFQ</span>
-            </a>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-accent text-xs font-bold tracking-[0.3em] uppercase block mb-2">
+              Direct Mill Procurement
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-serif font-black uppercase tracking-wide text-white">
+              Wholesale Inquiry & Bulk Rate Request
+            </h2>
+            <div className="flex items-center justify-center gap-3 my-4">
+              <span className="h-[1px] w-12 bg-accent"></span>
+              <span className="w-2 h-2 rotate-45 border border-accent bg-accent"></span>
+              <span className="h-[1px] w-12 bg-accent"></span>
+            </div>
+            <p className="text-xs sm:text-sm text-gray-300 font-medium max-w-2xl mx-auto leading-relaxed">
+              Connect directly with <strong className="text-accent">Mr. M. KARAM (Founder & MD)</strong>. Fill your requirements below to receive customized factory rates, MOQ details, and sample kits directly on WhatsApp.
+            </p>
           </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            {/* Left: Interactive Wholesale Lead Form (7 Cols) */}
+            <div className="lg:col-span-7 bg-white/5 border border-white/15 backdrop-blur-md rounded-sm p-6 sm:p-8 shadow-2xl">
+              
+              <div className="border-b border-white/10 pb-4 mb-6 flex items-center justify-between">
+                <div>
+                  <h3 className="font-serif text-lg font-bold text-white uppercase tracking-wide">
+                    Submit Your Requirement
+                  </h3>
+                  <p className="text-[11px] text-gray-300">Fast response directly from the founder's desk</p>
+                </div>
+                <span className="text-[10.5px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-accent/20 border border-accent/40 text-accent">
+                  Zero Middlemen
+                </span>
+              </div>
+
+              {bottomSuccess ? (
+                <div className="bg-emerald-950/60 border border-emerald-500/50 rounded-sm p-8 text-center flex flex-col items-center gap-4">
+                  <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl">
+                    <FiCheckCircle />
+                  </div>
+                  <h4 className="font-serif text-xl font-bold text-white">Inquiry Sent Successfully!</h4>
+                  <p className="text-xs text-gray-200 max-w-md leading-relaxed">
+                    Aapki inquiry successfully record ho gayi hai aur WhatsApp automatically open ho raha hai. Agar WhatsApp nahi khula toh niche diye gaye button par click karein:
+                  </p>
+                  <a
+                    href={`https://wa.me/919896507049?text=${encodeURIComponent(
+                      `Hello Mr. M. Karam, I am ${bottomForm.name || 'a wholesale buyer'} from ${bottomForm.city || 'India'}. I need a wholesale quotation for ${bottomForm.category}${bottomForm.quantity ? ` (Quantity: ${bottomForm.quantity})` : ''}. ${bottomForm.message ? `Details: ${bottomForm.message}.` : ''} My WhatsApp contact is ${bottomForm.phone}.`
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-2 inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white px-7 py-3 rounded-sm font-bold text-xs uppercase tracking-wider transition-all shadow-lg hover:scale-105"
+                  >
+                    <FaWhatsapp className="text-lg" />
+                    <span>Open WhatsApp Chat With Founder</span>
+                  </a>
+                </div>
+              ) : (
+                <form onSubmit={handleBottomSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    
+                    {/* Name / Firm */}
+                    <div>
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                        Your Name / Firm Name <span className="text-accent">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={bottomForm.name}
+                        onChange={(e) => setBottomForm({ ...bottomForm, name: e.target.value })}
+                        placeholder="e.g. Rahul Gupta / Gupta Handlooms"
+                        className="w-full bg-white/10 border border-white/20 rounded-xs px-3.5 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-hidden focus:border-accent focus:bg-white/15 transition-all"
+                      />
+                    </div>
+
+                    {/* WhatsApp Phone */}
+                    <div>
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                        WhatsApp Mobile No. <span className="text-accent">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        value={bottomForm.phone}
+                        onChange={(e) => setBottomForm({ ...bottomForm, phone: e.target.value })}
+                        placeholder="e.g. 98965 07049"
+                        className="w-full bg-white/10 border border-white/20 rounded-xs px-3.5 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-hidden focus:border-accent focus:bg-white/15 transition-all"
+                      />
+                    </div>
+
+                    {/* City / Mandi */}
+                    <div>
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                        Your City / Mandi <span className="text-accent">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={bottomForm.city}
+                        onChange={(e) => setBottomForm({ ...bottomForm, city: e.target.value })}
+                        placeholder="e.g. Chandni Chowk Delhi, Surat, Jaipur..."
+                        className="w-full bg-white/10 border border-white/20 rounded-xs px-3.5 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-hidden focus:border-accent focus:bg-white/15 transition-all"
+                      />
+                    </div>
+
+                    {/* Product of Interest */}
+                    <div>
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                        Product of Interest
+                      </label>
+                      <select
+                        value={bottomForm.category}
+                        onChange={(e) => setBottomForm({ ...bottomForm, category: e.target.value })}
+                        className="w-full bg-[#0B2144] border border-white/20 rounded-xs px-3.5 py-2.5 text-xs text-white focus:outline-hidden focus:border-accent transition-all cursor-pointer"
+                      >
+                        <option value="All 5 High-Demand Products">All 5 Products (Full Catalog)</option>
+                        <option value="Blankets (All Types)">1. Blankets (All Types)</option>
+                        <option value="Double & Single Bedsheets">2. Double & Single Bedsheets</option>
+                        <option value="Curtains">3. Curtains</option>
+                        <option value="Pillow Covers">4. Pillow Covers</option>
+                        <option value="Paydan / Doormats">5. Paydan / Doormats</option>
+                      </select>
+                    </div>
+
+                    {/* Approx Quantity */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                        Approx Requirement / Quantity (Optional)
+                      </label>
+                      <input
+                        type="text"
+                        value={bottomForm.quantity}
+                        onChange={(e) => setBottomForm({ ...bottomForm, quantity: e.target.value })}
+                        placeholder="e.g. 200 pcs blankets, 50 sets bedsheets, full transport lot..."
+                        className="w-full bg-white/10 border border-white/20 rounded-xs px-3.5 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-hidden focus:border-accent focus:bg-white/15 transition-all"
+                      />
+                    </div>
+
+                    {/* Specific Requirement Notes */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-gray-300 mb-1.5">
+                        Requirement Details / Any Question (Optional)
+                      </label>
+                      <textarea
+                        rows="2"
+                        value={bottomForm.message}
+                        onChange={(e) => setBottomForm({ ...bottomForm, message: e.target.value })}
+                        placeholder="Tell us about specific sizes, GSM, custom packaging, or sample delivery needs..."
+                        className="w-full bg-white/10 border border-white/20 rounded-xs px-3.5 py-2 text-xs text-white placeholder-gray-400 focus:outline-hidden focus:border-accent focus:bg-white/15 transition-all resize-none"
+                      ></textarea>
+                    </div>
+
+                  </div>
+
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={bottomSubmitting}
+                      className="w-full inline-flex items-center justify-center gap-2.5 bg-accent hover:bg-accent-dark text-primary py-3.5 rounded-sm font-bold text-xs uppercase tracking-wider transition-all shadow-xl hover:scale-[1.01] cursor-pointer disabled:opacity-70"
+                    >
+                      <FaWhatsapp className="text-base" />
+                      <span>{bottomSubmitting ? 'Submitting Inquiry...' : 'Submit Wholesale Inquiry & Get Instant Rates'}</span>
+                    </button>
+                    <p className="text-[10px] text-gray-400 text-center mt-2.5">
+                      🔒 Your details are 100% private. We only send genuine factory wholesale rate cards.
+                    </p>
+                  </div>
+                </form>
+              )}
+
+            </div>
+
+            {/* Right: Direct Founder Contact & Panipat Hub Card (5 Cols) */}
+            <div className="lg:col-span-5 flex flex-col gap-6">
+              
+              {/* Executive Founder Card */}
+              <div className="bg-white/5 border border-accent/30 rounded-sm p-6 backdrop-blur-md">
+                <div className="flex items-center gap-4 border-b border-white/10 pb-4 mb-4">
+                  <img
+                    src={ownerImg}
+                    alt="Mr. M. KARAM"
+                    className="w-16 h-16 rounded-full object-cover border-2 border-accent shadow-md shrink-0"
+                  />
+                  <div>
+                    <span className="text-[10px] font-bold text-accent uppercase tracking-widest block">Founder & MD</span>
+                    <h4 className="font-serif text-lg font-bold text-white">Mr. M. KARAM</h4>
+                    <p className="text-xs text-gray-300">Z K BROTHER • Panipat</p>
+                  </div>
+                </div>
+
+                <p className="italic text-xs text-gray-300 leading-relaxed mb-5">
+                  "In B2B, people don't connect with a company, they connect with a person. If you ever face any issue or need custom factory rates, call me directly."
+                </p>
+
+                <div className="flex flex-col gap-2.5">
+                  <a
+                    href="tel:+919896507049"
+                    className="flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-primary py-3 px-4 rounded-sm font-bold text-xs uppercase tracking-wider transition-all shadow-sm"
+                  >
+                    <FiPhoneCall className="text-sm" />
+                    <span>Call Founder: +91 98965 07049</span>
+                  </a>
+
+                  <a
+                    href="https://wa.me/919896507049?text=Hello%20Mr.%20M.%20Karam,%20I%20am%20interested%20in%20bulk%20textiles%20from%20Z%20K%20BROTHER."
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white py-3 px-4 rounded-sm font-bold text-xs uppercase tracking-wider transition-all shadow-sm"
+                  >
+                    <FaWhatsapp className="text-base" />
+                    <span>WhatsApp Direct RFQ</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Manufacturing Plant Location Card */}
+              <div className="bg-white/5 border border-white/10 rounded-sm p-6 text-xs text-gray-300 space-y-3">
+                <div className="flex items-start gap-3">
+                  <FiMapPin className="text-accent text-base shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="font-bold text-white uppercase tracking-wider mb-1">Panipat Manufacturing Facility</h5>
+                    <p className="leading-relaxed">
+                      Plot No-199, Street No-03, Near Mahadev Exports, Huda Industrial Area, Panipat - 132103, Haryana, India.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="border-t border-white/10 pt-3 flex items-center justify-between text-[11px]">
+                  <span className="text-gray-400">GST: <strong className="text-white">06HIHPK3932B1ZH</strong></span>
+                  <span className="text-gray-400">MSME: <strong className="text-white">UDYAM-HR-14-006348</strong></span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
       </section>
 

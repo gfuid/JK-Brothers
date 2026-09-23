@@ -1,85 +1,113 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { BRAND_IMAGES, handleImageError } from '../data/imageUrls';
-
-const aboutFactoryImg = BRAND_IMAGES.aboutFactory;
+import { FiArrowRight, FiPhoneCall } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
+import ownerImg from '../assets/owner.png';
 
 export default function AboutUs() {
   return (
-    <section id="about-us" className="py-20 bg-[#FAF9F6] overflow-hidden scroll-mt-navbar">
+    <section id="about-us" className="py-20 bg-[#FAF9F6] overflow-hidden scroll-mt-navbar border-y border-gray-150">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Side: Images & Overlay Badge */}
+          {/* Left Side: Founder Image & Badge */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-6 relative flex justify-center"
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 relative flex justify-center"
           >
             {/* Background decorative square */}
-            <div className="absolute -top-6 -left-6 w-32 h-32 border border-accent/35 rounded-sm -z-0 hidden sm:block"></div>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-primary/20 rounded-sm -z-0 hidden sm:block"></div>
+            <div className="absolute -top-4 -left-4 w-28 h-28 border-2 border-accent/40 rounded-sm -z-0 hidden sm:block"></div>
+            <div className="absolute -bottom-4 -right-4 w-28 h-28 border-2 border-primary/20 rounded-sm -z-0 hidden sm:block"></div>
 
-            {/* Collage Container */}
-            <div className="relative w-full max-w-md sm:max-w-lg aspect-square sm:aspect-4/3 rounded-sm overflow-hidden border-4 border-white shadow-xl z-10 bg-gray-100">
+            {/* Founder Frame */}
+            <div className="relative w-full max-w-md rounded-sm overflow-hidden border-4 border-white shadow-xl z-10 bg-white">
               <img 
-                src={aboutFactoryImg} 
-                alt="ZK BROTHERS Factory Production" 
-                className="w-full h-full object-cover object-center"
+                src={ownerImg} 
+                alt="Mr. M. KARAM - Founder of Z K BROTHER" 
+                className="w-full h-auto object-cover"
                 loading="lazy"
-                onError={handleImageError}
               />
               
-              {/* Overlay styling for extra polish */}
-              <div className="absolute inset-0 bg-primary/5"></div>
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-primary via-primary/80 to-transparent p-4 text-white">
+                <span className="text-[10px] text-accent font-bold uppercase tracking-widest block">Founder & MD</span>
+                <h4 className="font-serif text-lg font-bold">Mr. M. KARAM</h4>
+                <p className="text-[11px] text-gray-300">Z K BROTHER • Panipat, Haryana</p>
+              </div>
             </div>
 
             {/* Circular Overlay Badge */}
             <motion.div 
-              initial={{ scale: 0, rotate: -45 }}
-              whileInView={{ scale: 1, rotate: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ type: 'spring', stiffness: 80, delay: 0.4 }}
-              className="absolute -bottom-6 sm:-bottom-8 -left-2 sm:left-6 bg-accent border-4 border-white text-white rounded-full w-28 h-28 sm:w-36 sm:h-36 flex flex-col justify-center items-center text-center shadow-lg z-20"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: 'spring', stiffness: 90, delay: 0.3 }}
+              className="absolute -bottom-5 -left-3 sm:-left-5 bg-accent border-4 border-white text-primary rounded-full w-24 h-24 sm:w-28 sm:h-28 flex flex-col justify-center items-center text-center shadow-xl z-20"
             >
-              <span className="font-serif text-2xl sm:text-3xl font-black leading-none mb-0.5">10+</span>
-              <span className="text-[8px] sm:text-[10px] font-bold tracking-widest uppercase leading-tight px-3">
-                Years of<br />Experience
+              <span className="font-serif text-xl sm:text-2xl font-black leading-none mb-0.5">4+</span>
+              <span className="text-[8px] sm:text-[9px] font-bold tracking-widest uppercase leading-tight px-2">
+                Years Of<br />Trust
               </span>
             </motion.div>
           </motion.div>
 
           {/* Right Side: Text Information */}
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left"
           >
             <span className="text-accent text-xs font-bold tracking-[0.25em] uppercase mb-2">
-              ABOUT US
+              MEET THE FOUNDER • PANIPAT TEXTILE HUB
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-black text-primary leading-tight mb-6">
-              ZK BROTHERS
+            <h2 className="text-3xl md:text-4xl lg:text-4.5xl font-serif font-black text-primary leading-tight mb-4 uppercase">
+              About <span className="text-accent">Z K BROTHER</span>
             </h2>
-            <div className="w-16 h-[2px] bg-accent mb-6 lg:self-start self-center"></div>
+            <div className="w-16 h-[2.5px] bg-accent mb-6 lg:self-start self-center"></div>
 
-            <p className="text-sm text-gray-700 leading-relaxed font-medium mb-4">
-              ZK BROTHERS is a trusted and pioneered name in the field of premium Garments and Handloom products. We are a prominent Manufacturer, Exporter, and Supplier of a high-quality, comprehensive range of products including luxury Blankets, Towels, designer Bedsheets, Carpets, home Curtains, and fashion Garments for men, women, and children.
-            </p>
-            <p className="text-sm text-gray-600 leading-relaxed font-medium mb-8">
-              Based in the historic textile hub of Panipat, Haryana, our production facility combines state-of-the-art manufacturing machinery with traditional handloom weaving techniques. We are deeply committed to stringent quality control, reliable deliveries, and absolute customer satisfaction.
+            <p className="text-sm sm:text-base text-gray-800 font-semibold leading-relaxed mb-3">
+              "In B2B trading, everyone gives you a rate, but we give you the right quality and on-time delivery."
             </p>
 
-            <Link 
-              to="/about-us"
-              className="inline-block text-center bg-accent hover:bg-accent-dark text-white text-xs font-semibold tracking-widest uppercase px-8 py-4 rounded-sm transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
-            >
-              READ MORE
-            </Link>
+            <p className="text-sm text-gray-700 leading-relaxed font-medium mb-3">
+              I am <strong>Mr. M.KARAM (FOUNDER OF Z K BROTHER)</strong>. I started this company in 2022 with a simple idea. In the last 4 years, with this honesty, we have grown from Panipat to serving <strong>300+ B2B clients, wholesalers, Distributors and Traders across India</strong> with direct mill factory pricing on Blankets, Bedsheets, Curtains, Pillow Covers, and Doormats.
+            </p>
+
+            <p className="italic text-xs text-gray-600 border-l-2 border-accent pl-3 my-2 mb-6">
+              "In B2B, people don't connect with a company, they connect with a person. If you ever face any issue with your order, you can call us directly. This business is not just our work, it's our reputation."
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+              <Link 
+                to="/about-us"
+                className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white text-xs font-bold tracking-wider uppercase px-7 py-3.5 rounded-sm transition-all shadow-md hover:shadow-lg"
+              >
+                <span>Read Full Story & Credentials</span>
+                <FiArrowRight />
+              </Link>
+              
+              <a
+                href="https://wa.me/919896507049?text=Hello%20Mr.%20M.%20Karam,%20I%20am%20interested%20in%20wholesale%20rates%20for%20Z%20K%20BROTHER."
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold tracking-wider uppercase px-6 py-3.5 rounded-sm transition-all shadow-md hover:shadow-lg"
+              >
+                <FaWhatsapp className="text-base" />
+                <span>WhatsApp Rates</span>
+              </a>
+
+              <a
+                href="tel:+919896507049"
+                className="inline-flex items-center gap-1.5 text-primary hover:text-accent font-bold text-xs uppercase tracking-wider px-3 py-2 transition-colors"
+              >
+                <FiPhoneCall />
+                <span>+91 98965 07049</span>
+              </a>
+            </div>
           </motion.div>
 
         </div>
