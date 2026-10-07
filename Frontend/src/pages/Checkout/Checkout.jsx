@@ -138,7 +138,7 @@ export default function Checkout() {
                   type="text" 
                   name="phone" 
                   required
-                  placeholder="e.g. +91 9896507049"
+                  placeholder="e.g. +91 85976 62322"
                   value={formData.phone}
                   onChange={handleInputChange}
                   className="p-3 border border-gray-200 rounded-xs focus:outline-hidden focus:border-accent text-gray-800"

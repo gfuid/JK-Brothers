@@ -91,7 +91,7 @@ export default function AboutUs() {
               </Link>
               
               <a
-                href="https://wa.me/919896507049?text=Hello%20Mr.%20M.%20Karam,%20I%20am%20interested%20in%20wholesale%20rates%20for%20Z%20K%20BROTHER."
+                href="https://wa.me/918597662322?text=Hello%20Mr.%20M.%20Karam,%20I%20am%20interested%20in%20wholesale%20rates%20for%20Z%20K%20BROTHER."
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold tracking-wider uppercase px-6 py-3.5 rounded-sm transition-all shadow-md hover:shadow-lg"
@@ -101,11 +101,11 @@ export default function AboutUs() {
               </a>
 
               <a
-                href="tel:+919896507049"
+                href="tel:+918597662322"
                 className="inline-flex items-center gap-1.5 text-primary hover:text-accent font-bold text-xs uppercase tracking-wider px-3 py-2 transition-colors"
               >
                 <FiPhoneCall />
-                <span>+91 98965 07049</span>
+                <span>+91 85976 62322</span>
               </a>
             </div>
           </motion.div>

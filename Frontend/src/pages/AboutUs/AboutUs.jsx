@@ -89,7 +89,7 @@ export default function AboutUs() {
 
     const whatsappText = `Hello Mr. M. Karam, I am ${bottomForm.name || 'a wholesale buyer'} from ${bottomForm.city || 'India'}. I need a wholesale quotation for ${bottomForm.category}${bottomForm.quantity ? ` (Quantity: ${bottomForm.quantity})` : ''}. ${bottomForm.message ? `Details: ${bottomForm.message}.` : ''} My WhatsApp contact is ${bottomForm.phone}.`;
 
-    const whatsappUrl = `https://wa.me/919896507049?text=${encodeURIComponent(whatsappText)}`;
+    const whatsappUrl = `https://wa.me/918597662322?text=${encodeURIComponent(whatsappText)}`;
 
     setTimeout(() => {
       window.open(whatsappUrl, '_blank');
@@ -120,7 +120,7 @@ export default function AboutUs() {
     setLeadSubmitting(false);
     setLeadSuccess(true);
 
-    const whatsappUrl = `https://wa.me/919896507049?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/918597662322?text=${encodeURIComponent(
       `Hello Mr. M. Karam, I am ${leadForm.name || 'a wholesale buyer'}. Please send me the 2026 Wholesale Rate Card & Catalog for ${leadForm.category}. My contact number is ${leadForm.phone}.`
     )}`;
 
@@ -332,11 +332,11 @@ export default function AboutUs() {
               <div className="mt-4 p-4 bg-white border border-gray-200 rounded-sm shadow-xs flex items-center justify-between gap-3">
                 <div className="text-left">
                   <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block">Direct Line to Founder</span>
-                  <span className="text-sm font-bold text-primary">+91 98965 07049</span>
+                  <span className="text-sm font-bold text-primary">+91 85976 62322</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <a
-                    href="tel:+919896507049"
+                    href="tel:+918597662322"
                     className="p-2.5 bg-primary text-white rounded-sm hover:bg-accent hover:text-primary transition-colors text-sm shadow-xs flex items-center gap-1.5 font-bold"
                     title="Call Founder"
                   >
@@ -344,7 +344,7 @@ export default function AboutUs() {
                     <span className="hidden sm:inline text-xs">Call</span>
                   </a>
                   <a
-                    href="https://wa.me/919896507049?text=Hello%20Mr.%20M.%20Karam,%20I%20am%20contacting%20you%20regarding%20bulk%20textiles%20for%20Z%20K%20BROTHER."
+                    href="https://wa.me/918597662322?text=Hello%20Mr.%20M.%20Karam,%20I%20am%20contacting%20you%20regarding%20bulk%20textiles%20for%20Z%20K%20BROTHER."
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 bg-[#25D366] text-white rounded-sm hover:bg-[#20ba59] transition-colors text-sm shadow-xs flex items-center gap-1.5 font-bold"
@@ -483,7 +483,7 @@ export default function AboutUs() {
                   <div className="mt-5 pt-4 border-t border-gray-200/60 flex items-center justify-between text-xs">
                     <span className="font-semibold text-gray-500">Spec: {item.specs}</span>
                     <a
-                      href={`https://wa.me/919896507049?text=Hi!%20I%20am%20interested%20in%20wholesale%20rates%20for%20${encodeURIComponent(item.title)}%20from%20Z%20K%20BROTHER.`}
+                      href={`https://wa.me/918597662322?text=Hi!%20I%20am%20interested%20in%20wholesale%20rates%20for%20${encodeURIComponent(item.title)}%20from%20Z%20K%20BROTHER.`}
                       target="_blank"
                       rel="noreferrer"
                       className="text-primary font-bold hover:text-accent flex items-center gap-1 uppercase tracking-wider text-[11px]"
@@ -530,7 +530,7 @@ export default function AboutUs() {
                   Opening WhatsApp to connect with Mr. M. KARAM. If it didn't open automatically, click the button below:
                 </p>
                 <a
-                  href={`https://wa.me/919896507049?text=${encodeURIComponent(
+                  href={`https://wa.me/918597662322?text=${encodeURIComponent(
                     `Hello Mr. M. Karam, I am ${leadForm.name || 'a wholesale buyer'}. Please send me the 2026 Wholesale Rate Card & Catalog for ${leadForm.category}. My contact number is ${leadForm.phone}.`
                   )}`}
                   target="_blank"
@@ -574,7 +574,7 @@ export default function AboutUs() {
                         required
                         value={leadForm.phone}
                         onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
-                        placeholder="e.g. 98965 07049"
+                        placeholder="e.g. 85976 62322"
                         className="w-full bg-white/10 border border-white/20 rounded-xs pl-10 pr-3 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-hidden focus:border-accent focus:bg-white/15 transition-all"
                       />
                     </div>
@@ -846,7 +846,7 @@ export default function AboutUs() {
                     Aapki inquiry successfully record ho gayi hai aur WhatsApp automatically open ho raha hai. Agar WhatsApp nahi khula toh niche diye gaye button par click karein:
                   </p>
                   <a
-                    href={`https://wa.me/919896507049?text=${encodeURIComponent(
+                    href={`https://wa.me/918597662322?text=${encodeURIComponent(
                       `Hello Mr. M. Karam, I am ${bottomForm.name || 'a wholesale buyer'} from ${bottomForm.city || 'India'}. I need a wholesale quotation for ${bottomForm.category}${bottomForm.quantity ? ` (Quantity: ${bottomForm.quantity})` : ''}. ${bottomForm.message ? `Details: ${bottomForm.message}.` : ''} My WhatsApp contact is ${bottomForm.phone}.`
                     )}`}
                     target="_blank"
@@ -886,7 +886,7 @@ export default function AboutUs() {
                         required
                         value={bottomForm.phone}
                         onChange={(e) => setBottomForm({ ...bottomForm, phone: e.target.value })}
-                        placeholder="e.g. 98965 07049"
+                        placeholder="e.g. 85976 62322"
                         className="w-full bg-white/10 border border-white/20 rounded-xs px-3.5 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-hidden focus:border-accent focus:bg-white/15 transition-all"
                       />
                     </div>
@@ -997,15 +997,15 @@ export default function AboutUs() {
 
                 <div className="flex flex-col gap-2.5">
                   <a
-                    href="tel:+919896507049"
+                    href="tel:+918597662322"
                     className="flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-primary py-3 px-4 rounded-sm font-bold text-xs uppercase tracking-wider transition-all shadow-sm"
                   >
                     <FiPhoneCall className="text-sm" />
-                    <span>Call Founder: +91 98965 07049</span>
+                    <span>Call Founder: +91 85976 62322</span>
                   </a>
 
                   <a
-                    href="https://wa.me/919896507049?text=Hello%20Mr.%20M.%20Karam,%20I%20am%20interested%20in%20bulk%20textiles%20from%20Z%20K%20BROTHER."
+                    href="https://wa.me/918597662322?text=Hello%20Mr.%20M.%20Karam,%20I%20am%20interested%20in%20bulk%20textiles%20from%20Z%20K%20BROTHER."
                     target="_blank"
                     rel="noreferrer"
                     className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white py-3 px-4 rounded-sm font-bold text-xs uppercase tracking-wider transition-all shadow-sm"

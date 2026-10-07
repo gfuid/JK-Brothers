@@ -85,8 +85,8 @@ export default function ContactUs() {
                   <FiPhone className="text-accent text-lg shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold text-white uppercase tracking-wider mb-1">Telephone Contacts</h4>
-                    <p className="text-sm font-semibold">+91 98965 07049</p>
-                    <p className="text-sm font-semibold">+91 85972 662322</p>
+                    <a href="tel:+918597662322" className="text-sm font-semibold hover:text-accent block transition-colors">+91 85976 62322</a>
+                    <a href="tel:+919896507049" className="text-sm font-semibold hover:text-accent block transition-colors">+91 98965 07049</a>
                   </div>
                 </li>
 
@@ -202,7 +202,7 @@ export default function ContactUs() {
                   <input 
                     type="tel" 
                     name="phone" 
-                    placeholder="+91 98965 00000"
+                    placeholder="+91 85976 00000"
                     value={formData.phone}
                     onChange={handleInputChange}
                     className="p-3 border border-gray-200 rounded-xs focus:outline-hidden focus:border-accent text-gray-800"

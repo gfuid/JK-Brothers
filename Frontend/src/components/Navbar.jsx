@@ -102,7 +102,7 @@ export default function Navbar() {
             </a>
             <span className="text-white/20 hidden sm:inline">|</span>
             <a
-              href="https://wa.me/919896507049?text=Hello%20ZK%20BROTHERS,%20I%20am%20interested%20in%20your%20wholesale%20catalogue."
+              href="https://wa.me/918597662322?text=Hello%20ZK%20BROTHERS,%20I%20am%20interested%20in%20your%20wholesale%20catalogue."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 hover:text-green-400 transition-colors duration-200 cursor-pointer"
@@ -113,12 +113,12 @@ export default function Navbar() {
             </a>
             <span className="text-white/20 hidden sm:inline">|</span>
             <a
-              href="tel:+919896507049"
+              href="tel:+918597662322"
               className="hidden sm:flex items-center gap-1.5 hover:text-accent transition-colors duration-200 cursor-pointer"
               title="Direct Call"
             >
               <FiPhoneCall className="text-accent text-xs" />
-              <span className="font-semibold text-[10.5px]">+91 98965 07049</span>
+              <span className="font-semibold text-[10.5px]">+91 85976 62322</span>
             </a>
           </div>
 
@@ -429,7 +429,7 @@ export default function Navbar() {
                 <span>Track Orders</span>
               </Link>
               <a
-                href="https://wa.me/919896507049"
+                href="https://wa.me/918597662322"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-green-600 hover:text-green-700"
